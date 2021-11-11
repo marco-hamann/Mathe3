@@ -42,6 +42,7 @@ __Zentrale Fragen__ sind dabei die folgenden:
 Zahlenfolgen
 ============
 
+
 In diesem Abschnitt werden grundlegende Begriffe wie Zahlenfolge, Zahlenreihe und Konvergenz wiederholt.
 
 > Eine reelle **Zahlenfolge** ist eine Funktion der Form $f:\mathbb{N}\to\mathbb{R}$ mit
@@ -65,8 +66,10 @@ $$
   |a_k-g|<\epsilon \quad\forall\; k>n
 $$ Andernfalls heißt $(a_k)_{k=0}^\infty$ *divergent*.
 
+
 Zahlenreihen
 ============
+
 
 >Werden nun die Teilsummen von Gliedern der Zahlenfolge $(a_k)_{k=0}^\infty$ gebildet gemäß
 >$$
@@ -150,6 +153,7 @@ $$
 Konvergenzkriterien für Zahlenreihen
 ====================================
 
+
 >**Satz 2.** Gegeben ist eine unendliche Zahlenreihe $\sum_{k=0}^\infty{a_k}$. Für die Konvergenz der Reihe ist
 >
 >1. *notwendig* $$
@@ -171,6 +175,18 @@ $$ für ein bestimmtes $r$. Hieraus folgt $$
 $$ Damit ist die geometrische Reihe $$
   \sum_{j=0}^\infty{b_j}:=a_{k_0}\cdot\sum_{j=0}^\infty{r^j}
 $$ eine konvergente Majorante der Reihe $\sum_{j=0}^\infty{a_{k_0+j}}$. Durch Addition endlich vieler Glieder $a_k$ mit $k<k_0$ ändert sich die Konvergenz nicht.
+
+In den nachstehenden Videos werden notwendiges Kriterium / Quotientenkriterium / Wurzelkriterium für die Konvergenz einer Zahlenreihe an je einem Beispiel erläutert.
+
+!?[Notwendiges Kriterium](https://www.youtube.com/watch?v=uafZtktPqN0&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE)
+
+!?[Quotientenkriterium](https://www.youtube.com/watch?v=QVHW1YyNHgI&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE)
+
+In den nachstehenden Videos wird das Wurzelkriterium für die Konvergenz einer Zahlenreihe an je einem Beispiel erläutert.
+
+!?[Wurzelkriterium1](https://www.youtube.com/watch?v=-cnZrIZ66xs&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE)
+
+!?[Wurzelkriterium2](https://www.youtube.com/watch?v=J0ZDceKddcI&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE)
 
 Nachstehend werden weitere hinreichende Kriterien zum Nachweis der Konvergenz / Divergenz von Zahlenreihen aufgezeigt (ohne Beweis).
 
@@ -257,10 +273,66 @@ $$
 $$
 
 
+Sicher gewußt
+=============
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** Für welche der folgenden Zahlenreihen ist die notwendige Bedingung für die Konvergenz erfüllt?
+
+[[X]] $$\sum_{k=1}^\infty{\frac{1}{k\cdot(k+1)}}$$
+[[X]] $$\sum_{k=0}^\infty{\left(k\cdot\exp{(-k)}\right)}$$
+[[ ]] $$\sum_{k=0}^\infty{\exp{k}}$$
+[[?]] Notwendig für die Konvergenz einer Reihe $\sum_{k\in\mathbb{N}}{a_k}$ ist $$
+  \lim_{k\to\infty}{a_k}=0
+$$ d. h. dass die Folge der Glieder $a_k$ mit $n\in\mathbb{N}$ eine Nullfolge ist. Vergleiche Satz 2.
+****************************************
+
+Mit Hilfe der Grenzwertsätze und $\lim_{k\to\infty}{(1/k^m)}=0$ für beliebiges $m\in\mathbb{N}\setminus{0}$ ergibt sich $$
+  \lim_{k\to\infty}{\frac{1}{k\cdot(k+1)}}=
+  \lim_{k\to\infty}{\frac{\frac{1}{k^2}}{1+\frac{1}{k}}}=0
+$$ unter Benutzung der L´Hospital-Regel für die reellen Funktionen $k\mapsto k$ und $k\mapsto \exp{k}$ mit $k\in\mathbb{R}$ $$
+  \lim_{k\to\infty}{\left(k\cdot\exp{(-k)}\right)}=
+  \lim_{k\to\infty}{\left(-1\cdot\exp{(-k)}\right)}=0
+$$ jedoch $$
+  \lim_{k\to\infty}{\exp{k}}=\infty
+$$
+
+****************************************
+
+**Frage 2.** Für welche reellen $x$ gilt die folgende Gleichung? $$
+  \sum_{k=0}^\infty{x^k}=
+  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}
+$$
+
+[( )] $x\in\mathbb{R}$
+[( )] $x\in\mathbb{R}\setminus\{1\}$
+[(X)] $x\in(-1,1)$
+[[?]] Linke und reche Seite der Gleichung sind unter Benutzung der Summenformel für geometrische Reihen umzuformen. Der Konvergenzbereich der jeweiligen Reihe ist zu beachten.
+****************************************
+
+Die linke Seite der Gleichung berechnet sich unter Benutzung der Summenformel zu $$
+  \sum_{k=0}^\infty{x^k}=\frac{1}{1-x}\,,\quad x\in(-1,1)
+$$ die rechte Seite entsprechend $$
+  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}=
+  \sum_{k=0}^\infty{\left(\frac{1}{2}\cdot\left(\frac{x+1}{2}\right)^k\right)}=
+  \frac{1}{2}\cdot\frac{1}{1-\frac{x+1}{2}}=\frac{1}{1-x}
+$$ worin $$
+  \frac{x+1}{2}\in(-1,1)\quad\leftrightarrow\quad x\in(-3,1)
+$$ den Konvergenzbereich angibt. Die Gleichheit von linker und rechter Seite ergibt sich also für alle $x$ in $$
+  (-1,1)=(-1,1)\cap(-1,3)
+$$
+
+****************************************
+
+
+
 ### Definition einer Funktionenreihe
 
 Funktionenfolge
 ===============
+
 
 Es bezeichne $\left(f_k\right)_{k=1}^\infty$ mit $$
   f_k:x\mapsto y=f_k(x)
@@ -280,7 +352,7 @@ $$ eine unendliche, konstante Zahlenfolge der zu $x_0$ gehörenden Funktionswert
 $$ eine unendliche, alternierende Zahlenfolge der zu $x_0$ gehörenden Funktionswerte $f_k(x_0)$. Diese ist divergent mit den beiden Häufungswerten $1$ und $-1$.
 3. Für $x_0=\frac{1}{2}$ bildet $$
   \left(f_k(x_0)\right)_{k=1}^\infty=\left(\left(\frac{1}{2}\right)^k\right)_{k=1}^\infty=\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},...
-$$ eine unendliche, monoton fallende Zahlenfolge der zu $x_0$ gehörenden Funktionswerte $f_k(x_0)$. Diese ist konvergent mit dem Grenzwertwert $0$. (Nachweis beispielsweise mit Quotientenkriterium, siehe Abschnitt [Zahlenreihen](#Zahlenfolgen-und-Reihen))
+$$ eine unendliche, monoton fallende Zahlenfolge der zu $x_0$ gehörenden Funktionswerte $f_k(x_0)$. Diese ist konvergent mit dem Grenzwert $0$. (Nachweis beispielsweise mit Quotientenkriterium, siehe Abschnitt [Zahlenreihen](#Zahlenfolgen-und-Reihen))
 4. Für ein allgemeines Argument $x_0\in D$ bildet $$
   \left(f_k(x_0)\right)_{k=1}^\infty=\left(x_0^k\right)_{k=1}^\infty=x_0,x_0^2,x_0^3,x_0^4,...
 $$ eine unendliche, geometrische Zahlenfolge. Dabei gilt $$
@@ -312,6 +384,7 @@ $$ der Konvergenzbereich der Funktionenfolge bildet den Definitionsbereich der G
 
 Funktionenreihe
 ===============
+
 
 In gewisser Analogie zur Bildung einer Partialsummenfolge zu einer Zahlenfolge wird nun zu gegebener Folge $\left( f_k\right)_{k=1}^\infty$ reeller Funktionen mit gemeinsamen Definitionsbereich $D_0$ (Konvergenzbereich der Funktionenfolge) die Folge von Teilsummen von $\left( f_k(x)\right)_{k=1}^\infty$ für $x\in D_0$ gebildet, für $n=1$ $$
   s_1(x)=f_1(x)
@@ -361,7 +434,7 @@ Demgegenüber legt $$
   \forall \epsilon>0\;\; \exists n_0\in\mathbb{N}\;\; \forall x\in D\;\; \forall n\geq n_0\;\; \left(|f_n(x)-f(x)|<\epsilon\right)
 $$ ~~gleichmäßige Konvergenz~~ fest. Hier wird die absolute Differenz zwischen $f_n(x)$ und $f(x)$ für alle $x\in D$ betrachtet.
 
-**Beispiel 4.**   (Fortführung der Beispiele 1, 2 und .)
+**Beispiel 4.**   (Fortführung der Beispiele 1, 2 und 3.)
 
 1. Betrachtet sei $(f_k)_{k=0}^\infty$ mit $f_k(x)=x^k$ wie im vorigen Beispiel, jedoch mit eingeschränktem Definitionsbereich $D=[0,q)$ und $q\in(0,1)$ als reellem Parameter. Die Funktionen $f_k$ konvergieren gleichmäßig gegen $f:x\mapsto 0$ (Nullfunktion).
 2. Für D=[0,1) konvergieren $f_k$ punktweise gegen die Nullfunktion, nicht aber gleichmäßig, da $$
@@ -375,6 +448,7 @@ $$
 
 Definition und Eigenschaften
 ============================
+
 
 In diesem Abschnitt wird eine spezielle Klasse von Funktionenreihen untersucht.
 
@@ -420,7 +494,14 @@ $$ Dies bedeutet, dass für jedes $x\in\mathbb{R}$ die entsprechende Zahlenreihe
   x\mapsto s(x)=\sum_{k=0}^\infty{\frac{x^k}{k!}}\,,\quad x\in\mathbb{R}
 $$
 
----
+Im nachstehenden Video werden Definition und allgemeine Darstellungeiner Potenzreihen sowie Begriffe wie Koeffizienten und Entwicklungsstelle erläutert.
+
+!?[Potenzreihe](https://www.youtube.com/watch?v=CeEfXWalXeU&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE)
+
+
+Konvergenzbereich
+=================
+
 
 Der ~~Konvergenzbereich~~ $D_1$ einer Potenzreihe ergibt sich zu $$
   D_1=(x_0-r,x_0+r)\quad\text{mit}\quad r\geq 0
@@ -453,8 +534,6 @@ $$ (als Supremum über alle $x_1\in D_1$). Außerdem folgt mit Hilfe des Quotien
 $$ woraus die Formel zur Berechnung des Konvergenzradius folgt $$
   |x-x_0|<\lim_{k\to\infty}{\left|\frac{a_{k}}{a_{k+1}}\right|}=r
 $$ $\square$
-
----
 
 >**Satz 1.** (Gleichmäßige Konvergenz von Potenzreihen)
 >
@@ -557,6 +636,13 @@ fk
 subst(x0,x,pk)-subst(x0,x,fk)
 ```
 @Algebrite.eval
+
+
+In den beiden nachstehenden Videos wird die Differentiation / Integration von Potenzreihen am Beispiel der Taylorentwicklung der Exponentialfunktion zu exp(x) erklärt.
+
+!?[Ableitung der Taylorreihe](https://www.youtube.com/watch?v=DHTXqFjwJIA&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE&index=40)
+
+!?[Integration der Taylorreihe](https://www.youtube.com/watch?v=UDAqeXyBmf0&list=PLLTAHuUj-zHjs82YCjiSUeWnNGZkEePIE&index=41)
 
 **Beispiel 3.** Die Funktion $f:\mathbb{R}\to\mathbb{R}$ mit $$
   f:x\mapsto y=f(x)=\sin{x}
@@ -711,4 +797,235 @@ $$
 $$
 
 
+Sicher gewußt
+=============
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** Berechnen Sie den Konvergenzbereich der Potenzreihe $$
+  \sum_{k=1}^\infty{\frac{(x+2)^k}{k^3\cdot 2^k}}
+$$
+
+[( )] $$x\in[0,4]$$
+[( )] $$x\in\left[-\frac{5}{2},\frac{5}{2}\right]$$
+[(X)] $$x\in[-4,0]$$
+[[?]] Der Konvergenzradius $r$ und die Entwicklungsstelle $x_0$ der Reihe sind zu berechnen. Der Konvergenzbereich ist das Intervall $(x_0-r,x_0+r)$. Die Konvergenz der Potenzreihe an den Intervallgrenzen $x=x_0\pm r$ ist separat zu untersuchen.
+****************************************
+
+Die Entwicklungsstelle $x_0=-2$ ist abzulesen aus $x+2=x-(-2)$ in der allgemeinen Darstellung der Potenzreihe.
+
+Die Koeffizienten der Potenzreihe sind $$
+  a_k=\frac{1}{k^3\cdot 2^k}
+$$ Hieraus berechnet sich der Konvergenzradius $r$ $$
+  r=\lim_{k\to\infty}\left|\frac{(k+1)^3\cdot 2^{k+1}}{k^3\cdot 2^k}\right|=
+  2\cdot\lim_{k\to\infty}\left|\frac{(k+1)^3}{k^3}\right|=2
+$$ Hieraus ergibt sich der Konvergenzbereich $K=(-4,0)$. An der Grenze $x=-4$ ergibt sich die konvergente Reihe $$
+  \sum_{k=1}^\infty{\frac{(-2)^k}{k^3\cdot 2^k}}=
+  \sum_{k=1}^\infty{\frac{(-1)^k}{k^3}}=-1+\frac{1}{8}-\frac{1}{27}+\frac{1}{64}\mp...
+$$ (Konvergenz nach Leibnitzkriterium), für $x=4$ die ebenfalls konvergente Reihe $$
+  \sum_{k=1}^\infty{\frac{2^k}{k^3\cdot 2^k}}=
+  \sum_{k=1}^\infty{\frac{1}{k^3}}=1+\frac{1}{8}+\frac{1}{27}+\frac{1}{64}+...
+$$
+
+****************************************
+
+**Frage 2.** ...
+
+
 [^1]: Die Summe $s_a(x)$ darf auf dem Konvergenzbereich $D_1$ als Funktion $s_a:x\mapsto s(x)$ aufgefasst werden, ebs. $s_b(x)$.
+
+
+### Fourierreihen
+
+
+Ziel ist es, eine periodische Funktion in eine unendliche Reihe periodischer Funktionen zu entwickeln.
+
+---
+
+Spezialfall
+===========
+
+Gegeben sei zunächst eine reelle Funktion $f$ mit $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ welche <span style="color: orange" > periodisch mit Periode $2\pi$ </span> ist, d. h. $$
+  f(x)=f(x+2\cdot\pi)\quad\forall x\in D
+$$ $f$ darf in $D$ endlich viele Definitionslücken beziehungsweise Sprünge endlicher Höhe besitzen.
+
+
+Ansatzgleichung
+---------------
+
+
+Mit der Gleichung $$
+  f(x)=\sum_{k=0}^\infty{\left(A_k\cdot\sin{(k\cdot x+\varphi_k)}\right)}
+$$ und zu bestimmenden Parametern $A_k\geq0$ und $\varphi_k$ für $k\in\mathbb{N}$ wird eine unendliche Reihe von Sinusfunktionen angesetzt, deren Perioden $p_k=2\pi/k$ sind. Unter Benutzung des Additionstheorems für den Sinus folgt hieraus $$
+  f(x)=A_0\cdot\sin{\varphi_0}+\sum_{k=1}^\infty{\left(
+    A_k\cdot\cos{\varphi_k}\cdot\sin{(k\cdot x)}+
+    A_k\cdot\sin{\varphi_k}\cdot\cos{(k\cdot x)}
+  \right)}
+$$ was zur allgemeinen Darstellung einer **Fourierreihe** $$
+f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{\left(
+    a_k\cdot\cos{(k\cdot x)}+
+    b_k\cdot\sin{(k\cdot x)}
+\right)}
+$$ mit zu bestimmenden **Fourierkoeffizienten** $a_k$ und $b_k$ führt.
+
+
+Fourierkoeffizienten
+--------------------
+
+
+Für die Berechnung der Fourierkoeffizienten wird $D\supseteq(-\pi,\pi)$ vorausgesetzt.
+
+1. Zur Berechnung des Fourierkoeffizienten $a_0$ werden beide Seiten der Ansatzgleichung über dem Intervall $(-\pi,\pi)$ integriert. Es ergibt sich (ohne Nachweis) $$
+  \int_{-\pi}^\pi{f(x)}\,\mathrm{d}x=\int_{-\pi}^\pi{a_0}\,\mathrm{d}x+
+  \sum_{i=1}^\infty{a_k\cdot\int_{-\pi}^\pi{\cos{(k\cdot x)}}\,\mathrm{d}x}+
+  \sum_{i=1}^\infty{b_k\cdot\int_{-\pi}^\pi{\sin{(k\cdot x)}}\,\mathrm{d}x}=0
+$$ woraus sich unter Beachtung von $$
+  \int_{-\pi}^\pi{\cos{(k\cdot x)}}\,\mathrm{d}x=0\quad\text{und}\quad
+  \int_{-\pi}^\pi{\sin{(k\cdot x)}}\,\mathrm{d}x=0
+$$ für beliebige $k\in\mathbb{Z}$ der Fourierkoeffizient $a_0$ berechnet
+>$$
+  a_0=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)}\,\mathrm{d}x
+$$
+2. Die Fourierkoeffizienten $a_k$, $k\geq1$, berechnen sich aus dem Ansatz $$
+  \int_{-\pi}^\pi{f(x)\cdot\textcolor{orange}{\cos(n\cdot x)}}\,\mathrm{d}x=
+  a_0\cdot\int_{-\pi}^\pi{\textcolor{orange}{\cos(n\cdot x)}}\,\mathrm{d}x+
+  \sum_{i=1}^\infty{a_k\cdot\int_{-\pi}^\pi{\left(\textcolor{orange}{\cos(n\cdot x)}\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x}+
+  \sum_{i=1}^\infty{b_k\cdot\int_{-\pi}^\pi{\left(\textcolor{orange}{\cos(n\cdot x)}\cdot\sin{(k\cdot x)}\right)}\,\mathrm{d}x}
+$$ für ein $n\in\mathbb{N}\setminus\{0\}$. Darin berechnen sich $$
+  \int_{-\pi}^\pi{\cos(n\cdot x)}\,\mathrm{d}x=\left.\frac{1}{n}\cdot\sin{(n\cdot x)}\right|_{-\pi}^\pi=0
+$$ ebenso - unter partieller Integration $$
+  \int_{-\pi}^\pi{\left(\cos(n\cdot x)\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x=
+  \left.\frac{1}{n}\cdot\sin{(n\cdot x)}\cdot\cos{(k\cdot x)}\right|_{-\pi}^\pi+
+  \frac{k}{n}\cdot\int_{-\pi}^\pi{\sin{(n\cdot x)}\cdot\sin{(k\cdot x)}}\,\mathrm{d}x
+$$ was für $n\not=k$ unter nochmaliger Integration auf $$
+  \int_{-\pi}^\pi{\left(\cos(n\cdot x)\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x=
+  \left.{\frac{n}{n^2-k^2}\cdot\sin{(n\cdot x)}\cdot\cos{(k\cdot x)}-\frac{k}{n^2-k^2}\cdot\cos{(n\cdot x)}\cdot\sin{(k\cdot x)}}\right|_{-\pi}^\pi=0
+$$ führt, wohingegen für $n=k$ unter Nutzung des Additionstheorems für den Sinus folgt $$
+  \int_{-\pi}^\pi{\left(\cos^2(k\cdot x)\right)}\,\mathrm{d}x=\left.{\frac{1}{4\cdot k}\cdot\sin{(2\cdot k\cdot x)}+\frac{x}{2}}\right|_{-\pi}^\pi=\pi
+$$ Ebenso berechnet sich $$
+  \int_{-\pi}^\pi{\left(\cos(n\cdot x)\cdot\sin{(k\cdot x)}\right)}\,\mathrm{d}x=0
+$$ für alle $n$. Aus diesen bestimmten Integralen ergibt sich die Berechnung der Fourierkoeffizienten $a_k$
+>$$
+  a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\cos{(k\cdot x)}}\,\mathrm{d}x\,,\quad  k\geq1
+$$
+3. Die Fourierkoeffizienten $k_k$, $k\geq1$, berechnen sich aus dem Ansatz $$
+  \int_{-\pi}^\pi{f(x)\cdot\textcolor{orange}{\sin(n\cdot x)}}\,\mathrm{d}x=
+  a_0\cdot\int_{-\pi}^\pi{\textcolor{orange}{\sin(n\cdot x)}}\,\mathrm{d}x+
+  \sum_{i=1}^\infty{a_k\cdot\int_{-\pi}^\pi{\left(\textcolor{orange}{\sin(n\cdot x)}\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x}+
+  \sum_{i=1}^\infty{b_k\cdot\int_{-\pi}^\pi{\left(\textcolor{orange}{\sin(n\cdot x)}\cdot\sin{(k\cdot x)}\right)}\,\mathrm{d}x}
+$$ für ein $n\in\mathbb{N}\setminus\{0\}$. Darin berechnen sich $$
+  \int_{-\pi}^\pi{\sin(n\cdot x)}\,\mathrm{d}x=\left.-\frac{1}{n}\cdot\cos{(n\cdot x)}\right|_{-\pi}^\pi=0
+$$ Ebenso berechnet sich - vergleiche Punkt 2 - $$
+  \int_{-\pi}^\pi{\left(\sin(n\cdot x)\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x=0
+$$ für alle $n$. Unter Benutzung partieller Integration berechnet sich $$
+  \int_{-\pi}^\pi{\left(\sin(n\cdot x)\cdot\sin{(k\cdot x)}\right)}\,\mathrm{d}x=
+  \left.-\frac{1}{n}\cdot\cos{(n\cdot x)}\cdot\sin{(k\cdot x)}\right|_{-\pi}^\pi+
+  \frac{k}{n}\cdot\int_{-\pi}^\pi{\cos{(n\cdot x)}\cdot\cos{(k\cdot x)}}\,\mathrm{d}x
+$$ was für $n\not=k$ unter nochmaliger Integration auf $$
+  \int_{-\pi}^\pi{\left(\sin(n\cdot x)\cdot\sin{(k\cdot x)}\right)}\,\mathrm{d}x=
+  \left.{-\frac{n}{n^2-k^2}\cdot\cos{(n\cdot x)}\cdot\sin{(k\cdot x)}+\frac{k}{n^2-k^2}\cdot\sin{(n\cdot x)}\cdot\cos{(k\cdot x)}}\right|_{-\pi}^\pi=0
+$$ führt, wohingegen für $n=k$ unter Nutzung des Additionstheorems für den Sinus folgt $$
+  \int_{-\pi}^\pi{\left(\sin^2(k\cdot x)\right)}\,\mathrm{d}x=\left.{-\frac{1}{4\cdot k}\cdot\sin{(2\cdot k\cdot x)}+\frac{x}{2}}\right|_{-\pi}^\pi=\pi
+$$ Aus diesen bestimmten Integralen ergibt sich die Berechnung der Fourierkoeffizienten $a_k$
+>$$
+  b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\sin{(k\cdot x)}}\,\mathrm{d}x\,,\quad  k\geq1
+$$
+
+Der nachstehende Satz fasst Fourierreihenentwicklung einer periodischen Funktion mit $p=2\cdot\pi$ zusammen.
+
+>**Satz 1.** Eine periodische Funktion $f:x\mapsto y=f(x)$, $x\in D$ mit der Periode $p=2\cdot\pi$ lässt sich darstellen als Fourierreihe $$
+  S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{\left(a_k\cdot\cos{(k\cdot x)}+b_k\cdot\sin{(k\cdot x)}\right)}
+$$ mit den Koeffizienten $$
+  a_0=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)}\,\mathrm{d}x\,,\quad
+  a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\cos{(k\cdot x)}}\,\mathrm{d}x\quad\text{und}\quad
+  b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\sin{(k\cdot x)}}\,\mathrm{d}x
+$$ mit $k\geq1$.
+
+Der *Satz von Dirichlet* trifft eine Aussage, unter welchen Voraussetzungen eine Fourierreihe zu einer gegebenen periodischen Funktion $f$ mit $p=2\cdot\pi$ konvergiert. (hier ohne Beweis)
+
+>**Satz 2.** (*Satz von Dirichlet.*) Sind für eine gegebene periodische, reelle Funktion $f$ mit Definitionsbereich $D\subseteq\mathbb{R}$ und Periode $p=2\cdot\pi$ folgende Bedingungen erfüllt,
+>
+>1. Das Intervall $(-\pi,\pi)\subseteq D$ lässt sich in endlich viele Teilintervalle zerlegen, in denen $f(x)$ jeweils stetig und monoton ist.
+>2. Ist $x_0\in(-\pi,\pi)$ eine Unstetigkeitsstelle von $f(x)$, so existieren die einseitigen Grenzwerte $$
+  \lim_{x\to x_0-0}{f(x)}\quad\text{und}\quad
+  \lim_{x\to x_0+0}{f(x)}
+$$
+>
+> so konvergiert die Funktionenreihe $S_f$ von $f$ gegen $$
+  \lim_{n\to\infty}{S_f(x_0)}=\left\{
+    \begin{array}{rl}
+      f(x_0) & \text{falls $f(x)$ in $x_0$ stetig} \\
+      \frac{1}{2}\cdot\left(\lim_{x\to x_0-0}{f(x)}+\lim_{x\to x_0+0}{f(x)}\right) & \text{sonst}
+    \end{array}
+  \right.
+$$ Der Grenzwert in der letzten Formelzeile bildet das arithmetische Mittel des links- und rechtseitigen Grenzwertes an dieser Stelle.
+
+---
+
+ Allgemeiner Fall
+=================
+
+Gegeben sei nun eine reelle Funktion $f$ mit $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ welche <span style="color: orange" > periodisch mit Periode $p>0$ </span> ist, d. h. $$
+  f(x)=f(x+p)\quad\forall x\in D
+$$ $f$ darf in $D$ endlich viele Definitionslücken beziehungsweise Sprünge endlicher Höhe besitzen.
+
+Durch die Substitution $$
+  \left(z\mapsto x=\frac{p}{2\cdot\pi}\cdot z\right)\quad\leftrightarrow\quad
+  \left(x\mapsto z=\frac{2\cdot\pi}{p}\cdot x\right)
+$$ ergeben sich $$
+  f(x)=f\left(\frac{p}{2\cdot\pi}\cdot z\right)=g(z)
+$$ und die zugehörige  Fourierreihe $$
+  \frac{a_0}{2}+\sum_{k=1}^\infty{
+    \left(a_k\cdot\cos{(k\cdot z)}+b_k\cdot\sin{(k\cdot z)}\right)
+  }=\frac{a_0}{2}+\sum_{k=1}^\infty{
+    \left(a_k\cdot\cos{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}+b_k\cdot\sin{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\right)
+  }
+$$ Die Fourierkoeffizienten berechnen unter der Substitution zu
+>$$
+  a_0=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{g(z)}\,\mathrm{d}z=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{f(x)}\,\mathrm{d}x
+$$
+
+beziehungsweise
+>$$
+  a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\cos{(k\cdot x)}}\,\mathrm{d}x=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\cos{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
+$$
+
+sowie
+>$$
+  b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\sin{(k\cdot x)}}\,\mathrm{d}x=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
+$$
+
+Der Ausdruck $$
+  \omega=\frac{2\cdot\pi}{p}
+$$ wird *Kreisfrequenz* der Grundschwingung genannt.
+
+**Beispiel 1.** Gegeben ist eine stückweise definierte Funktion $f$ mit $$
+  f(x)=\left\{
+      \begin{array}{rcl}
+        1 & \text{für} & |x|\leq1 \\ 0 & \text{für} & (-2<x<-1)\vee(1<x\leq 2)
+      \end{array}
+    \right.
+$$ Diese Funktion soll auf mittels $$
+  f(x)=f(x+4)\quad\forall\; x\in\mathbb{R}
+$$ periodisch fortgesetzt werden.
+
+...
+
+**Bemerkung 1.** Zu einer periodischen, reellen Funktion $f$ mit Periode $p>0$ soll eine Fourierreihe $$
+  S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{\left(a_k\cdot\cos{(k\cdot\omega\cdot x)}+b_k\cdot\sin{(k\cdot\omega\cdot x)}\right)}
+$$ ermittelt werden. Der Aufwand zur Berechnung der Fourierkoeffizienten $a_0$ sowie $a_k$ und $b_k$ mit $k\geq1$ lässt sich ggf. durch folgende Überlegungen reduzieren.
+
+1. Das Integrationsintervall $[0,p]$ kann durch $[p_0,p_0+p]$ ersetzt werden.
+2. Ist $y=f(x)$ eine *gerade* Funktion, so gilt $b_k=0$ für alle $k\geq1$ und $$
+  S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{a_k\cos{(k\cdot\omega\cdot x)}}
+$$ Ist $y=f(x)$ *ungerade*, so gelten $a_0=0$ und $a_k=0$ für alle $k\geq1$ und $$
+  S_f(x)=\sum_{k=1}^\infty{b_k\sin{(k\cdot\omega\cdot x)}}
+$$
+3. Durch Abbruch der Fourier-Reihe nach endlich vielen Gliedern erhält man $$
+  S_f(x)\approx\frac{a_0}{2}+\sum_{k=1}^n{\left(a_k\cos{(k\cdot\omega\cdot x)}+b_k\sin{(k\cdot\omega\cdot x)}\right)}
+$$ diese wird **Näherung der Ordnung $n$** $(n\geq1)$ genannt.
