@@ -25,16 +25,15 @@ https://github.com/marco-hamann/Mathe3
 
 ## Funktionsreihen
 
-Thema dieses Kapitels sind die Funktionsreihen für reelle Funktionen einer reellen Variablen.
+Thema dieses Kapitels sind die Funktionsreihen für reelle Funktionen einer reellen Variablen. Speziell werden Potenzreihen und Fourierreihen eingeführt und untersucht.
 
-Schwerpunkte sind u. a. Potenzreihen und Fourierreihen
+~~Zentrale Fragen~~ sind dabei die folgenden:
 
-__Zentrale Fragen__ sind dabei die folgenden:
+1. Vertiefung von Zahlenfolgen und **Zahlenreihen**. Dies umfasst u. a. die Konvergenz und Divergenz von Zahlenfolgen, den Grenzwert einer konvergenten Zahlenfolge, Partialsummen für Zahlenfolgen und Partialsummenfolgen (Zahlenreihen), den Summenwert einer konvergenten Zahlenreihe sowie Konvergenzkriterien für Zahlenreihen und Eigenschaften konvergenter Zahlenreihen
 
-* Vertiefung von Zahlenfolgen und Zahlenreihen, Konvergenz und Divergenz, Partialsummenfolge mit Summenwert einer Zahlenfolge, Konvergenzkriterien für Zahlenreihen
-* Funktionenfolgen und -Reihen, Konvergenzbereich und Grenzfunktion einer Funktionenfolge, Partialsummenfolge einer Funktionenfolge, Summenfunktion der Funktionenreihe, Punktweise und gleichmäßige Konvergenz
-* Potenzreihen
-* Fourierreihen
+2. Übertragung auf Funktionenfolgen und **Funktionenreihen**. Dies umfasst u. a. unendliche Folgen von reellen Funktionen einer reellen Veränderlichen über demselben Definitionsbereich (Funktionenfolge), den Konvergenzbereich einer Funktionenfolge und Grenzfunktion einer Funktionenfolge, gleichmäßige bzw. punktweise Konvergenz, Partialsummen für Funktionenfolgen und Partialsummenfolgen einer Funktionenfolge (Funktionenreihen) sowie die Summenfunktion der konvergenten Funktionenreihe
+3. Untersuchung von **Potenzreihen** als speziellen Funktionenreihen, deren Eigenschaften, die Taylor-Entwicklung von reellen Funktionen von einer bzw. zwei reellen Veränderlichen zur Entwicklung einer Potenzreihe
+4. Untersuchung von **Fourier-Reihen** zu periodischen Funktionen, Satz von Dirichlet, Entwicklung einer Fourier-Reihe zu einer gegebenen Funktion
 
 
 ### Zahlenfolgen und Reihen
@@ -279,6 +278,8 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
+---
+
 **Frage 1.** Für welche der folgenden Zahlenreihen ist die notwendige Bedingung für die Konvergenz erfüllt?
 
 [[X]] $$\sum_{k=1}^\infty{\frac{1}{k\cdot(k+1)}}$$
@@ -300,6 +301,8 @@ $$ jedoch $$
 $$
 
 ****************************************
+
+---
 
 **Frage 2.** Für welche reellen $x$ gilt die folgende Gleichung? $$
   \sum_{k=0}^\infty{x^k}=
@@ -325,7 +328,6 @@ $$ den Konvergenzbereich angibt. Die Gleichheit von linker und rechter Seite erg
 $$
 
 ****************************************
-
 
 
 ### Definition einer Funktionenreihe
@@ -584,7 +586,7 @@ Die Berechnung des Taylorpolynoms $P_n(x)$ $n$-ten Grades einer mindestens $n$-m
 
 ```javascript
 f=sin(x)
-p=taylor(f,x,2,0)
+p=taylor(f,x,2,pi/2)
 p
 coeff(p,x,2)
 ```
@@ -803,6 +805,8 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
+---
+
 **Frage 1.** Berechnen Sie den Konvergenzbereich der Potenzreihe $$
   \sum_{k=1}^\infty{\frac{(x+2)^k}{k^3\cdot 2^k}}
 $$
@@ -830,7 +834,36 @@ $$
 
 ****************************************
 
-**Frage 2.** ...
+---
+
+**Frage 2.** Berechnen Sie zur Funktion $$
+  f:x\mapsto y=f(x)=\ln{(2\cdot x+1)}\,,\quad x>-\frac{1}{2}
+$$ das Taylorpolynom $3$-ten Grades an der Stelle $x_0=0$.
+
+[( )] $$ 2\cdot x-2\cdot x^2+\frac{8}{3}\cdot x^3\pm... $$
+[(X)] $$ 2\cdot x-2\cdot x^2+\frac{8}{3}\cdot x^3 $$
+[( )] $$ 2\cdot x-4\cdot x^2+16\cdot x^3 $$
+[[?]] Das Taylorpolynom $P_n(x)$ $n$-ter Ordnung einer mindestens $n$-mal stetig differenzierbaren Funktion berechnet sich an der Entwicklungsstelle $x_0$ nach der Formel $$
+  P_n(x)=f(x_0)+\sum_{k=1}^n{\frac{f^{(k)}(x_0)}{k!}\cdot(x-x_0)^k}
+$$
+****************************************
+
+Die ersten drei Ableitungen berechnen sich $$
+  f^\prime(x)=\frac{2}{2\cdot x+1}\,,\quad
+  f^{\prime\prime}(x)=-\frac{4}{\left(2\cdot x+1\right)^2}\quad\text{und}\quad
+  f^{\prime\prime\prime}(x)=\frac{16}{\left(2\cdot x+1\right)^3}
+$$ und also an der Entwicklungsstelle $x_0=0$ $$
+  f^\prime(0)=2\,,\quad
+  f^{\prime\prime}(0)=-4\quad\text{und}\quad
+  f^{\prime\prime\prime}(0)=16
+$$ Das Taylorpolynom dritten Grades an der Stelle $x_0=0$ berechnet sich hiermit $$
+  P_3(x)=f(0)+\frac{1}{1!}\cdot f^\prime(0)\cdot x
+  +\frac{1}{2!}\cdot f^{\prime\prime}(0)\cdot x^2
+  +\frac{1}{3!}\cdot f^{\prime\prime\prime}(0)\cdot x^3=
+  2\cdot x-2\cdot x^2+\frac{8}{3}\cdot x^3
+$$ Es ist durch die Koeffizienten $a_0=0$, $a_1=\frac{2}{1!}=2$, $a_2=-\frac{4}{2!}=-2$ und $a_3=\frac{16}{3!}$ eindeutig festgelegt.
+
+****************************************
 
 
 [^1]: Die Summe $s_a(x)$ darf auf dem Konvergenzbereich $D_1$ als Funktion $s_a:x\mapsto s(x)$ aufgefasst werden, ebs. $s_b(x)$.
@@ -944,29 +977,15 @@ $$ mit den Koeffizienten $$
   b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\sin{(k\cdot x)}}\,\mathrm{d}x
 $$ mit $k\geq1$.
 
-Der *Satz von Dirichlet* trifft eine Aussage, unter welchen Voraussetzungen eine Fourierreihe zu einer gegebenen periodischen Funktion $f$ mit $p=2\cdot\pi$ konvergiert. (hier ohne Beweis)
-
->**Satz 2.** (*Satz von Dirichlet.*) Sind für eine gegebene periodische, reelle Funktion $f$ mit Definitionsbereich $D\subseteq\mathbb{R}$ und Periode $p=2\cdot\pi$ folgende Bedingungen erfüllt,
->
->1. Das Intervall $(-\pi,\pi)\subseteq D$ lässt sich in endlich viele Teilintervalle zerlegen, in denen $f(x)$ jeweils stetig und monoton ist.
->2. Ist $x_0\in(-\pi,\pi)$ eine Unstetigkeitsstelle von $f(x)$, so existieren die einseitigen Grenzwerte $$
-  \lim_{x\to x_0-0}{f(x)}\quad\text{und}\quad
-  \lim_{x\to x_0+0}{f(x)}
-$$
->
-> so konvergiert die Funktionenreihe $S_f$ von $f$ gegen $$
-  \lim_{n\to\infty}{S_f(x_0)}=\left\{
-    \begin{array}{rl}
-      f(x_0) & \text{falls $f(x)$ in $x_0$ stetig} \\
-      \frac{1}{2}\cdot\left(\lim_{x\to x_0-0}{f(x)}+\lim_{x\to x_0+0}{f(x)}\right) & \text{sonst}
-    \end{array}
-  \right.
-$$ Der Grenzwert in der letzten Formelzeile bildet das arithmetische Mittel des links- und rechtseitigen Grenzwertes an dieser Stelle.
+**Bemerkung 1.** Durch Abbruch der Fourier-Reihe nach endlich vielen Gliedern erhält man $$
+  S_f(x)\approx\frac{a_0}{2}+\sum_{k=1}^n{\left(a_k\cos{(k\cdot\omega\cdot x)}+b_k\sin{(k\cdot\omega\cdot x)}\right)}
+$$ diese wird *Näherung der Ordnung $n$* $(n\geq1)$ genannt. In der Umgebung einer Sprungstelle der Grundfunktion tritt dabei für abgebrochene Fourierreihen ein Überschwingen auf, dass unabhängig von der Ordnung $n$ cirka neun Prozent der Sprunghöhe beträgt. (*[Gibbsches Phänomen](https://en.wikipedia.org/wiki/Gibbs_phenomenon)*)
 
 ---
 
  Allgemeiner Fall
 =================
+
 
 Gegeben sei nun eine reelle Funktion $f$ mit $$
   f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
@@ -992,17 +1011,19 @@ $$
 
 beziehungsweise
 >$$
-  a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\cos{(k\cdot x)}}\,\mathrm{d}x=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\cos{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
+  a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(z)\cdot\cos{(k\cdot z)}}\,\mathrm{d}z=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\cos{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
 $$
 
 sowie
 >$$
-  b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\sin{(k\cdot x)}}\,\mathrm{d}x=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
+  b_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(z)\cdot\sin{(k\cdot z)}}\,\mathrm{d}z=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\frac{2\cdot\pi}{p}\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x\,,\quad k\geq1
 $$
 
 Der Ausdruck $$
   \omega=\frac{2\cdot\pi}{p}
 $$ wird *Kreisfrequenz* der Grundschwingung genannt.
+
+---
 
 **Beispiel 1.** Gegeben ist eine stückweise definierte Funktion $f$ mit $$
   f(x)=\left\{
@@ -1014,18 +1035,225 @@ $$ Diese Funktion soll auf mittels $$
   f(x)=f(x+4)\quad\forall\; x\in\mathbb{R}
 $$ periodisch fortgesetzt werden.
 
-...
+Die Periode der auf $\mathbb{R}$ periodisch fortgesetzten Funktion $f$ ist $p=4$, woraus sich deren Kreisfrequenz $\omega=\frac{\pi}{2}$ berechnet.
 
-**Bemerkung 1.** Zu einer periodischen, reellen Funktion $f$ mit Periode $p>0$ soll eine Fourierreihe $$
+Die im Fourierreihenansatz auftretenden Fourierkoeffizienten berechnen sich $$
+  a_0=\frac{1}{2}\cdot\int_{-2}^2{f(x)}\,\mathrm{d}x=
+  \frac{1}{2}\cdot\left(
+    \int_{-2}^{-1}{f(x)}\,\mathrm{d}x+
+    \int_{-1}^{1}{f(x)}\,\mathrm{d}x+
+    \int_{1}^{2}{f(x)}\,\mathrm{d}x
+  \right)=
+  \frac{1}{2}\cdot(0+2+0)=1
+$$ unter Zerlegung des Integrationsgebietes gemäß der stückweisen Definition von $f(x)$, sowie entsprechend für $k\geq1$ $$
+  a_k=\frac{1}{2}\cdot\int_{-2}^{2}{\left(f(x)\cdot\cos{\left(k\cdot\frac{\pi}{2}\cdot x\right)}\right)}\,\mathrm{d}x=
+  \frac{1}{2}\cdot\int_{-1}^{1}{\cos{\left(k\cdot\frac{\pi}{2}\cdot x\right)}}\,\mathrm{d}x=
+  \frac{1}{2}\cdot\left[\frac{2}{k\cdot\pi}\cdot\sin{\left(k\cdot\frac{\pi}{2}\cdot x\right)}\right]_{-1}^1=
+  \frac{1}{k\cdot\pi}\cdot\left(2\cdot\sin{\left(k\cdot\frac{\pi}{2}\right)}\right)
+$$ und somit $$
+  a_k=\left\{
+      \begin{array}{rcl}
+        0 & \text{für} & k=2\cdot m \\
+        \frac{2}{k\cdot\pi} & \text{für} & k=4\cdot m-3  \\
+        -\frac{2}{k\cdot\pi} & \text{für} & k=4\cdot m-1 \\
+      \end{array}
+    \right.
+$$ worin $m\in\mathbb{N}$ mit $m\geq1$ gewählt werden können. Die Fourierkoeffizienten $b_k$ der Sinusfunktionen im Reihenansatz berechnen sich hingegen $$
+  b_k=\frac{1}{2}\cdot\int_{-2}^{2}{\left(f(x)\cdot\sin{\left(k\cdot\frac{\pi}{2}\cdot x\right)}\right)}\,\mathrm{d}x=
+
+  \frac{1}{2}\cdot\left[-\frac{2}{k\cdot\pi}\cdot\cos{\left(k\cdot\frac{\pi}{2}\cdot x\right)}\right]_{-1}^1=
+  \frac{1}{k\cdot\pi}\cdot\left(\cos{\left(k\cdot\frac{\pi}{2}\right)}-\cos{\left(-k\cdot\frac{\pi}{2}\right)}\right)=0
+$$ für alle $k\in\mathbb{N}$ mit $k\geq1$. Hiernach treten die Sinusfunktionen $x\mapsto\sin{(k\cdot\omega\cdot x)}$ in der Fourierreihe nicht auf, was nicht überrascht, da die Grundfunktion $f$ und deren periodische Fortsetzung auf $\mathbb{R}$ gerade Funktionen sind, wohingegen die Sinusfunktionen für jede Wahl von $k$ ungerade Summanden liefern.
+
+Die Berechnung der Fourierkoeffizienten kann interaktiv unter Benutzung der Javascript Bibliothek [Algebrite](http://algebrite.org/) nachstehend ausgeführt werden.
+
+```javascript
+f=1
+ak=1/2*defint(f*cos(k*pi/2*x),x,-1,1)
+bk=1/2*defint(f*sin(k*pi/2*x),x,-1,1)
+bk
+subst(1,k,ak)
+```
+@Algebrite.eval
+
+Schließlich stellt sich die Fourierreihe der periodischen Grundfunktion dar $$
+  x\mapsto S_f(x)=
+  \frac{1}{2}+\sum_{m=1}^\infty{\left[\frac{2}{(4\cdot m-3)\cdot\pi}\cdot\cos{\left(\frac{4\cdot m-3}{2}\cdot\pi\cdot x\right)}-\frac{2}{(4\cdot m-1)\cdot\pi}\cdot\cos{\left(\frac{4\cdot m-1}{2}\cdot\pi\cdot x\right)}\right]}
+$$ beziehungsweise - unter Weglassen des Summenzeichens - $$
+  x\mapsto S_f(x)=
+  \frac{1}{2}
+  +\frac{2}{\pi}\cdot\cos{\left(\frac{1}{2}\cdot\pi\cdot x\right)}
+  -\frac{2}{3\cdot\pi}\cdot\cos{\left(\frac{3}{2}\cdot\pi\cdot x\right)}
+  +\frac{2}{5\cdot\pi}\cdot\cos{\left(\frac{5}{2}\cdot\pi\cdot x\right)}
+  -\frac{2}{7\cdot\pi}\cdot\cos{\left(\frac{7}{2}\cdot\pi\cdot x\right)}
+  \pm ...
+$$
+
+An den beiden Sprungstellen des Grundintervalls $(-2,2)$ gilt einsichtig $S_f(\pm1)=\frac{1}{2}$.
+
+In der nachfolgenden Abbildung sind die Graphen der Grundfunktion $f$ sowie der bei $n=3$ beziehungsweise $n=7$ abgebrochenen Fourierreihenentwicklungen dargestellt.
+
+![Fourierreihe](img/mat-bild-07.png "_Fig._ Graphen der Funktionen $f$ (dunkellila) und $x\mapsto S_3(x)$ (helllila) sowie $x\mapsto S_7(x)$ (blau), dargestellt in einem gemeinsamen Koordinatensystem. An den Sprungellen ist ein Überschwingen gegenüber der Grundfunktion zu beobachten.")
+
+Der [Satz von Dirichlet](https://de.wikipedia.org/wiki/Dirichlet-Bedingung) trifft eine Aussage, unter welchen Voraussetzungen eine Fourierreihe zu einer gegebenen periodischen Funktion $f$ mit $p>0$ konvergiert. (hier ohne Beweis)
+
+>**Satz 2.** (*Satz von Dirichlet*) Sind für eine gegebene periodische, reelle Funktion $f$ mit Definitionsbereich $D\subseteq\mathbb{R}$ und Periode $p>0$ folgende Bedingungen erfüllt,
+>
+>1. Das Intervall $(0,p)\subseteq D$ lässt sich in endlich viele Teilintervalle zerlegen, in denen $f(x)$ jeweils stetig und monoton ist.
+>2. Ist $x_0\in(0,p)$ eine Unstetigkeitsstelle von $f(x)$, so existieren die einseitigen Grenzwerte $$
+  \lim_{x\to x_0-0}{f(x)}\quad\text{und}\quad
+  \lim_{x\to x_0+0}{f(x)}
+$$
+>
+> so konvergiert die Funktionenreihe $S_f$ von $f$ gegen $$
+  \lim_{n\to\infty}{S_f(x_0)}=\left\{
+    \begin{array}{rl}
+      f(x_0) & \text{falls $f(x)$ in $x_0$ stetig} \\
+      \frac{1}{2}\cdot\left(\lim_{x\to x_0-0}{f(x)}+\lim_{x\to x_0+0}{f(x)}\right) & \text{sonst}
+    \end{array}
+  \right.
+$$ Der Grenzwert in der letzten Formelzeile bildet das arithmetische Mittel des links- und rechtseitigen Grenzwertes an dieser Stelle.
+
+**Bemerkung 2.** Zu einer periodischen, reellen Funktion $f$ mit Periode $p>0$ soll eine Fourierreihe $$
   S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{\left(a_k\cdot\cos{(k\cdot\omega\cdot x)}+b_k\cdot\sin{(k\cdot\omega\cdot x)}\right)}
 $$ ermittelt werden. Der Aufwand zur Berechnung der Fourierkoeffizienten $a_0$ sowie $a_k$ und $b_k$ mit $k\geq1$ lässt sich ggf. durch folgende Überlegungen reduzieren.
 
-1. Das Integrationsintervall $[0,p]$ kann durch $[p_0,p_0+p]$ ersetzt werden.
+1. Das Integrationsintervall $[0,p]$ kann durch $[x_0,x_0+p]\subset D$ mit beliebiger Stelle $x_0\in D$ ersetzt werden.
 2. Ist $y=f(x)$ eine *gerade* Funktion, so gilt $b_k=0$ für alle $k\geq1$ und $$
   S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{a_k\cos{(k\cdot\omega\cdot x)}}
-$$ Ist $y=f(x)$ *ungerade*, so gelten $a_0=0$ und $a_k=0$ für alle $k\geq1$ und $$
+$$ Gilt hingegen $y=f(x)$ *ungerade*, so gelten $a_0=0$ und $a_k=0$ für alle $k\geq1$ und $$
   S_f(x)=\sum_{k=1}^\infty{b_k\sin{(k\cdot\omega\cdot x)}}
 $$
-3. Durch Abbruch der Fourier-Reihe nach endlich vielen Gliedern erhält man $$
-  S_f(x)\approx\frac{a_0}{2}+\sum_{k=1}^n{\left(a_k\cos{(k\cdot\omega\cdot x)}+b_k\sin{(k\cdot\omega\cdot x)}\right)}
-$$ diese wird **Näherung der Ordnung $n$** $(n\geq1)$ genannt.
+
+Die zweite Aussage soll für den Fall einer geraden Funktion $f:x\mapsto y=f(x)$ mit $$
+  f(x)=f(-x)\quad\forall\, x\in(-a,a)\,,\;a>0\quad(\text{bzw.}\; \forall\,x\in\mathbb{R})
+$$ nachgerechnet werden. Die Fourierkoeffizienten $b_k$ berechnen sich in diesem Fall unter Benutzung der Substitution $x=-t$ mit $\mathrm{d}x=-\mathrm{d}t$ sowie $$
+  \int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\omega\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x=
+  \int_{\frac{p}{2}}^{-\frac{p}{2}}{\left(\sin{\left(k\cdot\omega\cdot (-1)\cdot t\right)}\cdot f(-t)\right)}\cdot(-1)\,\mathrm{d}t=
+  \int_{-\frac{p}{2}}^{\frac{p}{2}}{\left(\sin{\left(k\cdot\omega\cdot (-1)\cdot t\right)}\cdot f(-t)\right)}\,\mathrm{d}t
+$$ Mit dem Wissen der Eigenschaft von $f$, eine gerade Funktion zu sein, sowie $\sin{x}=-\sin{(-x)}$ für alle $x$ folgt hieraus direkt $$
+  b_k=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\omega\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x=
+  -\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left(\sin{\left(k\cdot\omega\cdot x\right)}\cdot f(x)\right)}\,\mathrm{d}x=0
+$$ für alle $k\geq1$.
+
+Im nachstehenden Video ist noch einmal die Frage thematisiert, zu erkennen, ob die - stückweise stetige Grundfunktion $f$ gerade beziehungsweise ungerade ist. Der Aufwand zur Berechnung der Fourierkoeffizienten einer Fourierreihe lässt sich ggf. reduzieren.
+
+!?[Gerade-ungerade Funktion](https://www.youtube.com/watch?v=7Uig_X9Lg3s&list=PLLTAHuUj-zHgvbOordkJ5jLmqcls2ZNrg&index=22)
+
+
+Spektrale Darstellung einer Fourierreihe
+========================================
+
+...
+
+
+Sicher gewußt
+=============
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+---
+
+**Frage 1.** Setzen Sie die Funktion $f:[0,1]\to\mathbb{R}$ mit $f(x)=a\cdot(1-x)$ und $a\in\mathbb{R}\setminus{0}$ zu einer geraden Funktion $g$ auf dem Intervall $[-1,1]$ fort.
+
+[( )] $$ g(x)=\left\{ \begin{array}{rcl} f(x) & \text{für} & x\in[0,1] \\ -a\cdot(1+x) & \text{für} & x\in[-1,0) \end{array} \right. $$
+[( )] $$ g(x)=f(x)\quad\text{für alle}\quad x\in[-1,1] $$
+[(X)] $$ g(x)=\left\{ \begin{array}{rcl} f(x) & \text{für} & x\in[0,1] \\ a\cdot(1+x) & \text{für} & x\in[-1,0) \end{array} \right. $$
+[[?]] Stellen Sie den Graph der Funktion $f$ im kartesischen Koordinatensystem graphisch dar. Ergänzen Sie zu einem Graph einer Funktion $g$ über dem Intervall $[-1,1]$, welcher symmetrisch zur zweiten Achse des Koordinatensystems ist. Bestimmen Sie den Funktionsterm von $g$ über dem Teilintervall $[-1,0)$.
+****************************************
+
+Für eine gerade Funktion $g$ gilt $$
+  g(x)=g(-x)\quad\forall\;x\in D
+$$ worin $D\in\mathbb{R}$ beziehungsweise $D=(-d,d)$ mit $d>0$ ist. Wird $x>0$ vorausgesetzt, so gelten $-x<0$ sowie $$
+  g(x)=a\cdot(1-x)=a\cdot(1+(-x))=g(-x)
+$$ Die Funkion $g$ der ersten Antwortoption ist ungerade, da für $x>0$ analog gilt $$
+  g(x)=a\cdot(1-x)=a\cdot(1+(-x))=-g(-x)
+$$ Die Funktion $g$ der zweiten Antwortoption ist weder gerade noch ungerade.
+
+****************************************
+
+---
+
+**Frage 2.** Entscheiden Sie, welche Periode $p>0$ die Funktion $$
+  f:x\mapsto y=f(x)=\left|\cos{\left(2\cdot x+\frac{\pi}{8}\right)}\right|\,,\quad x\in\mathbb{R}
+$$ besitzt.
+
+[( )] $p=\pi$
+[(X)] $p=\frac{\pi}{2}$
+[( )] $p=2\cdot\pi$
+[[?]] Eine reelle Funktion $f$ einer reellen Variablen $x\in\mathbb{R}$ heißt periodisch, falls es ein $p>0$ gibt, so dass für alle $x$ gilt $f(x+p)=f(x)$.
+****************************************
+
+Die Kosinusfunktion ist periodisch mit der Fundamentalperiode $p=2\cdot\pi$. Für die Hilfsfunktion $h:x\mapsto h(x)$, $x\in\mathbb{R}$, mit $$
+  h(x)=\cos{\left(2\cdot x+\frac{\pi}{8}\right)}
+$$ gilt für beliebige $k\in\mathbb{Z}$ $$
+  h(x)=\cos{\left(2\cdot x+\frac{\pi}{8}\right)}=
+  \cos{\left(2\cdot x+\frac{\pi}{8}+\textcolor{red}{2\cdot k\cdot\pi}\right)}=
+  \cos{\left(2\cdot (x+k\cdot\pi)+\frac{\pi}{8}\right)}=h(x+k\cdot\pi)
+$$ d. h. $h$ ist periodisch mit Fundamentalperiode $p=\pi$. Der Summand $\pi/8$ im Argument des Kosinus hat keinen Einfluss auf die Periode.
+
+Des Weiteren berechnet sich unter Verwendung des Additionstheorems für den Kosinus $$
+  h\left(x+\textcolor{red}{\frac{\pi}{2}}\right)=
+  \cos{\left(2\cdot\left(x +\textcolor{red}{\frac{\pi}{2}}\right)+\frac{\pi}{8}\right)}=
+  \cos{(2\cdot x+\pi)}\cdot\cos{\left(\frac{\pi}{8}\right)}-
+  \sin{(2\cdot x+\pi)}\cdot\sin{\left(\frac{\pi}{8}\right)}=
+  -\left(
+    \cos{(2\cdot x)}\cdot\cos{\left(\frac{\pi}{8}\right)}-
+    \sin{(2\cdot x)}\cdot\sin{\left(\frac{\pi}{8}\right)}
+  \right)=
+  -h(x)
+$$ für alle $x\in\mathbb{R}$, woraus unmittelbar folgt $$
+  f(x)=f\left(x+\frac{\pi}{2}\right)\quad\forall x\in\mathbb{R}
+$$ Die Funktion $f$ besitzt die Fundamentalperiode $p=\frac{Pi}{2}$.
+
+****************************************
+
+---
+
+**Frage 3.** Berechnen Sie zur periodischen Funktion $$
+  f:x\mapsto y=f(x)=\left|\cos{\left(2\cdot x+\frac{\pi}{8}\right)}\right|\,,\quad x\in\mathbb{R}
+$$ den Fourierkoeffizienten $a_0$.
+
+[( )] $$ \frac{2}{\pi} $$
+[( )] $$ 0 $$
+[(X)] $$ \frac{4}{\pi} $$
+[[?]] Der Fourierkoeffizient $a_0$ berechnet sich mit Hilfe des bestimmten Integrals $$
+  a_0=\frac{2}{p}\cdot\int_{-\frac{p}{2}}^\frac{p}{2}{\left|\cos{\left(2\cdot x+\frac{\pi}{8}\right)}\right|}\,\mathrm{d}x
+$$ worin - unter Nutzung der Lösung zu Frage 2 - für die Periode $p=\frac{\pi}{2}$ einzusetzen ist. Beachten Sie, dass vor Bildung einer Stammfunktion die Beträge im Integranden zu eliminieren sind.
+****************************************
+
+Zur Berechnung des bestimmten Integrals kann das Integrationsintervall $\left[0,\frac{\pi}{2}\right]$ durch das Intervall gleicher Länge $$
+  \left[-\frac{\pi}{16},\frac{\pi}{2}-\frac{\pi}{16}\right]=
+  \left[-\frac{1}{16}\cdot\pi,\frac{7}{16}\cdot\pi\right]
+$$ ersetzt werden. (Verschiebung um den Wert $-\frac{\pi}{16}$.) Für die Grenzen / Mitte dieses Intervalls berechnen sich die Argumente des trigonometrischen Terms $$
+  2\cdot x+\frac{\pi}{8}=\left\{
+    \begin{array}{rcl}
+      0 & \text{für} & x=-\frac{1}{16}\cdot\pi \\
+      \frac{\pi}{2} & \text{für} & x=\frac{3}{16}\cdot\pi \\
+      \pi & \text{für} & x=\frac{7}{16}\cdot\pi
+    \end{array}
+  \right.
+$$ Somit ergibt sich $$
+  \left\{
+    \begin{array}{rcl}
+      \cos{\left(2\cdot x+\frac{\pi}{8}\right)}\geq0 & \text{für} & x\in\left[-\frac{\pi}{16},\frac{3}{16}\cdot\pi\right] \\
+      \cos{\left(2\cdot x+\frac{\pi}{8}\right)}<0 & \text{für} & x\in\left(\frac{3}{16}\cdot\pi,\frac{7}{16}\cdot\pi\right]
+    \end{array}
+  \right.
+$$ Der Fourierkoeffizient berechnet sich damit $$
+  a_0=\frac{4}{\pi}\cdot\left(
+    \int_{-\frac{1}{16}\cdot\pi}^{\frac{3}{16}\cdot\pi}{\cos{\left(2\cdot x+\frac{\pi}{8}\right)}}\,\mathrm{d}x+
+    \int_{ \frac{3}{16}\cdot\pi}^{\frac{7}{16}\cdot\pi}{\left[-\cos{\left(2\cdot x+\frac{\pi}{8}\right)}\right]}\,\mathrm{d}x
+  \right)=
+  \frac{2}{\pi}\cdot\left(
+    \left[
+      \sin{\left(2\cdot x+\frac{\pi}{8}\right)}
+    \right]_{-\frac{1}{16}\cdot\pi}^{\frac{3}{16}\cdot\pi}+
+    \left[
+      -\sin{\left(2\cdot x+\frac{\pi}{8}\right)}
+    \right]_{ \frac{3}{16}\cdot\pi}^{\frac{7}{16}\cdot\pi}
+  \right)=\frac{4}{\pi}
+$$
+
+****************************************
