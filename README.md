@@ -1141,12 +1141,6 @@ Im nachstehenden Video ist noch einmal die Frage thematisiert, zu erkennen, ob d
 !?[Gerade-ungerade Funktion](https://www.youtube.com/watch?v=7Uig_X9Lg3s&list=PLLTAHuUj-zHgvbOordkJ5jLmqcls2ZNrg&index=22)
 
 
-Spektrale Darstellung einer Fourierreihe
-========================================
-
-...
-
-
 Sicher gewußt
 =============
 
