@@ -1251,3 +1251,120 @@ $$ Der Fourierkoeffizient berechnet sich damit $$
 $$
 
 ****************************************
+
+
+## Differentialgleichungen
+
+### Trennung der Variablen
+
+
+In diesem Abschnitt wird ein Verfahren zur Lösung spezieller gewöhnlicher Differentialgleichungen $1$-ter Ordnung vorgestellt.
+
+>**Definition 1.** Eine gewöhnliche Differentialgleichung erster Ordnung in der gesuchten Funktion $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ kurz: $y(x)$, die sich in der Form $$
+  y^\prime(x)=g(x)\cdot h(y)
+$$ d. h. als Produkt zweier von $x$ beziehungsweise $y$ darstellen lässt, wird **separabel** genannt.
+
+
+Lösungsverfahren
+===
+
+
+1. [Trennung der Variablen](https://de.wikipedia.org/wiki/Trennung_der_Ver%C3%A4nderlichen). Unter der Annahme $h(y)\not=0$ wird aus der Differentialgleichung $$
+  \frac{1}{h(y)}\cdot\mathrm{d}{y}=g(x)\cdot\mathrm{d}{x}
+$$ erhalten. Linke und rechte Seite der Gleichung hängen nun nur von einer Variablen ab, $x$ beziehungsweise $y$.
+2. Auf beiden Seiten wird das unbestimmte Integral gebildet, nach $\mathrm{d}{x}$ beziehungsweise nach $\mathrm{d}{y}$. $$
+  \int{\frac{1}{h(y)}}\,\mathrm{d}{y}=F_1(y)+c_1\quad\text{bzw.}\quad
+  \int{g(x)}\,\mathrm{d}{x}=F_2(x)+c_2
+$$ worin $c_1\in\mathbb{R}$ und $c_2\in\mathbb{R}$ die jeweiligen Integrationskonstanten bezeichnen.
+3. Falls möglich, kann die Gleichung $$
+  F_1(y)+c_1=F_2(x)+c_2\quad \leftrightarrow\quad
+  F_1(y)=F_2(x)+c
+$$ mit $c=c_2-c_1$ nach $y(x)$ aufgelöst werden.
+
+**Beispiel 1.** Die Lösung der gewöhnlichen Differentialgleichung erster Ordnung $$
+  y^\prime(x)=\frac{2\cdot x\cdot y(x)}{1+x^2}=\frac{2\cdot x}{1+x^2}\cdot y(x)
+$$ ist zu berechnen, worin $f:x\mapsto y=f(x)$, $x\in D\subseteq\mathbb{R}$, die gesuchte reelle Funktion bezeichnet (kurz: $y(x)$).
+
+1. Die Differentialgleichung ist in expliziter Darstellung gegeben, die 'rechte Seite' ist ein Produkt mit den Faktoren $$
+  g(x)=\frac{2\cdot x}{1+x^2}\quad\text{und}\quad h(y)=y
+$$ Vergleiche Definition 1. Unter der Voraussetzung $y(x)\not=0$ lassen sich die Variablen trennen $$
+  \frac{\mathrm{d}{y}}{y}=\frac{2\cdot x}{1+x^2}\cdot\mathrm{d}{x}
+$$
+2. Durch Integration beider Seiten der Gleichung berechnen sich $$
+  \int{\frac{1}{y}}\,\mathrm{d}{y}=\ln{|y|}+c_1\quad\text{sowie}\quad
+  \int{\frac{2\cdot x}{1+x^2}}\,\mathrm{d}{x}=\left.\int{\frac{1}{u}}\,\mathrm{d}{u}\right|_{u=1+x^2}=\ln{|1+x^2|}+c_2
+$$ worin $c_1\in\mathbb{R}$ und $c_2\in\mathbb{R}$ die Integrationskonstanten bezeichnen.
+3. Es ergibt sich hieraus $$
+  \ln{|y|}=\ln{|1+x^2|}+c\,,\quad c=c_2-c_1
+$$ beziehungsweise unter Verwendung der Definition des Logarithmus $$
+  |y|=(1+x^2)\cdot\exp{c}\quad\leadsto\quad y=(1+x^2)\cdot k
+$$ mit $k=\exp{c}$ beziehungsweise $k=-\exp{c}$ (Auswahl). Somit ergibt sich die allgemeine Lösung der obigen Differentialgleichung $$
+  f:x\mapsto y(x)=(1+x^2)\cdot k\,,\quad k\in\mathbb{R}\setminus\{0\}
+$$ Aus der obigen Annahme ergibt sich des Weiteren die singuläre Lösung $s:x\mapsto y=s(x)=0$, $x\in D$, die sich hier durch Erweiterung des Parameterbereiches um $k=0$ in die allgemeine Lösung einbetten lässt.
+
+Um sich das Richtungsfeld der Differentialgleichung sowie eine Lösungskurve zu einem gewählten Punkt grafisch anzeigen zu lassen, nutzen Sie bitte [Richtungsfeld](https://www.geogebra.org/m/hUKJCc4q#material/u7EpDQPy) und geben Sie die Differentialgleichung an.
+
+**Beispiel 2.** Auch eine gewöhnliche Differentialgleichung erster Ordnung der Form $$
+  y^\prime(x)+(y(x))^2=0\quad\leftrightarrow\quad  y^\prime(x)=-(y(x))^2
+$$ worin $$
+  f:x\mapsto y(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ die gesuchte reelle Funktion bezeichnet, kann mittels Trennung der Variablen berechnet werden. Hierfür ist die 'rechte Seite' in die Form $$
+  g(x)\cdot h(y)=1\cdot (-y^2)
+$$ zu bringen (Ergänze den Faktor $g(x)=1$). Durch Trennung der Variablen ergeben sich die beiden unbestimmten Integrale $$
+  -\int{\frac{1}{y^2}}\,\mathrm{d}{y}=y^{-1}+c_1\quad(y\not=0)\quad\text{sowie}\quad
+  \int{1}\,\mathrm{d}{x}=x+c_2
+$$ worin $c_1\in\mathbb{R}$ und $c_2\in\mathbb{R}$ die Integrationskonstanten bezeichnen. Es folgt unmittelbar $$
+  y^{-1}=x+c\,,\quad c=c_2-c_1\quad\leadsto\quad y=\frac{1}{x+c}\quad(x+c\not=0)
+$$ woraus sich die allgemeine Lösung obiger Differentialgleichung ergibt $$
+  f:x\mapsto y=f(x)=\frac{1}{x+c}\,,\quad D\subset\mathbb{R}\,,\; x\not=-c
+$$ Aus obiger Annahme lässt sich eine singuläre Lösung der Differentialgleichung ableiten $$
+  s:x\mapsto y=s(x)=0 \quad\forall x\in D
+$$ die sich hier - im Gegensatz zu Beispiel 1 - nicht durch Erweiterung des Parameterbereiches von $c$ in die allgemeine Lösung einbetten lässt.
+
+Um sich das Richtungsfeld der Differentialgleichung sowie eine Lösungskurve zu einem gewählten Punkt grafisch anzeigen zu lassen, nutzen Sie bitte [Richtungsfeld](https://www.geogebra.org/m/hUKJCc4q#material/u7EpDQPy) und geben Sie die Differentialgleichung an. Die singuläre Lösung der Differentialgleichung bildet die erste Achse des Koordinatensystems und besitzt eine andere Gestalt als jede der übrigen Lösungskurven.
+
+In den nachstehenden Videos wird die Methode 'Trennung der Variablen' an Beispielen erläutert.
+
+!?[Trennung der Variablen](https://www.youtube.com/watch?v=pljDPmmizvA&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=19)
+
+!?[Trennung der Variablen 2](https://www.youtube.com/watch?v=yXdIinZuIxk&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=28)
+
+
+### Lösung mittels Substitution
+
+
+In diesem Abschnitt werden Substitutionsmethoden zur Lösung spezieller gewöhnlicher Differentialgleichungen erster Ordnung vorgestellt. Betrachtet werden Differentialgleichungen in der gesuchten Funktion $$
+  f:x\mapsto y(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ kurz $y(x)$, die eine der folgenden Darstellungsformen besitzen.
+
+
+Lösungsverfahren
+===
+
+
+Ziel ist es, mittels geeigneter Substitution in eine separable Differentialgleichung umzuformen.
+
+1. **Typ 1.** Eine Differentialgleichung besitzt die explizite Darstellungsform $$
+  y^\prime(x)=g(a\cdot x+b\cdot y(x)+d)\,,\quad a\in\mathbb{R}\,,\; b\in\mathbb{R}\,,\; d\in\mathbb{R}
+$$ Die 'rechte Seite' ist als Funktion $g$ eines linearen /affinen Ausdrucks der unabhängigen Variablen $x$ und der abhängigen Variablen $y(x)$ darstellbar, d. h. $$
+  u\mapsto g(u)\quad\text{mit}\quad u(x)=a\cdot x+b\cdot y(x)+d
+$$ Durch Differentiation nach $x$ ergibt sich aus der vorstehenden Substitutionsgleichung $$
+  \frac{\mathrm{d}u}{\mathrm{d}x}=u^\prime(x)=a+b\cdot y^\prime(x)=a+b\cdot g(u)
+$$ In dieser Form lässt sich die Differentialgleichung durch [Trennung der Variablen](#Trennung-der-Variablen) lösen. Es ergeben sich nach Umformung $$
+  \int{\frac{1}{a+b\cdot g(u)}}\mathrm{d}{u}=\int{1}\mathrm{d}{x}
+$$
+2. **Typ 2.** Eine Differentialgleichung gestattet die Darstellung in der Form $$
+  y^\prime(x)=h\left(\frac{y(x)}{x}\right)
+$$ Hier ist die 'rechte Seite' der Differentialgleichung eine Funktion $h$ des Quotienten $y/x$, d. h. $$
+  u\mapsto g(u)\quad\text{mit}\quad u(x)=\frac{y(x)}{x}\;\leftrightarrow\; y(x)=u(x)\cdot x
+$$ Durch Differentiation nach $x$ ergibt sich aus der vorstehenden Substitutionsgleichung $$
+  \frac{\mathrm{d}{y(x)}}{\mathrm{d}{x}}=y^\prime(x)=u^\prime(x)\cdot x+u(x)\cdot 1=h(u)
+$$ In dieser Form lässt sich die Differentialgleichung durch [Trennung der Variablen](#Trennung-der-Variablen) lösen. Es ergeben sich nach Umformung $$
+  \int{\frac{1}{h(u)-u}}\mathrm{d}{u}=\int{\frac{1}{x}}\mathrm{d}{x}
+$$
+
+In beiden Fällen ist die Lösung $u(x)$ aus der Integralgleichung - soweit nach dieser auflösbar - anschließend in die Substitutionsgleichung einzusetzen und diese nach $y(x)$ aufzulösen.
+
+**Beispiel 1.** ...
