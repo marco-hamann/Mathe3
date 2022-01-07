@@ -582,7 +582,7 @@ $$ Wird $x\mapsto P_2(x)$ als quadratische Funktion betrachtet, so beschreibt da
 
 ![Taylorpolynom](img/mat-bild-05.png "_Fig._ Graphen der Funktionen $f$ (schwarz) und des Taylorpolynoms $P_2$ zu $f$ an der Stelle $x_0=\frac{\pi}{2}$.")
 
-Die Berechnung des Taylorpolynoms $P_n(x)$ $n$-ten Grades einer mindestens $n$-mal stetig differenzierbaren reellen Funktion $f:x\mapsto y=f(x)$ ist nachfolgend unter Benutzung der Javascript Bibliothek Algebrite ausgeführt. Die beiden letzten Argumente in der Funktion *taylor(.)* bezeichnen dessen Grad $n$ und die Entwicklungsstelle $x_0$.
+Die Berechnung des Taylorpolynoms $P_n(x)$ $n$-ten Grades einer mindestens $n$-mal stetig differenzierbaren reellen Funktion $f:x\mapsto y=f(x)$ ist nachfolgend unter Benutzung der Javascript Bibliothek Algebrite ausgeführt. Die beiden letzten Argumente in der Funktion `taylor(.)` bezeichnen dessen Grad $n$ und die Entwicklungsstelle $x_0$.
 
 ```javascript
 f=sin(x)
@@ -1255,6 +1255,22 @@ $$
 
 ## Differentialgleichungen
 
+
+Thema dieses Kapitels sind die Differentialgleichungen für reelle Funktionen (einer reellen Variablen). Speziell werden die für viele Anwendungen wichtigen linearen Differentialgleichungen untersucht.
+
+~~Zentrale Fragen~~ sind dabei die folgenden:
+
+1. Definition einer Differentialgleichung, Unterscheidung zwischen gewöhnlichen und partiellen Differentialgleichungen, Ordnung einer Differentialgleichung, explizite und implizite Darstellung einer Differentialgleichung, Lösung einer Differentialgleichung: allgemeine / spezielle / singuläre Lösungen
+2. Richtungsfeld einer gewöhnlichen Differentialgleichung erster Ordnung in expliziter Darstellung, Isoklinen
+3. ...
+
+
+### Definition und Lösung
+
+
+!?[Begriff](https://www.youtube.com/watch?v=3cBIjccY5Qs&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=2)
+
+
 ### Trennung der Variablen
 
 
@@ -1332,6 +1348,17 @@ In den nachstehenden Videos wird die Methode 'Trennung der Variablen' an Beispie
 !?[Trennung der Variablen 2](https://www.youtube.com/watch?v=yXdIinZuIxk&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=28)
 
 
+Sicher gewußt
+===
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** ...
+
+**Frage 2.** ...
+
+
 ### Lösung mittels Substitution
 
 
@@ -1367,4 +1394,695 @@ $$
 
 In beiden Fällen ist die Lösung $u(x)$ aus der Integralgleichung - soweit nach dieser auflösbar - anschließend in die Substitutionsgleichung einzusetzen und diese nach $y(x)$ aufzulösen.
 
-**Beispiel 1.** ...
+**Beispiel 1.** Gegeben ist die gewöhnliche Differentialgleichung $$
+  y^\prime(x)=2\cdot x-y(x)
+$$ in der gesuchten Funktion $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ Es liegt eine Differentialgleichung vom ~~Typ 1~~ vor: Betrachtet wird die Substitution $$
+  u(x)=a\cdot x+b\cdot y(x)+d=2\cdot x-y(x)
+$$ d. h. $a=2$, $b=-1$ und $c=0$. Die Differentiation der Substitutionsgleichung ergibt $$
+  \frac{\mathrm{d}u}{\mathrm{d}x}=u^\prime(x)=2-y^\prime(x)=2-u(x)
+$$ Diese Differentialgleichung in $u(x)$ ist separabel und kann mittels Trennung der Variablen berechnet werden. Für $2-u(x)\not=0$ ergibt sich $$
+  u^\prime(x)=2-u(x)\quad\leftrightarrow\quad \int{\frac{1}{2-u}}\mathrm{d}{u}=\int{1}\mathrm{d}{x}\quad\leftrightarrow\quad
+  -\ln{|2-u|}+c_1=x+c_2
+$$ mit Integrationskonstanten $c_1\in\mathbb{R}$ und $c_2\in\mathbb{R}$. Die zuletzt dargestellte Gleichung kann nach $u(x)$ aufgelöst werden $$
+  -\ln{|2-u|}+c_1=x+c_2\quad\leftrightarrow\quad \frac{1}{|2-u|}=\exp{x}\cdot\exp{c}\quad\leftrightarrow\quad
+  |2-u|=\exp{(-x)}\cdot\exp{(-c)}\quad\leftrightarrow\quad
+  u(x)=2-\exp{(-x)}\cdot k
+$$ mit $c=c_2-c_1$ und $k=\pm\exp{(-c)}$ (Auswahl nach Auflösung des Absolutbetrages). Das rückwärtige Einsetzen in die Substitutionsgleichung ergibt schließlich die allgemeine Lösung der Differentialgleichung $$
+  f:x\mapsto y=f(x)=2\cdot x-2+\exp{(-x)}\cdot k\,,\quad x\in D
+$$ mit $k\in\mathbb{R}\setminus\{0\}$. Wird $$
+  2-u(x)=0\;\leftrightarrow\; u(x)=2\;\text{(konst.)}\,,\; x\in D
+$$ gesetzt, erhält man eine singuläre Lösung, die sich hier durch Erweiterung des Parameterbereiches um $k=0$ in die allgemeine Lösung einbetten lässt.
+
+Funktionsgraphen zu speziellen Lösungen sowie zur singulären Lösung der Differentialgleichung sind in der nachstehenden Abbildung dargestellt. Weitere Lösungen lassen sich unter Benutzung der dynamischen Mathematiksoftware [GeoGebra](https://https://www.geogebra.org/classic) graphisch darstellen.[^1]
+
+![Substitution 1](img/mat-bild-08.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=2\cdot 2-y(x)$, Funktionsgraphen der speziellen Lösungen zu $k=1$ (grün), $k=-1$ (rot) sowie der singulären Lösung zu $k=0$.")
+
+**Beispiel 2.** Gegeben ist die gewöhnliche Differentialgleichung $$
+  y^\prime(x)=\frac{x+3\cdot y(x)}{2\cdot x}
+$$ in der gesuchten Funktion $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ Es ist offensichtlich $0\not\in D$. Mit der Äquivalenzumformung der 'rechten Seite' $$
+  \frac{x+3\cdot y(x)}{2\cdot x}=\frac{1}{2}+\frac{3}{2}\cdot\frac{y}{x}=h\left(\frac{y}{x}\right)
+$$ ist diese eine Funktion $h$ des Quotienten $y/x$. Es liegt alse eine Differentialgleichung vom ~~Typ 2~~ vor: Aus der Substitution folgt $$
+  u(x)=\frac{y(x)}{x}\quad\leftrightarrow\quad y(x)=u(x)\cdot x\quad\leadsto\quad
+  y^\prime(x)=u^\prime(x)\cdot x+u(x)=h(u)\quad\leftrightarrow\quad
+  u^\prime(x)\cdot x=\frac{1}{2}+\frac{1}{2}\cdot u(x)
+$$ Dies ist eine separable Differentialgleichung, woraus durch Trennung der Variablen unter der Annahme $$
+  \frac{1}{2}+\frac{1}{2}\cdot u\not=0
+$$ die Integralgleichung $$
+  \int{\frac{1}{\frac{1}{2}+\frac{1}{2}\cdot u}}\mathrm{d}u=2\cdot\int{\frac{1}{1+u}}\mathrm{d}u=\int{\frac{1}{x}}\mathrm{d}x
+$$ folgt. Nach Integration beider Seiten der Gleichung ergibt sich schrittweise die allgemeine Lösung der Differentialgleichung $$
+  \ln{(1+u)^2}=\ln{|x|}+c\quad\leftrightarrow\quad
+  (1+u)^2=|x|\cdot\exp{c}\quad\leftrightarrow\quad
+  u(x)=k\cdot\sqrt{|x|}-1
+$$ worin $c\in\mathbb{R}$ die Integrationskonstante und $k=\pm\sqrt{\exp{c}}$ (Auswahl nach Auflösung des Absolutbetrages) mit $k\in\mathbb{R}\setminus\{0\}$ den Scharparameter bezeichnet. Das rückwärtige Einsetzen in die Substitutionsgleichung ergibt schließlich die allgemeine Lösung der Differentialgleichung $$
+  f:x\mapsto y=f(x)=x\cdot\left(k\cdot\sqrt{|x|}-1\right)\,,\quad x\in D
+$$ Des Weiteren wird aus der Bedingung $$
+  \frac{1}{2}+\frac{1}{2}\cdot u(x)=0\quad\leftrightarrow\quad
+  u(x)=-1
+$$ durch rückwärtiges Einsetzen in die Substitutionsgleichung die singuläre Lösung $$
+  s:x\mapsto y=s(x)=-x\,,\; x\in D
+$$ erhalten, die sich hier durch Erweiterung des Parameterbereiches um $k=0$ in die allgemeine Lösung einbetten lässt.
+
+Funktionsgraphen zu speziellen Lösungen sowie zur singulären Lösung der Differentialgleichung sind in der nachstehenden Abbildung dargestellt. Weitere Lösungen lassen sich unter Benutzung der dynamischen Mathematiksoftware [GeoGebra](https://https://www.geogebra.org/classic) graphisch darstellen.[^1]
+
+![Substitution 2](img/mat-bild-09.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=\frac{x+3\cdot y(x)}{2\cdot x}$, Funktionsgraphen der speziellen Lösungen zu $k=1$ (grün), $k=-1$ (rot) sowie der singulären Lösung zu $k=0$.")
+
+**Bemerkung 1.** Die Isoklinen einer gewöhnlichen Differentialgleichung vom Typ 2 der Form $$
+  y^\prime(x)=h\left(\frac{y(x)}{x}\right)
+$$ mit stetiger Funktion $h$ liegen auf Geraden durch den Koordinatenursprung des kartesischen Koordinatensystems. Existieren zur Isoklinengleichung $$
+    y^\prime(x)=h\left(\frac{y(x)}{x}\right)=c
+$$ für ein beliebiges, aber fest gewähltes $c\in\mathbb{R}$ Lösungen und kann die Umkehrfunktion $h^{-1}$ gebildet werden so ist $$
+  (x,y)\in G_f\,,\;\; y=h^{-1}(c)\cdot x
+$$ die Lösung. Im Beispiel 2 ergibt sich demnach aus der Isoklinengleichung $$
+  \frac{1}{2}+\frac{3}{2}\cdot\frac{y}{x}=c\quad\leftrightarrow\quad
+  y=\frac{2}{3}\cdot\left(c-\frac{1}{2}\right)\cdot x
+$$ Für jedes $c$ beschreibt die Gleichung eine Gerade durch den Ursprung des Koordninatensystems. Diese enthält alle Punkte $(x,y)$ der Ebene, durch die der Graph einer Lösung der Differentialgleichung zum Anstieg $c$ verläuft.
+
+![Substitution 3](img/mat-bild-10.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=\frac{x+3\cdot y(x)}{2\cdot x}$, Lösungen der Isoklinengleichung für $c=0$ $\left(-4,-1,\frac{1}{2},1,2,5\right)$.")
+
+Differentialgleichungen dieses Typs werden aus diesem Grund [Ähnlichkeitsdifferentialgleichungen](https://de.wikipedia.org/wiki/%C3%84hnlichkeitsdifferentialgleichung) genannt.
+
+
+Sicher gewußt
+===
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** ...
+
+**Frage 2.** ...
+
+
+[^1]: Benutzen Sie für die Darstellung des Richtungsfeldes einer gewöhnlichen Differentialgleichung erster Ordnung $$
+  \frac{\mathrm{d}{y}}{\mathrm{d}{x}}=g(x,y(x))
+$$ mit der Software GeoGebra den Befehl `Richtungsfeld(g(x,y(x)))`
+
+
+### Linearer Typ 1. Ordnung
+
+Definition
+===
+
+
+In diesem Abschnitt werden spezielle gewöhnliche Differentialgleichungen erster Ordnung vorgestellt. Betrachtet werden Differentialgleichungen in der gesuchten Funktion $$
+  f:x\mapsto y(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ kurz $y(x)$, die - gegebenenfalls nach Umformung - folgende Normalform besitzen.
+
+>**Definition 1.** Eine gewöhnliche Differentialgleichung erster Ordnung der Form $$
+  y^\prime(x)+p(x)\cdot y(x)=q(x)
+$$ mit stetigen Funktionen $$
+  x\mapsto p(x)\quad\text{und}\quad x\mapsto q(x)\,,\quad x\in D
+$$ heißt **linear von erster Ordnung**.
+>
+> Dabei wird $q$ als *Störfunktion* bezeichnet. Ist $q(x)\equiv 0$ (identisch Null) beziehungsweise $q(x)\not\equiv 0$, so wir die Differentialgleichung *homogen* beziehungsweise *inhomogen* genannt.
+
+**Bemerkung 1.**  Reelle Funktionen lassen sich als Vektoren (in einem Funktionsvektorraum) auffassen. In dieser Interpretation beschreibt die 'linke Seite' der Differentialgleichung eine Linearkombination der (gesuchten) Funktion $y(x)$ und deren Ableitungsfunktionen bis zur Ordnung $n$ mit den Koeffizientenfunktionen $1$ und $p$.
+
+Die Bedeutung der Störfunktion wird an späterer Stelle im Kontext der Schwingungsgleichung der Mechanik erläutert.
+
+
+Existenz und Eindeutigkeit der Lösung
+===
+
+
+Es sei $D\subseteq\mathbb{R}^2$ mit $$
+  D=\left\{(x,y)\;\left(x\in I\subseteq\mathbb{R}\;\wedge\; y\in\mathbb{R}\right)\right\}
+$$ ein Rechteckgebiet. Sind die Funktionen $p$ und $q$ in Definition 1 für alle $x\in I$ stetig, so verläuft durch jeden Punkt von $D$ genau ein Graph einer Lösung der linearen Differentialgleichung $$
+  y^\prime(x)+p(x)\cdot y(x)=q(x)
+$$
+
+
+Homogene Differentialgleichung
+===
+
+
+>**Proposition 1.** Eine homogene lineare Differentialgleichung erster Ordnung $$
+  y^\prime(x)+p(x)\cdot y(x)=0
+$$ ist stets eine separable Differentialgleichung, die sich durch [Trennung der Variablen](#Trennung-der-Variablen) lösen lässt. Die allgemeine Lösung der homogenen Differentialgleichung besitzt die Form $$
+  f:x\mapsto y_h(x)=k\cdot\exp{((-1)\cdot P(x))}\,,\quad k\in\mathbb{R}
+$$ worin die Funktion $P(x)$ im Exponenten eine (beliebige) Stammfunktion der Koeffizientenfunktion $p(x)$ ist.
+>
+> Die konstante Funktion $s:x\mapsto y=s(x)=0$, $x\in D$ ist singuläre Lösung der homogenen Differentialgleichung.
+
+**Beweis.** Die homogene Differentialgleichung kann stets in der Form $$
+  y^\prime(x)+p(x)\cdot y(x)=0\quad\leftrightarrow\quad
+  y^\prime(x)=-p(x)\cdot y(x)
+$$ dargestellt werden, ist demnach eine separable Differentialgleichung. , Durch [Trennung der Variablen](#Trennung-der-Variablen) ergibt sich unter Annahme $y(x)\not=0$ die Integralgleichung $$
+  \int{\frac{1}{y}}\mathrm{d}y=-\int{p(x)}\mathrm{d}x
+$$ woraus sich die allgemeine Lösung durch Berechnung der beiden unbestimmten Integrale ergibt $$
+  \ln{|y|}+c_1=(-1)\cdot P(x)+c_2\quad\leftrightarrow\quad
+  |y|=\exp{((-1)\cdot P(x)+c)}=\exp{c}\cdot\exp{((-1)\cdot P(x))}\quad\leftrightarrow\quad
+  y=\pm\exp{c}\cdot\exp{((-1)\cdot P(x))}\quad\text{(Auswahl)}
+$$ mit Stammfunktion $P(x)$ von $p(x)$, den Integrationskonstanten $c_1\in\mathbb{R}$, $c_2\in\mathbb{R}$ sowie $c=c_2-c_1$, und schließlich $$
+  f:x\mapsto=k\cdot\exp{((-1)\cdot P(x))}
+$$ mit Scharparameter $k\in\mathbb{R}\setminus\{0\}$ und $k=\pm\exp{c}$.
+
+Für $k=0$ ist die konstante Funktion $s:x\mapsto y=s(x)=0$, $x\in D$ singuläre Lösung der homogenen Differentialgleichung, die sich unmittelbar aus der Annahme $y(x)=0$ ableiten lässt.
+
+$\square$
+
+**Beispiel 1.** Die allgemeine Lösung der Differentialgleichung $$
+  y^\prime(x)+\sin{x}\cdot y(x)=0
+$$ ist zu berechnen.
+
+Die Differentialgleichung liegt in Normalform vor mit Koeffizientenfunktionen $1$ und $p(x)=\sin{x}$. Die Störfunktion ist identisch Null, $q(x)\equiv0$, daher ist die Differentialgleichung homogen.
+
+Nach Trennung der Variablen erhält man unter der Annahme $y(x)\not=0$ $$
+  \int{\frac{1}{y}}\mathrm{d}y=-\int{\sin{x}}\mathrm{d}x\quad\leadsto\quad
+  \ln{|y|}=\cos{x}+c\quad\leftrightarrow\quad
+  y=\pm\exp{c}\cdot\exp{(\cos{x})}\quad\text{(Auswahl)}
+$$ woraus sich die allgemeine Lösung der homogenen Differentialgleichung berechnet $$
+  f:x\mapsto=k\cdot\exp{(\cos{x})}
+$$ mit Scharparameter $k\in\mathbb{R}\setminus\{0\}$ und $k=\pm\exp{c}$. Für $k=0$ lässt sich hier die singuläre Lösung $s:x\mapsto y=s(x)=0$, $x\in D$ in die allgemeine Lösung einbetten.
+
+
+Inhomogene Differentialgleichung
+===
+
+
+>**Proposition 2.** Eine inhomogene lineare Differentialgleichung erster Ordnung $$
+  y^\prime(x)+p(x)\cdot y(x)=q(x)
+$$ mit $q(x)\not=0$ besitzt stets die allgemeine Lösung $f:x\mapsto y=f(x)$, kurz $y(x)$, mit $$
+  y(x)=y_{h}(x)+y_p(x)\,,\quad x\in D
+$$ worin
+>
+>1. $y_h(x)$ die allgemeine Lösung der zugehörenden homogenen Differentialgleichung $y^\prime(x)+p(x)\cdot y(x)=0$ darstellt und
+>2. $y_p(x)$ eine spezielle (partikuläre) Lösung der inhomogenen Differentialgleichung bezeichnet.
+
+**Beweis.** Zu zeigen ist, dass sich die allgemeine Lösung einer inhomogenen linearen Differentialgleichung erster Ordnung als Summe zweier Lösungsanteile berechnen lässt. Hierin bezeichnen
+
+1. $y_h(x)$  eine einparametrige Lösungsschar zur zugehörigen homogenen Differentialgleichung und
+2. $y_p(x)$ eine (beliebige) parameterfreie Lösung der inhomogenen Differentialgleichung
+
+Die allgemeine Lösung einer inhomogenen linearen Differentialgleichung erster Ordnung besitzt demnach einen freien Lösungsparameter.
+
+Für den Nachweis, dass $y(x)=y_{h}(x)+y_p(x)$ die inhomogene Differentialgleichung löst, ist diese Summe einmal nach der unabhängigen Variablen $x$ zu differenzieren $$
+  y^\prime(x)=y^\prime_{h}(x)+y^\prime_p(x)
+$$ und in die inhomogene Differentialgleichung einzusetzen. Es berechnen sich $$
+  y^\prime(x)+p(x)\cdot y(x)=\left(y^\prime_{h}(x)+y^\prime_p(x)\right)+p(x)\cdot\left(y_{h}(x)+y_p(x)\right)=
+  \underbrace{\left(y^\prime_{h}(x)+p(x)\cdot y_{h}(x)\right)}_{=0}+\underbrace{\left(y^\prime_p(x)+p(x)\cdot y_p(x)\right)}_{=q(x)}=q(x)
+$$ für alle $x\in D$.
+
+$\square$
+
+
+Allgemeines Lösungsverfahren
+---
+
+
+Hieraus ergeben sich folgende Schritte zur Lösung einer inhomogenen Differentialgleichung erster Ordnung $$
+  y^\prime(x)+p(x)\cdot y(x)=q(x)
+$$ mit $q(x)\not=0$.
+
+1. Die allgemeine Lösung der zugehörigen homogenen Differentialgleichung $$
+  y^\prime(x)+p(x)\cdot y(x)=0
+$$ ist zu berechnen. Diese ist von der Bauart $$
+  f:x\mapsto y_h(x)=k\cdot\exp{((-1)\cdot P(x))}\,,\quad k\in\mathbb{R}
+$$ worin $P(x)$ eine beliebige Stammfunktion von $p(x)$ ist.
+2. Berechne eine spezielle Lösung $y_p(x)$ der inhomogenen Differentialgleichung. Ein mögliches Berechnungsverfahren ist die [Variation der Konstanten](https://de.wikipedia.org/wiki/Variation_der_Konstanten).
+3. Bilde die Summe aus beiden Lösungsanteilen $y(x)=y_{h}(x)+y_p(x)$.
+
+>**Variation der Konstanten.** Um eine spezielle Lösung $y_p(x)$ der inhomogenen Differentialgleichung zu berechnen, wird
+>
+>* die reelle Konstante $k$ in der Lösung $y_h$ zunächst durch eine noch zu bestimmende differenzierbare Funktion $K(x)$ ersetzt $$
+  y_h(x)=k\cdot\exp{((-1)\cdot P(x))}\quad\leadsto\quad y_p(x)=K(x)\cdot\exp{((-1)\cdot P(x))}
+$$
+>* diese Ansatzfunktion $y_p(x)$ ist zusammen mit der ersten Ableitung $$
+  y^\prime_p(x)=K^\prime(x)\cdot\exp{((-1)\cdot P(x))}-K(x)\cdot\exp{((-1)\cdot P(x))}\cdot p(x)
+$$ in die inhomogene Differentialgleichung eingesetzt $$
+  y^\prime_p(x)+p(x)\cdot y_p(x)=K^\prime(x)\cdot\exp{((-1)\cdot P(x))}=q(x)\quad\leftrightarrow\quad
+  K^\prime(x)=q(x)\cdot\exp{(P(x))}
+$$ Hieraus ist eine Funktion $K(x)$ durch unbestimmte Integration von $K^\prime(x)$ nach $x$ zu berechnen.
+>* die Lösung $K(x)$ schließlich in die Ansatzfunktion für $y_p(x)$ eingesetzt.
+
+**Beispiel 2.** Die allgemeine Lösung der Differentialgleichung $$
+  y^\prime(x)+\sin{x}\cdot y(x)=\sin{x}\cdot\cos{x}
+$$ ist zu berechnen. Die Differentialgleichung liegt in Normalform vor mit Koeffizientenfunktionen $1$ und $p(x)=\sin{x}$. Die Störfunktion ist $q(x)=\sin{x}\cdot\cos{x}\not\equiv0$, daher ist die Differentialgleichung inhomogen.
+
+1. Die zugehörige homogene Differentialgleichung $y^\prime(x)+\sin{x}\cdot y(x)=0$ besitzt die allgemeine Lösung $$
+  y_h(x)=k\cdot\exp{(\cos{x})}
+$$ vergleiche Beispiel 1 in diesem Abschnitt.
+2. Durch Variation der Konstanten $k$ entsteht die Ansatzfunktion $$
+  y_p(x)=K(x)\cdot\exp{(\cos{x})}
+$$ mit zu bestimmender Funktion $K(x)$. Durch Einsetzen von $y_p(x)$ und $y^\prime_p(x)$ in die inhomogene Differentialgleichung ergibt sich $$
+  K^\prime(x)=\sin{x}\cdot\cos{x}\cdot\exp{(-\cos{x})}
+$$ Unter Benutzung der Substitution $u=-\cos{x}$ und partieller Integration berechnet sich $$
+  K(x)=\int{K^\prime(x)}\mathrm{d}x=\int{\left(\sin{x}\cdot\cos{x}\cdot\exp{(-\cos{x})}\right)}\mathrm{d}x=(1-\cos{x})\cdot\exp{(-\cos{x})}+c\,,\quad c\in\mathbb{R}
+$$ Die Integrationskonstante kann Null gesetzt werden, $c=0$. Die inhomogene Differentialgleichung besitzt die partikuläre Lösung $$
+  x\mapsto y_p(x)=(1-\cos{x})\cdot\exp{(-\cos{x})}\cdot\exp{(\cos{x})}=1-\cos{x}
+$$
+3. Die inhomogene Differentialgleichung besitzt damit die allgemeine Lösung (als Summe der Lösungsteile aus den Abschnitten 1. und 2.)$$
+  f:x\mapsto y(x)=\textcolor{purple}{y_h(x)}+\textcolor{pink}{y_p(x)}=\textcolor{purple}{k\cdot\exp{(\cos{x})}}+\textcolor{pink}{1-\cos{x}}
+$$
+
+
+Im nachstehenden Video wird die Methode 'Variation der Konstanten' bei linearen Differentialgleichungen erster Ordnung erläutert und der vollständige Rechenweg für ein Beispiel dargestellt.
+
+!?[Variation der Konstanten](https://www.youtube.com/watch?v=kOw_H5gl-qA)
+
+
+Anwendung
+===
+
+Lineare Differentialgleichungen erster Ordnung können zum Beispiel benutzt werden, um
+
+* verschiedene Wachstums- / Zerfallsprozesse
+* Bewegungsvorgänge
+
+zu beschreiben.
+
+**Beispiel 3.** (Beschleunigte Bewegung mit Reibung.) Betrachtet wird eine beschleunigte Bewegung eines Massepunktes der Masse $m>0$ entlang einer Geraden[^1], an dem eine konstante Kraft $K$ angreift. $K$ wird gemindert um die angreifende Reibungskraft $F_R$, deren Betrag proportional zur Geschwindigkeit $v$ des Massepunktes ist, $F_R\sim v$.
+
+Mit Newtonschem Grundgesetz gilt für die den Bewegungszustand ändernde Kraft $$
+  m\cdot\dot{v}(t)=K-F_R(t)=K-r\cdot v(t)
+$$ worin $r=\frac{F_R}{v}$ den Proportionalitätsfaktor bezeichnet. Dies ist eine gewöhnliche, lineare Differentialgleichung erster Ordnung in der gesuchten Funktion $t\mapsto v(t)$, $t\geq0$. In Normalform besitzt die Differentialgleichung die Gestalt $$
+  \dot{v}(t)+\frac{r}{m}\cdot v(t)=\frac{K}{m}
+$$ Die Koeffizienten $1$ und $\frac{r}{m}$ sind konstant. Ebenso $\frac{K}{m}=const.$ Für $K\equiv0$ (keine äußere Kraft) ist diese Differentialgleichung homogen, für $K\not\equiv0$ ist diese inhomogen.
+
+Nach Proposition 2 berechnet sich die allgemeine Lösung der Differentialgleichung vermöge $$
+  v(t)=v_h(t)+v_p(t)\,,\quad t\geq0
+$$
+
+1. Die allgemeine Lösung der zugehörigen homogenen Differentialgleichung $$
+  \dot{v}(t)+\frac{r}{m}\cdot v(t)=0
+$$ berechnet sich gemäß Proposition 1 zu $$
+  t\mapsto v_h(t)=c\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}\,,\quad c\in\mathbb{R}
+$$
+2. Durch Variation der Konstanten $c\leadsto C(t)$ ergibt sich das Integral $$
+  \dot{C}(t)=\frac{K}{m}\cdot\exp{\left(\frac{r}{m}\cdot t\right)}\quad\leadsto\quad
+  C(t)=\frac{K\cdot m}{m\cdot r}\cdot\exp{\left(\frac{r}{m}\cdot t\right)}=\frac{K}{r}\cdot\exp{\left(\frac{r}{m}\cdot t\right)}
+$$ Hieraus ergibt sich eine spazielle Lösung der inhomogenen Differentialgleichung $$
+  t\mapsto v_p(t)=C(t)\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}=
+  \frac{K}{r}\cdot\exp{\left(\frac{r}{m}\cdot t\right)}\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}=\frac{K}{r}
+$$
+3. Die allgemeine Lösung der inhomogenen Differentialgleichung ergibt sich somit $$
+  t\mapsto v(t)=v_h(t)+v_p(t)=\frac{K}{m}+c\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}\,,\quad t\geq0
+$$
+
+Wird zusätzlich die Anfangsbedingung $v(0)=0$ (Anfangsgeschwindigkeit ist Null) betrachtet, so ist $$
+  \frac{K}{m}+c\cdot\exp{\left(-\frac{r}{m}\cdot 0\right)}=\frac{K}{m}+c\cdot 1=0\quad\leftrightarrow\quad
+  c=-\frac{K}{m}
+$$ woraus sich die Lösung des Anfangswertproblems ergibt $$
+  t\mapsto v(t)=\frac{K}{r}\cdot\left(1-\exp{\left(-\frac{r}{m}\cdot t\right)}\right)
+$$ siehe nachstehende Abbildung.
+
+![Beschleunigte Bewegung](img/mat-bild-11.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $\dot{v}(t)=\frac{K}{m}-\frac{r}{m}\cdot v(t)$ im $t-v$-Koordinatensystem, zusammen mit der Lösung des Anfangswertproblems $v(0)=0$. Der Funktionsgraph ist nach oben beschränkt durch die Schranke $\frac{K}{r}$.")
+
+
+Sicher gewußt
+===
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** Entscheiden Sie, ob die gewöhnliche Differentialgleichung $$
+  y^\prime(x)=\frac{1+x\cdot y(x)}{1-x^2}
+$$ in der gesuchten Funktion $f:x\mapsto y=f(x)$, $x\in D\subset\mathbb{R}$ eine lineare Differentialgleichung ist.
+
+[( )] nicht linear
+[( )] linear, homogen
+[(X)] linear, inhomogen
+[[?]] Versuchen Sie, die Differentialgleichung in Normalform $$
+  y^\prime(x)+p(x)\cdot y(x)=q(x)
+$$ darzustellen. Geben Sie - falls möglich - die Koeffizientenfunktionen an.
+****************************************
+
+Obige Differentialgleichung lässt sich mittels Termumformung darstellen in $$
+  y^\prime(x)=\frac{1+x\cdot y(x)}{1-x^2}\quad\leftrightarrow\quad
+  y^\prime(x)-\frac{x}{1-x^2}\cdot y(x)=\frac{1}{1-x^2}
+$$ Da ist eine lineare, inhomogene Differentialgleichung mit den Koeffizientenfunkionen beziehungsweise der Störfunktion $$
+  1\,,\quad p(x)=-\frac{x}{1-x^2}\quad\text{bzw.}\quad q(x)=\frac{1}{1-x^2}
+$$
+
+****************************************
+
+**Frage 2.** Ermitteln Sie die Normalform einer gewöhnlichen, homogenen Differentialgleichung erster Ordnung $$
+  y^\prime(x)+p(x)\cdot y(x)=0\,,\quad f:x\mapsto y=f(x)\;\;\text{(gesucht)}
+$$ deren allgemeine Lösung die Form $$
+  f:x\mapsto y=f(x)=k\cdot\exp{\left(x^2\right)}\,,\quad x\in D\subseteq\mathbb{R}
+$$ besitzt.
+
+[(X)] $$ y^\prime(x)-2\cdot x\cdot y(x)=0 $$
+[( )] $$ y^\prime(x)-\frac{1}{3}\cdot x^3\cdot y(x)=0 $$
+[( )] $$ y^\prime(x)+2\cdot x\cdot y(x)=0 $$
+[[?]] Nach Proposition 1 besitzt die allgemeine Lösung der homogenen Differentialgleichung die Form $$
+  f:x\mapsto y_h(x)=k\cdot\exp{((-1)\cdot P(x))}\,,\quad k\in\mathbb{R}
+$$ worin die Funktion $P(x)$ im Exponenten eine (beliebige) Stammfunktion der Koeffizientenfunktion $p(x)$ ist.
+****************************************
+
+Der Exponent $x^2$ in der allgemeinen Lösung wird nach Proposition 1 berechnet mittels $$
+  (-1)\cdot P(x)=-\int{p(x)}\mathrm{d}x=x^2\quad\rightarrow\quad
+  p(x)=-2\cdot x
+$$ Hiernach ist die zugehörige Differentialgleichung $$
+  y^\prime(x)-2\cdot x\cdot y(x)=0
+$$
+
+****************************************
+
+[^1]: Die Beschränkung der Bewegung auf eine konstante Richtung gestattet die Betrachtung der Beträge von Beschleunigung bzw. Geschwindigkeit.
+
+
+### Linearer Typ n. Ordnung
+
+
+Normalform
+===
+
+
+In diesem Abschnitt werden spezielle lineare Differentialgleichungen $n$-ter Ordnung ($n\in\mathbb{N},\, n\geq2$) in Verallgemeinerung derer erster Ordnung untersucht. Diese werden beispielsweise im Fall $n=2$ zur Beschreibung von Schwingungsvorgängen angewendet.
+
+Betrachtet werden Differentialgleichungen in der gesuchten Funktion $$
+  f:x\mapsto y(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ kurz $y(x)$, die - gegebenenfalls nach Umformung - folgende Normalform besitzen.
+
+>**Definition 1.** Eine gewöhnliche Differentialgleichung $n$-ter Ordnung der Form $$
+  y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=q(x)
+$$ mit reellen Koefizienten $$
+  a_i\in\mathbb{R}\quad\forall\; i\in\{0,1,...,n-1\}
+$$ heißt **linear von der Ordnung $n$ mit konstanten Koeffizienten**.
+>
+> Die Funktion $q$ wird als *Störfunktion* bezeichnet. Ist $q(x)\equiv 0$ (identisch Null) beziehungsweise $q(x)\not\equiv 0$, so wir die Differentialgleichung *homogen* beziehungsweise *inhomogen* genannt.
+
+**Bemerkung 1.**  Reelle Funktionen lassen sich als Vektoren (in einem Funktionsvektorraum) auffassen. In dieser Interpretation beschreibt die 'linke Seite' der Differentialgleichung eine Linearkombination der (gesuchten) Funktion $y(x)$ und deren Ableitungsfunktionen bis zur Ordnung $n$ den konstanten Koeffizienten $1$, $a_{n-1}$, ... , $a_0$.
+
+**Bemerkung 2.** Allgemeiner könnten die konstanten Koeffizienten $a_i$ durch Koeffizientenfunktionen $$
+  a_i:x\mapsto y=a_i(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ ersetzt werden. Ist meindestens eine dieser Koeffizientenfunktionen nicht konstant, spricht man von linearen Differentialgleichungen der Ordnung $n$ mit *nichtkonstanten Koeffizienten*.[^1]
+
+**Beispiel 1.** Die folgenden gewöhnlichen Differentialgleichungen zweiter Ordnung sind auf ihren Typ gemäß Definition 1 zu untersuchen. Die gesuchte Funktion ist jeweils $x\mapsto y(x)$.
+
+1. $$ y^{\prime\prime}(x)+y(x)=0 $$
+2. $$ y^{\prime\prime}(x)+2\cdot y^\prime(x)-3\cdot y(x)-2\cdot x+4=0 $$
+3. $$ x^3\cdot y^{\prime\prime}(x)+x^2\cdot y^\prime(x)-x\cdot y(x)=\exp{x} $$
+4. $$ x^3\cdot y^{\prime\prime}(x)+y(x)\cdot y^\prime(x)=0 $$
+
+In der folgenden Tabelle sind die Eigenschaften für die einzelnen Differentialgleichungen bezogen auf deren Normalform zusammengefasst. Die Eigenschaften 'homogen' vs. 'inhomogen' und 'konstante Koeffizienten' werden hier nur für lineare Differentialgleichungen gebraucht.
+
+|  | linear | homogen/inhomogen | konstante Koeffizienten |
+| :--- | :--- | :--- | :--- |
+| 1. | ja |  $q(x)=0$ $\leadsto$ homogen | $1$, $0$, $1$ $\leadsto$ ja |
+| 2. | ja |  $q(x)=2\cdot x-4$ $\leadsto$ inhomogen | $1$, $2$, $-3$ $\leadsto$ ja |
+| 3. | ja |  $q(x)=\frac{\exp{x}}{x^2}$ $\leadsto$ inhomogen | $1$, $\frac{1}{x}$, $-\frac{1}{x^2}$ $\leadsto$ nein |
+| 4. | $y\cdot y^\prime$ $\leadsto$ nein |  |  |
+
+
+Lösbarkeit einer Anfangswertaufgabe
+===
+
+
+Ist die Störfunktion $q$ in Definition 1 stetig auf einem Intervall $I\subseteq D\subseteq\mathrm{R}$, so besitzt die Differentialgleichung $$
+  y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=q(x)
+$$ mit den Anfangsbedingungen $$
+  y(x_0)=y_0\,,\quad y^\prime(x_0)=y_1\,,\quad ...\,,\quad y^{(n-1)}(x_0)=y_{n-1}
+$$ mit $x_0\in I$ und $y_j\in\mathbb{R}$, $j\in\{0,1,..,n-1\}$ genau eine Lösung $y(x)$ auf $I$.
+
+**Beispiel 2.** Gegebenen ist das Beschleunigung-Zeit-Gesetz $$
+  t\mapsto a=\ddot{x}(t)=C\cdot\sin{(\omega\cdot t+\varphi)}
+$$ der beschleunigten Bewegung eines Massepunktes entlang der $x$-Achse (zeitlich veränderliche, periodische Beschleunigung $a$), mit den Parametern $$
+  C\in\mathbb{R}\setminus\{0\}\,,\quad\omega>0\quad\text{und}\quad \varphi\in\left[0,\frac{2\cdot\pi}{\omega}\right]
+$$ Das ist eine inhomogene Differentialgleichung zweiter Ordnung in der gesuchten Funktion $$
+  t\mapsto s=x(t)\,, t\geq 0
+$$ (Weg $s$). Die Differentialgleichung ist in Normalform gegeben.
+
+Mit der Bedingung für die Anfangsgeschwindigkeit (zum Zeitpunkt $t=0$) $$
+  \dot{x}(0)=v_0 \in\mathbb{R}
+$$ berechnet sich zunächst das Geschwindigkeit-Zeit-Gesetz durch unbestimmte Integration $$
+  \dot{x}(t)=\int{a}\mathrm{d}t=\int{\left(C\cdot\sin{(\omega\cdot t+\varphi)}\right)}\mathrm{d}t=
+  -\frac{C}{\omega}\cdot\cos{(\omega\cdot t+\varphi)}+k\,,\quad k\in\mathbb{R}
+$$ worin die Integrationskonstante $k$ durch die vorstehende Bedingung festgelegt ist $$
+  \dot{x}(0)=-\frac{C}{\omega}\cdot\cos{(\omega\cdot 0+\varphi)}+k=v_0\quad\leftrightarrow\quad
+  k=v_0+\frac{C}{\omega}\cdot\cos{\varphi}
+$$ d. h. das Geschwindigkeit-Zeit-Gesetz $$
+  t\mapsto v=\dot{x}(t)=-\frac{C}{\omega}\cdot\cos{(\omega\cdot t+\varphi)}+
+  v_0+\frac{C}{\omega}\cdot\cos{\varphi}
+$$ Mit der Bedingung für den Anfangsweg (zum Zeitpunkt $t=0$) $$
+  x(0)=s_0 \in\mathbb{R}
+$$ berechnet sich durch erneute unbestimmte Integration nach der Zeit $t$ $$
+  x(t)=\int{v}\mathrm{d}t=\int{\left(-\frac{C}{\omega}\cdot\cos{(\omega\cdot t+\varphi)}+
+  v_0+\frac{C}{\omega}\cdot\cos{\varphi}\right)}\mathrm{d}t=
+  -\frac{C}{\omega^2}\cdot\sin{(\omega\cdot t+\varphi)}+
+  \left(v_0+\frac{C}{\omega}\cdot\cos{\varphi}\right)\cdot t+m\,,\quad m\in\mathbb{R}
+$$ worin die Integrationskonstante $m$ durch die vorstehende Bedingung festgelegt ist $$
+  x(0)=-\frac{C}{\omega^2}\cdot\sin{(\omega\cdot 0+\varphi)}+\left(v_0+\frac{C}{\omega}\cdot\cos{\varphi}\right)\cdot 0+m=s_0\quad\leftrightarrow\quad
+  m=s_0+\frac{C}{\omega^2}\cdot\sin{\varphi}
+$$ d. h. das Weg-Zeit-Gesetz dieser beschleunigten Bewegung $$
+  t\mapsto s=x(t)=-\frac{C}{\omega^2}\cdot\sin{(\omega\cdot t+\varphi)}+\left(v_0+\frac{C}{\omega}\cdot\cos{\varphi}\right)\cdot t+
+  s_0+\frac{C}{\omega^2}\cdot\sin{\varphi}
+$$
+
+Die Berechnung der Anfangswertaufgabe aus Beispiel 1 ist nachfolgend unter Benutzung der Javascript Bibliothek [Algebrite](http://algebrite.org/) ausgeführt. Der letzte Befehl `subst(2,C,s)` ersetzt einen Parameter $C$ durch dessen Wert $2$ im Ausdruck $s$ (Weg-Zeit-Gesetz). Zu beachten ist, dass bei der unbestimmten Integration keine Integrationskonstante ausgegeben wird.
+
+```javascript
+a=C*sin(omega*t+phi)
+A=integral(a,t)
+v=A+v0-subst(0,t,A)
+V=integral(v,t)
+s=V+s0-subst(0,t,V)
+s
+subst(1,omega,subst(2,C,subst(pi/2,phi,subst(10,v0,subst(20,s0,s)))))
+```
+@Algebrite.eval
+
+
+
+Homogene Differentialgleichung
+===
+
+
+Struktur der allgemeinen Lösung
+---
+
+
+Eine homogene lineare Differentialgleichung der Ordnung $n$ mit konstanten Koeffizienten $$
+  \underbrace{y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)}_{L(y)}=0
+$$ wie in Definition 1 besitzt eine Lösungsmenge $$
+  \mathcal{L}=\left\{f: D\subseteq\mathbb{R}\to\mathbb{R}\;\left(L(f)=0\right)\right\}
+$$ reeller Funktionen.
+
+~~Ziel.~~ In diesem Abschnitt wird gezeigt, dass $\mathcal{L}$ die Struktur eines reellen Vektorraumes der Dimension $n$ besitzt. Ist eine Basis in diesem Vektorraum bestimmt[^2], lässt sich jede Lösung der homogenen Differentialgleichung eindeutig als Linearkombination der $n$ Basisfunktionen (-Vektoren) darstellen. Damit lässt sich die allgemeine Lösung $y_h(x)$ der homogenen Differentialgleichung darstellen als $$
+  y_h(x)=\sum_{j=1}^n{\left(c_j\cdot y_j(x)\right)}\,,\quad c_j\in\mathbb{R}\;\;\forall\; j\in\{1,2,...,n\}\,,\; n\in\mathbb{N}\,,\; n\geq1
+$$ worin $y_j(x)$ die Basisfunktionen bezeichnen.
+
+>**Satz 1.** Eine homogene lineare Differentialgleichung mit konstanten Koeffizienten $$
+  y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=0
+$$ wie in Definition 1 besitzt die folgenden Eigenschaften:
+>
+>1. Ist $y_1(x)$ eine Lösung der homogenen linearen Differentialgleichung, so ist jedes reelle Vielfache dieser Funktion $$
+  y(x)=c\cdot y_1(x)\,,\quad c\in\mathbb{R}
+$$ ebenso eine Lösung dieser Differentialgleichung.
+>2. Sind $y_1(x)$ und $y_2(x)$ zwei Lösungen der homogenen linearen Differentialgleichung, so ist jede reelle Linearkombination $$
+  y(x)=c_1\cdot y_1(x)+c_2\cdot y_2(x)
+$$ ebenso eine Lösung dieser Differentialgleichung.
+>3. Ist die komplexwertige Funktion $$
+  x\mapsto y(x)=u(x)+i\cdot v(x)\,,\quad x\in D\subseteq\mathbb{R}\,,\; i^2=-1
+$$ mit den reellen Funktionen $u(x)$ und $v(x)$ eine Lösung der homogenen linearen Differentialgleichung, so sind 'Real-' und 'Imaginärteil' reelle Lösungen.
+
+**Beweis.** Für den Nachweis der ersten beiden Aussagen sind die Ableitungen von Summe beziehungsweise von reellen Vielfachen der Lösungen der homogenen linearen Differentialgleichung $n$-ter Ordnung zu bilden. Es ergeben sich für die $k$-te Ableitung mit $k\in\{1,2,...,n\}$ unter Verwendung der Faktorregel $$
+  y^{(k)}(x)=\left(c\cdot y_1(x)\right)^{(k)}=c\cdot y^{(k)}_1(x)
+$$ beziehungsweise - unter Benutzung der Summenregel $$
+  y^{(k)}(x)=\left(c_1\cdot y_1(x)+c_2\cdot y_2(x)\right)^{(k)}=
+  c_1\cdot y^{(k)}_1(x)+c_2\cdot y^{(k)}_2(x)
+$$ für alle $x\in D\subseteq\mathbb{R}$. Werden diese in die homogene lineare Differentialgleichung $n$-ter Ordnung eingesetzt, so ergeben sich
+
+1. $$ L(y)=c\cdot y_1^{(n)}(x)+a_{n-1}\cdot c\cdot y_1^{(n-1)}(x)+...+a_{1}\cdot c\cdot y_1^{\prime}(x)+a_0\cdot c\cdot y_1(x)=c\cdot\left(y^{(n)}_1(x)+a_{n-1}\cdot y^{(n-1)}_1(x)+...+a_{1}\cdot y^{\prime}_1(x)+a_0\cdot y_1(x)\right)=c\cdot L(y_1)=0
+$$
+2. beziehungsweise nach analoger Rechnung $$
+  L(y)=L(c_1\cdot y_1+c_2\cdot y_2)=c_1\cdot L(y_1)+c_2\cdot L(y_2)=c_1\cdot 0+c_2\cdot 0=0
+$$ Reelle Vielfache und Summen von Lösungen einer homogenen linearen Differentialgleichung sind demnach ebenso Lösungen.
+3. Bezeichnet $$
+  y(x)=u(x)+i\cdot v(x)\,,\quad i^2=-1
+$$ eine komplexwertige Lösung (einer reellen Variablen $x$), so sind Real- und Imaginärteil reellwertige Funktionen über dieser Variablen. Für die $k$-ten Ableitungen nach $x$ gelte $$
+  y^{(k)}(x)=u^{(k)}(x)+i\cdot v^{(k)}(x)\,,\quad i^2=-1
+$$ für jedes $k\in\{1,2,...,n\}$. Dann folgt nach Einsetzen und Ordnen $$
+  L(y)=L(u+i\cdot v)=L(u)+i\cdot L(v)=0
+$$ Diese Gleichheit kann jedoch nur bestehen, wenn Real- und Imaginärteil der linken Seite der Gleichung jeweils verschwinden, d. h. $$
+  L(u)=0\,,\quad L(v)=0
+$$
+
+$\square$
+
+**Beispiel 3.** Gegeben ist die Schwingungsgleichung $$
+  y^{\prime\prime}(x)+\omega^2\cdot y(x)=0\,,\quad\omega>0
+$$ Dies ist eine homogene lineare Differentialgleichung zweiter Ordnung in $x\mapsto y(x)$, $x\in D\subseteq\mathbb{R}$.
+
+1. Die periodische Funktion $$
+  f_1:x\mapsto y=f_1(x)=\sin{(\omega\cdot x)}
+$$ ist eine partikuläre Lösung der Differentialgleichung, da mit $$
+  f_1^\prime(x):x\mapsto y^\prime(x)=\omega\cdot\cos{(\omega\cdot x)}\quad\text{und}\quad
+  f_1^{\prime\prime}(x):x\mapsto y^{\prime\prime}(x)=-\omega^2\cdot\sin{(\omega\cdot x)}
+$$ durch Einsetzen in die Differentialgleichung folgt $$
+  y^{\prime\prime}(x)+\omega^2\cdot y(x)=
+  -\omega^2\cdot\sin{(\omega\cdot x)}+\omega^2\cdot\sin{(\omega\cdot x)}=0\quad\forall\; x\in\mathbb{R}
+$$
+2. Analog lässt sich nachweisen, dass $$
+  f_2:x\mapsto y=f_2(x)=\cos{(\omega\cdot x)}
+$$ ist eine partikuläre Lösung der Differentialgleichung ist.
+3. Nach Satz 1 ist nun jede reelle Linearkombination von $f_1$ und $f_2$ eine Lösung der homogenen linearen Differentialgleichung $$
+  f:x\mapsto y=f(x)
+  =c_1\cdot\sin{(\omega\cdot x)}+c_2\cdot\cos{(\omega\cdot x)}\,,\quad x\in D\subseteq{R}
+$$ worin $(c_1,c_2)\in\mathbb{R}^2$.
+
+Der Raum aller Linearkombinationen von $n$ Lösungen $f_i$, $i\in\{1,2,...,n\}$ mit $n\in\mathbb{N}$ und $n\geq1$, einer homogenen linearen Differentialgleichung spannen nur dann den Lösungsraum $\mathcal{L}$ auf, wenn die Funktionen $f_i$ linear unabhängig sind. Die Anzahl $n$ der Koeffizienten entspricht dabei der Dimension von $\mathcal{L}$.
+
+>**Definition 2.** Für $n$ reelle, hinreichend oft differenzierbare Funktionen $$
+  f_i:D\rightarrow\mathbb{R},\quad i\in\{1,2,\ldots,n\}
+$$ einer reellen Variablen $x\in D\subseteq\mathbb{R}$ ist die [Wronski-Determinante](https://de.wikipedia.org/wiki/Wronski-Determinante) definiert durch $$
+  W(f_1,f_2,\ldots,f_n)(x):=
+  \det{\left(\begin{array}{cccc}
+  f_1(x) & f_2(x) & \ldots & f_n(x) \\ f^\prime_1(x) & f^\prime_2(x) & \ldots & f^\prime_n(x) \\
+  \vdots & \vdots & \ddots & \vdots \\ f^{(n-1)}_1(x) & f^{(n-1)}_2(x) & \ldots & f^{(n-1)}_n(x)
+  \end{array}\right)}
+$$ worin $f^{(j)}_i(x)$ mit $j\in\{1,2,\ldots,n-1\}$ die $j$-te gewöhnliche Ableitung der Funktion $f_i$ (insbesondere $f^\prime_i$ deren erste Ableitung) bezeichnet.
+
+>**Satz 2.** Gilt für $n$ Funktionen $f_1$, $f_2$, .., $f_n$ $$
+  W(f_1,f_2,...,f_n)(x)\not=0
+$$ für ein $x_0\in I\subseteq D$, so sind diese Funktionen auf dem Intervall $I$ linear unabhängig.[^3]
+
+**Beispiel 4.** Drei über den reellen Zahlen definierte Funktionen $$
+  f_1:x\mapsto x,\quad f_2:x\mapsto \sin{x} \quad\text{und}\quad f_3:x\mapsto \cos{x}
+$$ sind auf lineare Unabhängigkeit zu untersuchen.
+
+1. Für diese Funktionen ist zunächst die Wronski-Determinante zu berechnen. Für $f_1$, $f_2$ und $f_3$ sind $$
+  f_1^{\prime}(x)=1,\quad
+  f_2^{\prime}(x)=\cos{x} \quad\text{und}\quad
+  f_3^{\prime}(x)=-\sin{x}
+$$ sowie $$
+  f_1^{\prime\prime}(x)=0,\quad
+  f_2^{\prime\prime}(x)=-\sin{x} \quad\text{und}\quad
+  f_3^{\prime\prime}(x)=-\cos{x}
+$$ und somit $$
+  W(f_1,f_2,f_3)(x)=\det{\left(
+    \begin{array}{rrr}
+      x & \sin{x} & \cos{x} \\ 1 & \cos{x} & -\sin{x} \\ 0 & -\sin{x} & -\cos{x}
+    \end{array}
+  \right)}=
+  x\cdot\left(-(\cos{x})^2-(\sin{x})^2\right)=-x
+$$
+2. Die [lineare Unabhängigkeit](https://de.wikipedia.org/wiki/Lineare_Unabh%C3%A4ngigkeit) der Funktionen auf $D\subseteq\mathbb{R}$ lässt sich mit Hilfe der Definition prüfen: d. h. die Frage, ob reelle Koeffizienten in $$
+  {c}_1\cdot f_1(x)+{c}_2\cdot f_2(x)+{c}_3\cdot f_3(x)= 0\quad\forall x\in\mathbb{R}
+$$ mit $({c}_1,{c}_2,{c}_3)\not=(0,0,0)$ existieren. Linke und rechte Seite der vorstehenden Gleichung können hierfür ein- bzw. zweimal nach der Variablen $x$ differenziert werden, wonach sich das folgende System linearer Gleichungen $A\cdot x=b$ ergibt $$
+  A=\begin{pmatrix} x & \sin{x} & \cos{x} \\ 1 & \cos{x} & -\sin{x} \\ 0 & -\sin{x} & -\cos{x} \end{pmatrix}\,,\quad
+  x=\begin{pmatrix} {c}_1 \\ {c}_2 \\ {c}_3 \end{pmatrix}\quad\text{und}\quad
+  b=\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+$$ Dies ist ein homogenes Gleichungssystem, welches über beliebigen Intervallen $D\subseteq\mathbb{R}$ die alleinige Lösung $$
+  x=\begin{pmatrix} {c}_1 \\ {c}_2 \\ {c}_3 \end{pmatrix}=\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+$$ besitzt, da für die Determinante der Koeffizientenmatrix gilt $$
+  W=\det{A}=-x\not=0\quad\forall\;x\in\mathbb{R}\setminus\{0\}
+$$ Es existieren somit Argumente $x_0\in D$, für die $$
+  W(f_1,f_2,f_3)(x_0)\not=0\quad
+  \rightarrow\quad ({c}_1,{c}_2,{c}_3)=(0,0,0)
+$$ folgt. Die Funktionen sind also linear unabhängig auf $D\subseteq\mathbb{R}$.
+
+Die Berechnung der Wronski-Determinante ist nachfolgend unter Benutzung der Javascript Bibliothek [Algebrite](http://algebrite.org/) ausgeführt. Der Befehl `d(f,x,k)` berechnet die $k$-te Ableitung der Funktion $f$ nach der unabhängigen Variablen $x$.
+
+```javascript
+f1=x
+f2=sin(x)
+f3=cos(x)
+A=[[f1,f2,f3],[d(f1,x,1),d(f2,x,1),d(f3,x,1)],[d(f1,x,2),d(f2,x,2),d(f3,x,2)]]
+simplify(det(A))
+```
+@Algebrite.eval
+
+Mit den vorstehenden Eigenschaften kann gezeigt werden, dass sich jede partikuläre Lösung einer homogenen linearen Differentialgleichung $n$-ter Ordnung eindeutig als Linearkombination in $n$ linear unabhängigen Lösungen $$
+y_i:D\subseteq\mathbb{R}\rightarrow\mathbb{R},\quad i\in\{1,2,\ldots,n\}
+$$ der Differentialgleichung darstellen lässt. Die Funktionen $y_i$ werden **Basislösungen** der Differentialgleichung genannt.
+
+>**Satz 3.** Die allgemeine Lösung $x\mapsto y(x)$ einer homogenen linearen Differentialgleichung $n$-ter Ordnung mit konstanten Koeffizienten $$
+  y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=0
+$$ wie in Definition 1 lässt sich eindeutig darstellen als Linearkombination $$
+  x\mapsto y(x)=\sum_{j=1}^n{\left({c}_j\cdot y_j(x)\right)}={c}_1\cdot y_1(x)+...+{c}_n\cdot y_n(x)\,,\quad {c}_j\in\mathbb{R}\;\;\forall\; j\in\{1,...,n\}
+$$ in $n$ Basislösungen $$
+  f_j:x\mapsto y_j=f_j(x)\,,\quad x\in D\subseteq{R}\,,\quad j\in\{1,...,n\}
+$$ der Differentialgleichung.
+
+**Beweis.** Gegeben sind $n$ Basislösungen $f_j$ der homogenen linearen Differentialgleichung mit konstanten Koeffizienten. Diese sind insbesondere linear unabhängig vorausgesetzt, d. h. es gilt $$
+  W(f_1,f_2,\ldots,f_n)(x):=
+  \det{\left(\begin{array}{cccc}
+  f_1(x) & f_2(x) & \ldots & f_n(x) \\ f^\prime_1(x) & f^\prime_2(x) & \ldots & f^\prime_n(x) \\
+  \vdots & \vdots & \ddots & \vdots \\ f^{(n-1)}_1(x) & f^{(n-1)}_2(x) & \ldots & f^{(n-1)}_n(x)
+  \end{array}\right)}\not=0
+$$ für ein $x_0\in D$. (Die Wronski-Determinante ist in $x_0$ von Null verschieden.)
+
+Zu beweisen ist, dass mit der Basiseigenschaft der Lösungen $f_j$ sich jede partikuläre Lösung der Differentialgleichung eindeutig als Linearkombination aller $f_j$ darstellen lässt. Hierbei reicht es aus zu zeigen, dass die Koeffizienten ${c}_j$ der Linearkombination $$
+  y=f(x)={c}_1\cdot f_1(x)+...+{c}_n\cdot f_n(x)
+$$ zu einer Anfangswertaufgabe $$
+  y=f(x_0)=a_0\,,\quad f^\prime(x_0)=a_1\,,\quad ...\quad\,,\quad f^{(n-1)}(x_0)=a_{n-1}
+$$ mit beliebig gewählten Anfangswerten $a_0\in\mathbb{R}$, $a_1\in\mathbb{R}$, ..., $a_{n-1}\in\mathbb{R}$ eindeutig festgelegt sind. Die $n$ Gleichungen $$
+  f(x_0)={c}_1\cdot f_1(x_0)+...+{c}_n\cdot f_n(x_0)\quad\wedge\quad
+  f^{(k)}={c}_1\cdot f_1^{(k)}(x_0)+...+{c}_n\cdot f_n^{(k)}(x_0)\,,\quad k\in\{1,...,n-1\}
+$$ sind jeweils linear in den gesuchten Koeffizienten ${c}_j$ und bilden ein System linearer Gleichungen vom Typ $(n,n)$. Das Gleichungssystem besitzt genau dann eine eindeutige Lösung, wenn die Koeffizientenmatrix $A(x_0)$ regulär ist. Es gilt $$
+  A(x_0)\;\text{regulär}\quad\leftrightarrow\quad \det{A}(x_0)=W(f_1,f_2,\ldots,f_n)(x_0)\not=0
+$$ Diese entspricht jedoch der in $x_0\in D$ nicht verschwindenden Wronski-Determinante.
+
+$\square$
+
+
+Eulerscher Exponentialansatz
+---
+
+
+Zu einer homogenen linearen Differentialgleichung mit konstanten Koeffizienten $g(x,y(x),y^\prime(x),...,y^n(x))=0$ mit $$
+    g:=y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=0
+$$ wie in Definition 1 lassen sich die Basislöungen mit Hilfe des *Eulerschen Exponentialansatzes* berechnen.
+
+1. Als Ansatzfunktion wird $x\mapsto y(x)=\exp{(\lambda\cdot x)}$, $x\in D\subseteq\mathbb{R}$, mit zu bestimmenden Parametern $\lambda\in\mathbb{C}$. Unter Nutzung der $k$-ten Ableitung $$
+  y^{(k)}(x)=\lambda^k\cdot\exp{(\lambda\cdot x)}\,,\quad k\in\{1,...,n\}
+$$ dieser Funktion kann die Differentialgleichung in eine algebraische Gleichung in $\lambda$ vom Grad $n$ entwickelt werden. $$
+  \lambda^n\cdot\exp{(\lambda\cdot x)}+a_{n-1}\cdot \lambda^{n-1}\cdot\exp{(\lambda\cdot x)}+...+a_{1}\cdot \lambda^1\cdot\exp{(\lambda\cdot x)}+a_0\cdot\exp{(\lambda\cdot x)}=
+  \exp{(\lambda\cdot x)}\cdot\left(\lambda^n+a_{n-1}\cdot \lambda^{n-1}+...+a_{1}\cdot \lambda^1+a_0\right)=0
+$$ worin der linke Faktor $\exp{(\lambda\cdot x)}\not=0$ für jede Wahl des Exponenten $\lambda\cdot x$ ist. Der Null zusetzende rechte Faktor in vorstehender Gleichung  ergibt die algebraische Gleichung $$
+  P(\lambda)=0\quad
+  \text{mit}\quad
+  P(\lambda):=\lambda^n+a_{n-1}\cdot \lambda^{n-1}+...+a_{1}\cdot \lambda^1+a_0
+$$ die *charakteristische Gleichung* der Differentialgleichung genannt wird. Diese besitzt - unter Einbeziehung der Vielfachheiten - genau $n$ Lösungen $\lambda\in\mathbb{C}$.
+2. Zu jeder Lösung $\lambda$ von $P(\lambda)=0$ erhält man eine Lösung der Differentialgleichung. Im Fall einer reellen Lösung $\lambda$ ist dies eine reelle Exponentialfunktion. Da im Fall einer nichtreellen Lösung $\lambda\in\mathbb{C}\setminus\mathbb{R}$ auch die zu $\lambda$ komplex konjugierte Zahl $\bar{\lambda}$ Lösung der charakteristischen Gleichung ist, sind für $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}$ und $b\in\mathbb{R}$ sowie $i^2=-1$ $$
+  \exp{(\lambda\cdot x)}=\exp{((a+i\cdot b)\cdot x)}=\exp{(a\cdot x)}\cdot\exp{(i\cdot b\cdot x)}=\exp{(a\cdot x)}\cdot\left(\cos{(b\cdot x)}+i\cdot \sin{(b\cdot x)}\right)
+$$ sowie $$
+  \exp{(\bar{\lambda}\cdot x)}=\exp{((a-i\cdot b)\cdot x)}=\exp{(a\cdot x)}\cdot\exp{(-i\cdot b\cdot x)}=\exp{(a\cdot x)}\cdot\left(\cos{(b\cdot x)}-i\cdot \sin{(b\cdot x)}\right)
+$$ zwei komplexwertige Lösungen der Differentialgleichung. Mit Satz 1 ergeben sich hieraus die beiden zu $(\lambda,\bar{\lambda})$ gehörenden reellen Lösungen $$
+  y_1(x)=\exp{(a\cdot x)}\cdot\cos{(b\cdot x)}\quad\text{und}\quad
+  y_2(x)=\exp{(a\cdot x)}\cdot\sin{(b\cdot x)}
+$$ auf. Die reellen Lösungen einer homogenen linearen Differentialgleichung mit konstanten Koeffizienten sind unter entsprechender Vielfachheit der Lösungen $\lambda$ der charakteristischen Gleichung $P(\lambda)=0$ in nachstehender Tabelle unterschieden.
+
+| Lösung von $P(\lambda)=0$ | Vielfachheit von $\lambda$ | Lösung von $g=0$ |
+| :--- | :--- | :--- |
+| $\lambda=a$ mit $a\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}$ |
+| $\lambda=a$ mit $a\in\mathbb{R}$ | $1<k\leq n$ | $y_1(x)=\exp{(a\cdot x)}\,,\quad y_2(x)=x\cdot\exp{(a\cdot x)}\,,\quad ...\quad,\quad y_k(x)=x^{k-1}\cdot\exp{(a\cdot x)}$ |
+| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_2(x)=\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}$ |
+| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $1<k<\left\lfloor\frac{n}{2}\right\rfloor$ | $y_{2\cdot j-1}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_{2\cdot j}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}\,,\quad j\in\{1,...,k\}$ |
+
+3. Werden Lösungen der algebraischen Gleichung $P(\lambda)=0$ entsprechend der Vielfachheit ihres Auftretens gezählt, so werden mit Hilfe des Eulerschen Exponentialansatzes insgesamt $n$ linear unabhängige Lösungen der homogenen linearen Differentialgleichung mit konstanten Koeffizienten gebildet, die zusammen eine Basis des Lösungsraumes $\mathcal{L}$ bilden.
+
+**Beispiel 5.** Die Lösungsmengen der nachstehenden homogenen linearen Differentialgleichungen sind zu berechnen. Die gesuchte Funktion ist jeweils $x\mapsto y(x)$.
+
+1. $$ y^{\prime\prime\prime}(x)-2\cdot y^{\prime\prime}(x)-3\cdot y^\prime(x)=0 $$
+2. $$ y^{\prime\prime}(x)+2\cdot y^\prime(x)+5\cdot y(x)=0 $$
+3. $$ y^{\prime\prime\prime}(x)-3\cdot y^{\prime\prime}(x)+3\cdot y^\prime(x)-1=0 $$
+
+In der folgenden Tabelle sind jeweils charakteristische Gleichung $P(\lambda)=0$, alle Lösungen dieser inklusive Vielfachheiten sowie die allgemeine Lösung $y(x)$ der Differentialgleichung angegeben. Die auftretenden Koeffizienten $c_j$ bezeichnen reelle Parameter. Im Fall 2 bezeichnet $i$ die imaginäre Einheit, d. h. $i^2=-1$.
+
+| Lfd. | $P(\lambda)=0$ | $\lambda$ | $y(x)$ |
+| :------- | :-------- | :-------- | :------- |
+| 1 | $\lambda^3-2\cdot\lambda^2-3\cdot\lambda=0$ | $(-1,0,3)$ | $y(x)=c_1\cdot\exp{(-x)}+c_2+c_3\cdot\exp{(3\cdot x)}$ |
+| 2 | $\lambda^2+2\cdot\lambda+5=0$ | $(-1+2\cdot i,-1-2\cdot i)$ | $y(x)=c_1\cdot\exp{(-x)}\cdot\cos{(2\cdot x)}+c_2\cdot\exp{(-x)}\cdot\sin{(2\cdot x)}$ |
+| 3 | $\lambda^3-3\cdot\lambda^2+3\cdot\lambda-1=0$ | $(1,1,1)$ | $y(x)=(c_1+c_2\cdot x+c_3\cdot x^2)\cdot\exp{x}$ |
+
+
+Inhomogene Differentialgleichung
+===
+
+
+Eine inhomogene Differentialgleichung ...
+
+
+
+[^1]: Das hier vorgestellte Lösungsverfahren ist nur für lineare Differentialgleichungen $n$-ter Ordnung mit konstanten Koeffizienten anwendbar.
+
+[^2]: Eine Basis im Vektorraum $\mathcal{L}$ besteht aus einer Menge von $n$ reellen Funktionen derselben reellen Variablen $x\in D\subseteq\mathbb{R}$, welche ein linear unabhängiges Erzeugendensystem von $\mathcal{L}$ bilden.
+
+[^3]: Gilt hingegen $W(x)=0$ für alle $x_0\in I$, so folgt hieraus ~~nicht~~ die lineare Abhängigkeit der Funktionen im Intervall $I$.
