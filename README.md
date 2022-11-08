@@ -9,12 +9,21 @@ language: de
 
 comment:  Dieser Kurs richtet sich an Studierende der Hochschule für Technik und Wirtschaft Dresden im Studiengang Fahrzeugtechnik im 3. Semester.
 
-script:   https://cdn.rawgit.com/davidedc/Algebrite/master/dist/algebrite.bundle-for-browser.js
-@Algebrite.eval: <script> Algebrite.run(`@input`)</script>
+import: https://raw.githubusercontent.com/LiaTemplates/tiny-turtle/master/README.md
+
+import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
+
+import: https://github.com/LiaTemplates/Pyodide
+
+@onload:
+
+  window.py_packages = ["matplotlib", "numpy"]
+
 -->
 
 
 # Mathematik 3 (I959)
+
 
 Dieser Kurs richtet sich an Studierende der Hochschule für Technik und Wirtschaft Dresden im Studiengang Fahrzeugtechnik im 3. Semester.
 
@@ -34,6 +43,8 @@ Thema dieses Kapitels sind die Funktionsreihen für reelle Funktionen einer reel
 2. Übertragung auf Funktionenfolgen und **Funktionenreihen**. Dies umfasst u. a. unendliche Folgen von reellen Funktionen einer reellen Veränderlichen über demselben Definitionsbereich (Funktionenfolge), den Konvergenzbereich einer Funktionenfolge und Grenzfunktion einer Funktionenfolge, gleichmäßige bzw. punktweise Konvergenz, Partialsummen für Funktionenfolgen und Partialsummenfolgen einer Funktionenfolge (Funktionenreihen) sowie die Summenfunktion der konvergenten Funktionenreihe
 3. Untersuchung von **Potenzreihen** als speziellen Funktionenreihen, deren Eigenschaften, die Taylor-Entwicklung von reellen Funktionen von einer bzw. zwei reellen Veränderlichen zur Entwicklung einer Potenzreihe
 4. Untersuchung von **Fourier-Reihen** zu periodischen Funktionen, Satz von Dirichlet, Entwicklung einer Fourier-Reihe zu einer gegebenen Funktion
+
+![wordcloud-Funktionenreihen](img/wordcloud_Funktionenreihen-2.png)
 
 
 ### Zahlenfolgen und Reihen
@@ -278,8 +289,6 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
----
-
 **Frage 1.** Für welche der folgenden Zahlenreihen ist die notwendige Bedingung für die Konvergenz erfüllt?
 
 [[X]] $$\sum_{k=1}^\infty{\frac{1}{k\cdot(k+1)}}$$
@@ -302,35 +311,43 @@ $$
 
 ****************************************
 
----
+**Frage 2.** Berechnen Sie den Summenwert $s$ der folgenden geometrischen Reihen.
 
-**Frage 2.** Für welche reellen $x$ gilt die folgende Gleichung? $$
-  \sum_{k=0}^\infty{x^k}=
-  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}
-$$
-
-[( )] $x\in\mathbb{R}$
-[( )] $x\in\mathbb{R}\setminus\{1\}$
-[(X)] $x\in(-1,1)$
-[[?]] Linke und reche Seite der Gleichung sind unter Benutzung der Summenformel für geometrische Reihen umzuformen. Der Konvergenzbereich der jeweiligen Reihe ist zu beachten.
+[[$\sum_{n=1}^\infty{\left(-\frac{1}{8}\right)^{n-1}}$] [$\sum_{n=0}^\infty{\left(\frac{1}{8}\right)^{n}}$] [$\sum_{n=0}^\infty{\left(-\frac{1}{7}\right)^{n}}$]]
+[( ) ( ) (X)]  $s=\frac{7}{8}$
+[( ) (X) ( )]  $s=\frac{8}{7}$
+[(X) ( ) ( )]  $s=\frac{8}{9}$
+[[?]] Für das $n$-te Folgenglied einer geometrischen Zahlenreihe $\sum_{n=0}^\infty{\left(q^n\right)}$ gilt $$
+  s_n=\sum_{k=0}^n{\left(q^k\right)}=\left\{
+  \begin{array}{ccc}\frac{1-q^{n+1}}{1-q} & \text{für} & q\not=1 \\ n+1 & \text{für} & q=1 \end{array}\right.
+$$ Bilden Sie das $n$-te Folgenglied für ein $q$ und führen Sie den Grenzübergang $n\to\infty$ durch.
 ****************************************
 
-Die linke Seite der Gleichung berechnet sich unter Benutzung der Summenformel zu $$
-  \sum_{k=0}^\infty{x^k}=\frac{1}{1-x}\,,\quad x\in(-1,1)
-$$ die rechte Seite entsprechend $$
-  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}=
-  \sum_{k=0}^\infty{\left(\frac{1}{2}\cdot\left(\frac{x+1}{2}\right)^k\right)}=
-  \frac{1}{2}\cdot\frac{1}{1-\frac{x+1}{2}}=\frac{1}{1-x}
-$$ worin $$
-  \frac{x+1}{2}\in(-1,1)\quad\leftrightarrow\quad x\in(-3,1)
-$$ den Konvergenzbereich angibt. Die Gleichheit von linker und rechter Seite ergibt sich also für alle $x$ in $$
-  (-1,1)=(-1,1)\cap(-1,3)
-$$
+Da jeweils $|q|<1$ sind die drei gegebenen geometrischen Reihen konvergent. Sie berechnen sich unter Benutzung der Summenformel
+
+* $$\sum_{n=1}^\infty{\left(-\frac{1}{8}\right)^{n-1}}=\frac{1}{1-\left(-\frac{1}{8}\right)}=\frac{8}{9}$$
+* $$\sum_{n=0}^\infty{\left(\frac{1}{8}\right)^{n}}=\frac{1}{1-\frac{1}{8}}=\frac{8}{7}$$
+* $$\sum_{n=0}^\infty{\left(-\frac{1}{7}\right)^{n}}=\frac{1}{1-\left(-\frac{1}{7}\right)}=\frac{7}{8}$$
 
 ****************************************
+
+**Frage 3.** Gegeben ist die Zahlenreihe $$
+  \sum_{n=1}^\infty{\left(\frac{1}{2^n}\cdot\cos{(2\cdot n)}\right)}
+$$ Entscheiden Sie, welche der nachstehenden (konträren!) Aussagen zur Konvergenz dieser Reihe wahr ist.
+
+Die oben stehende Reihe besitzt eine Vergleichreihe mit
+
+[(X)] $$
+  \sum_{n=1}^\infty{\left(\frac{1}{2^n}\cdot\cos{(2\cdot n)}\right)}\leq\sum_{n=1}^\infty{\left(\frac{1}{2}\right)^n}=2
+$$
+[( )] $$
+  \sum_{n=1}^\infty{\left(\frac{1}{2^n}\cdot\cos{(2\cdot n)}\right)}\geq\sum_{n=1}^\infty{\left(\frac{1}{n}\right)^\frac{1}{2}}=\infty
+$$
+
 
 
 ### Definition einer Funktionenreihe
+
 
 Funktionenfolge
 ===============
@@ -430,20 +447,52 @@ $$ heißt **Summenfunktion** der Funktionenreihe.
 
 **Bemerkung 2.** Der in Definition 1 genutzte Begriff der Konvergenz ist auf eine Stelle $x_0$ des Konvergenzbereiches bezogen. Unter Zuhilfenahme von Quantoren lässt sich diese darstellen: $$
   \forall \epsilon>0\;\; \forall x\in D\;\; \exists n_0\in\mathbb{N}\;\; \forall n\geq n_0\;\; \left(|f_n(x)-f(x)|<\epsilon\right)
-$$ worin $x$ eine Stelle des Konvergenzbereiches $D$ und $f$ die Grenzfunktion bezeichnen. Die so definierte Konvergenz wird ~~punktweise Konvergenz~~ genannt.
+$$ worin $x$ eine Stelle des Konvergenzbereiches $D$ und $f$ die Grenzfunktion bezeichnen. Die so definierte Konvergenz wird **punktweise Konvergenz** genannt.
 
 Demgegenüber legt $$
   \forall \epsilon>0\;\; \exists n_0\in\mathbb{N}\;\; \forall x\in D\;\; \forall n\geq n_0\;\; \left(|f_n(x)-f(x)|<\epsilon\right)
-$$ ~~gleichmäßige Konvergenz~~ fest. Hier wird die absolute Differenz zwischen $f_n(x)$ und $f(x)$ für alle $x\in D$ betrachtet.
+$$ **gleichmäßige Konvergenz** fest. Hier wird die absolute Differenz zwischen $f_n(x)$ und $f(x)$ für alle $x\in D$ betrachtet.
 
 **Beispiel 4.**   (Fortführung der Beispiele 1, 2 und 3.)
 
 1. Betrachtet sei $(f_k)_{k=0}^\infty$ mit $f_k(x)=x^k$ wie im vorigen Beispiel, jedoch mit eingeschränktem Definitionsbereich $D=[0,q)$ und $q\in(0,1)$ als reellem Parameter. Die Funktionen $f_k$ konvergieren gleichmäßig gegen $f:x\mapsto 0$ (Nullfunktion).
-2. Für D=[0,1) konvergieren $f_k$ punktweise gegen die Nullfunktion, nicht aber gleichmäßig, da $$
+2. Für $D=[0,1)$ konvergieren $f_k$ punktweise gegen die Nullfunktion, nicht aber gleichmäßig, da $$
   \lim_{x\to 1-0}{f_k(x)}=1\;\;\forall k
 $$ aber $$
   \lim_{x\to 1-0}{f(x)}=0
 $$
+
+
+Sicher gewußt
+=============
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** Für welche reellen $x$ gilt die folgende Gleichung? $$
+  \sum_{k=0}^\infty{x^k}=
+  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}
+$$
+
+[( )] $x\in\mathbb{R}$
+[( )] $x\in\mathbb{R}\setminus\{1\}$
+[(X)] $x\in(-1,1)$
+[[?]] Linke und reche Seite der Gleichung sind unter Benutzung der Summenformel für geometrische Reihen umzuformen. Der Konvergenzbereich der jeweiligen Reihe ist zu beachten.
+****************************************
+
+Die linke Seite der Gleichung berechnet sich unter Benutzung der Summenformel zu $$
+  \sum_{k=0}^\infty{x^k}=\frac{1}{1-x}\,,\quad x\in(-1,1)
+$$ die rechte Seite entsprechend $$
+  \sum_{k=0}^\infty{\left(\left(\frac{1}{2}\right)^{k+1}\cdot(x+1)^k\right)}=
+  \sum_{k=0}^\infty{\left(\frac{1}{2}\cdot\left(\frac{x+1}{2}\right)^k\right)}=
+  \frac{1}{2}\cdot\frac{1}{1-\frac{x+1}{2}}=\frac{1}{1-x}
+$$ worin $$
+  \frac{x+1}{2}\in(-1,1)\quad\leftrightarrow\quad x\in(-3,1)
+$$ den Konvergenzbereich angibt. Die Gleichheit von linker und rechter Seite ergibt sich also für alle $x$ in $$
+  (-1,1)=(-1,1)\cap(-1,3)
+$$
+
+****************************************
 
 
 ### Potenzreihen
@@ -461,7 +510,7 @@ $$ mit Koeffizienten $a_k\in\mathbb{R}$ heißt **Potenzreihe**. Die feste Stelle
 Das allgemeine Glied der Potenzreihe in Definition 1 ist $$
   s_n(x)=\sum_{k=0}^n{\left(a_k\cdot(x-x_0)^k\right)}
 $$ Bezeichnet $D_1$ den Konvergenzbereich der Potenzreihe, so stellt $$
-  x\in s(x)=\sum_{k=0}^\infty{\left(a_k\cdot(x-x_0)^k\right)}=\lim_{n\to\infty}{s_n(x)}
+  x\mapsto s(x)=\sum_{k=0}^\infty{\left(a_k\cdot(x-x_0)^k\right)}=\lim_{n\to\infty}{s_n(x)}
 $$ die *Summenfunktion* der Potenzreihe dar.
 
 **Beispiel 1.** Die nachstehenden Beispiele von Funktionenreihen stellen Potenzreihen dar.
@@ -827,7 +876,7 @@ $$ Hieraus berechnet sich der Konvergenzradius $r$ $$
 $$ Hieraus ergibt sich der Konvergenzbereich $K=(-4,0)$. An der Grenze $x=-4$ ergibt sich die konvergente Reihe $$
   \sum_{k=1}^\infty{\frac{(-2)^k}{k^3\cdot 2^k}}=
   \sum_{k=1}^\infty{\frac{(-1)^k}{k^3}}=-1+\frac{1}{8}-\frac{1}{27}+\frac{1}{64}\mp...
-$$ (Konvergenz nach Leibnitzkriterium), für $x=4$ die ebenfalls konvergente Reihe $$
+$$ (Konvergenz nach Leibnitzkriterium), für $x=0$ die ebenfalls konvergente Reihe $$
   \sum_{k=1}^\infty{\frac{2^k}{k^3\cdot 2^k}}=
   \sum_{k=1}^\infty{\frac{1}{k^3}}=1+\frac{1}{8}+\frac{1}{27}+\frac{1}{64}+...
 $$
@@ -944,7 +993,7 @@ $$ für alle $n$. Aus diesen bestimmten Integralen ergibt sich die Berechnung de
 >$$
   a_k=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)\cdot\cos{(k\cdot x)}}\,\mathrm{d}x\,,\quad  k\geq1
 $$
-3. Die Fourierkoeffizienten $k_k$, $k\geq1$, berechnen sich aus dem Ansatz $$
+3. Die Fourierkoeffizienten $b_k$, $k\geq1$, berechnen sich aus dem Ansatz $$
   \int_{-\pi}^\pi{f(x)\cdot\textcolor{orange}{\sin(n\cdot x)}}\,\mathrm{d}x=
   a_0\cdot\int_{-\pi}^\pi{\textcolor{orange}{\sin(n\cdot x)}}\,\mathrm{d}x+
   \sum_{i=1}^\infty{a_k\cdot\int_{-\pi}^\pi{\left(\textcolor{orange}{\sin(n\cdot x)}\cdot\cos{(k\cdot x)}\right)}\,\mathrm{d}x}+
@@ -969,7 +1018,7 @@ $$
 
 Der nachstehende Satz fasst Fourierreihenentwicklung einer periodischen Funktion mit $p=2\cdot\pi$ zusammen.
 
->**Satz 1.** Eine periodische Funktion $f:x\mapsto y=f(x)$, $x\in D$ mit der Periode $p=2\cdot\pi$ lässt sich darstellen als Fourierreihe $$
+>**Satz 1.** Eine periodische Funktion $f:x\mapsto y=f(x)$, $x\in D$ mit der Periode $p=2\cdot\pi$ lässt sich darstellen als [Fourierreihe](https://de.wikipedia.org/wiki/Fourierreihe) $$
   S_f(x)=\frac{a_0}{2}+\sum_{k=1}^\infty{\left(a_k\cdot\cos{(k\cdot x)}+b_k\cdot\sin{(k\cdot x)}\right)}
 $$ mit den Koeffizienten $$
   a_0=\frac{1}{\pi}\cdot\int_{-\pi}^\pi{f(x)}\,\mathrm{d}x\,,\quad
@@ -1258,7 +1307,7 @@ $$
 
 Thema dieses Kapitels sind die Differentialgleichungen für reelle Funktionen (einer reellen Variablen). Speziell werden die für viele Anwendungen wichtigen linearen Differentialgleichungen untersucht.
 
-~~Zentrale Fragen~~ sind dabei die folgenden:
+~~Zentrale Fragen~~ sind dabei die Folgenden:
 
 1. Definition einer Differentialgleichung, Unterscheidung zwischen gewöhnlichen und partiellen Differentialgleichungen, Ordnung einer Differentialgleichung, explizite und implizite Darstellung einer Differentialgleichung, Lösung einer Differentialgleichung: allgemeine / spezielle / singuläre Lösungen
 2. Richtungsfeld einer gewöhnlichen Differentialgleichung erster Ordnung in expliziter Darstellung, Isoklinen
@@ -1268,7 +1317,210 @@ Thema dieses Kapitels sind die Differentialgleichungen für reelle Funktionen (e
 ### Definition und Lösung
 
 
-!?[Begriff](https://www.youtube.com/watch?v=3cBIjccY5Qs&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=2)
+Zur Begriffsbildung wird einführend das folgende physikalische Beispiel betrachtet.
+
+**Beispiel 1.** Betrachtet wird die Schwingung eines Federschwingers entlang einer vertikalen Achse. Die Funktion $$
+  f:t\mapsto x(t)\,,\quad t\in[0,\infty)
+$$ bezeichnet die Elongation des Federschwingers, $m>0$ dessen Masse.
+
+Durch Analyse der wirkenden Kräfte, deren Überlagerung nach dem Superpositionsprinzip die Änderung des Bewegungszustandes bewirken, lässt sich der Schwingungsvorgang erklären. Es reicht aus, die Beträge der Kräfte zu betrachten, Orientierungen werden durch Multiplikation mit $-1$ bzw. $+1$ erfasst.
+
+* $F_R=-k\cdot x\quad ... \quad$ Rückstellkraft
+* $F_D=-b\cdot\dot{x}\quad ... \quad$ Dämpfungskraft
+* $F(t)\quad ... \quad$ zeitabhängige äußere Kraft
+
+worin $k>0$ die Federkonstante und $b>0$ die Dämpfungskonstante bezeichnen. Nach Newtonschen Grundgesetz gilt $$
+  m\cdot\ddot{x}(t) = F(t)-b\cdot \dot{x}(t)-k\cdot x(t) \quad\leftrightarrow\quad
+ \frac{F(t)}{m} = \ddot{x}(t)+\frac{b}{m}\cdot\dot{x}(t)+\frac{k}{m}\cdot x(t)
+$$ Dies ist eine so genannte **lineare Differentialgleichung**, in der
+
+* die den Schwingungsvorgang beschreibende Funktion $x(t)$ zusammen mit ihren ersten beiden Ableitungen $\dot{x}(t)$ und $\ddot{x}(t)$ als unbekannte Größen (linear) in der Gleichung auftauchen.
+* die Koeffizienten vor $x(t)$, $\dot{x}(t)$ beziehungsweise $\ddot{x}(t)$, also die Ausdrücke $$
+  \frac{k}{m}\,,\quad\frac{b}{m}\,,\quad 1
+$$ konstant sind und die physikalischen Parameter des Schwingungsvorgangs enthalten.
+
+Werden speziell $F(t)\equiv 0$ (keine Anregung von außen) und $b=0$ (Reibung vernachlässigt) angenommen, so wird - durch initiale Auslenkung - eine harmonische Schwingung erzeugt[^1], die sich durch die Funktion $f$ mit $$
+  f:t\mapsto x(t)=A\cdot\sin{(\omega\cdot t+\varphi)}
+$$ beschreiben lässt. Hierin bezeichnen $A>0$ die Amplitude der Schwingung, $\omega>0$ deren Kreisfrequenz und $\varphi\in[0,2\pi)$ die Anfangsphase. Setzt man diese Funktion und deren Ableitungen $$
+  \dot{f}:t\mapsto \dot{x}(t)=A\cdot\omega\cdot\cos{(\omega\cdot t+\varphi)}\,,\quad
+  \ddot{f}:t\mapsto \ddot{x}(t)=-A\cdot\omega^2\cdot\sin{(\omega\cdot t+\varphi)}
+$$ in obige Differentialgleichung ein, so erhält man $$
+  0=-A\cdot\omega^2\cdot\sin{(\omega\cdot t+\varphi)}+\frac{k}{m}\cdot
+  A\cdot\sin{(\omega\cdot t+\varphi)} \quad\forall t\geq0
+$$ woraus unmittelbar folgt $$
+  \omega^2=\frac{k}{m}\quad\text{mit der Einheit}\quad \left[\frac{k}{m}\right]={\rm 1 \frac{N}{m}\cdot\frac{1}{kg}=\frac{kg\cdot m}{m\cdot s^2}\cdot\frac{1}{kg}=\frac{1}{s^2}}
+$$ Die Funktion $f$ ist eine **Lösung** der Differentialgleichung, deren Kreisfrequenz ist durch physikalische Parameter bestimmt. Demgegenüber sind die Parameter $A$ und $\varphi$ als Lösungsparameter frei wählbar, die Lösung besitzt zwei Freiheitsgrade.
+
+
+Differentialgleichungen
+===
+
+
+>**Definition 1.** Eine Gleichung, in der gewöhnliche beziehungsweise partielle Ableitungen einer gesuchten Funktion $f$ auftreten, nennt man [Differentialgleichung](https://de.wikipedia.org/wiki/Differentialgleichung).
+>
+>1. Für reelle Funktionen in einer reellen Variablen $x\in D\subseteq\mathbb{R}$ treten gewöhnliche Ableitungen von $f$ nach $x$ auf. Die Differentialgleichung wird **gewöhnliche** Differentialgleichung genannt.
+>2. Für reelle Funktionen in mehreren reellen Variablen $(x_1,...,x_k)\in D\subseteq\mathbb{R}^k$ treten partielle Ableitungen von $f$ nach $x_1$ bis $x_k$ auf. Die Differentialgleichung wird **partielle** Differentialgleichung genannt.
+>
+> Die höchste, auftretende Ableitungsordnung der gesuchten Funktion $f$ in der Differentialgleichung heißt **Ordnung** der Differentialgleichung.
+
+Die Begriffe *Gewöhnliche Differentialgleichung* und Lösung einer Differentialgleichung sind in nachstehendem Video an einem Beispiel erklärt.
+
+!?[Begriff](https://www.youtube.com/watch?v=3cBIjccY5Qs&list=PLLTAHuUj-zHhJSdV8hqWaydgOWjF-fYK0&index=2 "Differentialgleichung, Daniel Jung")
+
+**Bemerkung 1.** Eine gewöhnliche Differentialgleichung $n$-ter Ordnung in der gesuchten Funktion $$
+  f:x\mapsto y=f(x)\,,\quad x\in D\subseteq\mathbb{R}
+$$ ist **implizit** dargestellt, wenn es einen Ausdruck $$
+  G\left(x,f(x),f^\prime(x),...,f^{(n)}(x)\right)=:G\left(x,y,y^\prime,...,y^{(n)}\right)
+$$ gibt, der die unabhängige Variable, die Funktion $f$ und deren Ableitungen bis zur Ordnung $n$ enthält, und die Differentialgleichung in der Form $G=0$ dargestellt werden kann. Lässt sich die Differentialgleichung auflösen nach der Ableitung zur höchsten vorkommenden Ordnung $$
+  y^{(n)}=f^{(n)}(x)=g\left(x,f(x),f^\prime(x),...,f^{(n-1)}(x)\right)
+$$ so wird diese Darstellung **explizit** genannt.
+
+**Beispiel 2.** Die nachstehenden Differentialgleichungen sind auf ihren Typ und die Darstellungsform zu untersuchen.
+
+1. $$ \ddot{x}(t)=-\left(2\delta\cdot\dot{x}(t)+\omega^2\cdot x(t)\right) $$
+2. $$ \left(y^\prime(x)\right)^2+x\cdot y^\prime(x)-3\cdot y(x)=0 $$
+3. $$ \exp{\left(2\cdot\ln{\left(y^{\prime\prime\prime}(x)\right)}\right)}+y^2(x)\cdot y^{(2)}(x)=1+\left(y^{\prime\prime\prime}(x)\right)^2 $$
+4. $$ u_{xx}(x,t)-u_t(x,t)=0 $$
+
+<!-- data-style="none" -->
+| Nummer | gesuchte Funktion | Typ | Ordnung | Darstellungsform |
+| :---: | :---: | :---: | :---: | :---: |
+| 1. | $t\mapsto x$ | gewöhnlich | $2$ | explizit |
+| 2. | $x\mapsto y$ | gewöhnlich | $1$ | implizit |
+| 3. | $x\mapsto y$ | gewöhnlich | $2$ | - |
+| 4. | $(t,x)\mapsto u$ | partiell | $2$ | implizit |
+
+Es ist zu beachten, dass sich die linke Seite der Gleichung äquivalent umformt $$
+  \exp{\left(2\cdot\ln{\left(y^{\prime\prime\prime}(x)\right)}\right)}=
+  \exp{\left(\ln{\left(y^{\prime\prime\prime}(x)\right)^2}\right)}=\left(y^{\prime\prime\prime}(x)\right)^2
+$$ wonach sich das Quadrat $\left(y^{\prime\prime\prime}(x)\right)^2$ auf beiden Seiten der Gleichung eliminieren lässt.
+
+**Beispiel 3.** Angegeben werden noch je eine gewöhnliche beziehungsweise partielle Differentialgleichung, die auf die Verwendung von Differentialgleichungen in verschiedenen physikalisch-technischen Zusammenhängen verweisen soll.
+
+1. Die partielle Differentialgleichung $$
+  \frac{\partial T}{\partial t}=\frac{\lambda}{\rho\cdot c}\cdot\left(
+    \frac{\partial^2 T}{\partial x^2}+\frac{\partial^2 T}{\partial y^2}+\frac{\partial^2 T}{\partial z^2}
+  \right)\,,\quad (t,x,y,z)\mapsto T=f(t,x,y,z)
+$$ heißt *Wärmeleitungsgleichung*. Sie ist von zweiter Ordnung.
+2. Die gewöhnliche Differentialgleichung $$
+  \frac{\mathrm{d}^2s}{\mathrm{d}t^2}=g
+$$ mit der (konstanten) Schwerebeschleunigung $g$ beschreibt *senkrechte Würfe* sowie den *freien Fall*. Die gesuchte Funktion beschreibt das zu dieser Differentialgleichung gehörende Weg-Zeit-Gesetz.
+
+
+Lösungen einer gewöhnlichen Differentialgleichung
+===
+
+
+Gesucht ist eine Funktion $f$, welche zusammen mit den Ableitungen $f^\prime$, ... , $f^{(n)}$ mit $n\in\mathbb{N}^\ast$ eine gewöhnliche Differentialgleichung $n$-ter Ordnung $$
+  G\left(x,y,y^\prime,...,y^{(n)}\right)=0
+$$ erfüllt.
+
+>Wir unterscheiden:
+>
+>1. Eine Funktion $f$ in der reellen Variablen $x$ mit $$
+  f:I\to\mathbb{R},\, x\mapsto y=f(x)\quad\text{kurz:}\;y=y(x)
+$$ heißt **Lösung** der Differentialgleichung $G=0$, falls $f$ auf dem Intervall $I\subseteq\mathbb{R}$ mindestens $n$-mal differenzierbar ist und für alle $x\in I$ die Differentialgleichung $G=0$ erfüllt.
+>2. Die **allgemeine Lösung** ist die Menge aller Lösungen der Differentialgleichung $G=0$. Sie bildet im Allgemeinen eine Schar von Funktionen in $n$ voneinander unabhängigen Parametern $c_i$, $i\in\{1,2,...,n\}$.
+>3. Eine **spezielle Lösung** der Differentialgleichung $G=0$ entsteht aus der allgemeinen Lösung durch Spezifikation / Wahl aller auftretenden Parameter $c_i$, $i\in\{1,2,...,n\}$. Als **singulär** bezeichnet man  Lösungen, die nicht durch spezielle Wahl der Parameter aus der allgemeinen Lösung erhalten werden können.
+
+**Beispiel 4.** Betrachtet werden die nachstehenden, gewöhnlichen Differentialgleichungen in der gesuchten Funktion $y=y(x)$ beziehungsweise $s=s(t)$.
+
+1. $y''\cdot y-y-x^2=0$. Die Funktion $y=x^2$ mit $x\in\mathbb{R}$ ist eine Lösung der Differentialgleichung, da mit den ersten beiden Ableitungen $$
+  y'(x)=2\cdot x\,,\quad y''(x)=2
+$$ durch Einsetzen in die Differentialgleichung folgt $$
+  2\cdot y-y-x^2=y-x^2=0\quad\leftrightarrow\quad y=x^2\quad \forall x\in\mathbb{R}
+$$
+2. $\ddot{s}=g$ (konstant, Fallbeschleunigung). Durch zweimalige unbestimmte Integration von linker und rechter Seite der Differentialgleichung berechnet sich die allgemeine Lösung $$
+  s(t)=\frac{1}{2}\cdot g\cdot t^2+c_1\cdot t+c_2\,,\quad t\in\mathbb{R}
+$$ worin $c_1\in\mathbb{R}$ und $c_2\in\mathbb{R}$ die auftretenden Scharparameter bezeichnen. $c_1=\dot{s}(0)$ kann als Anfangsgeschwindigkeit, $c_2=s(0)$ als Anfangsweg interpretiert werden. Sind speziell $c_1=0$ und $c_2=0$ gewählt, so beschreibt die spezielle Lösung $s(t)$ das Weg-Zeit-Gesetz des freien Falls.
+
+
+Anfangs- und Randbedingungen
+===
+
+
+Wie im vorangegangenen Beispiel findet man spezielle Lösungen aus der allgemeinen Lösung häufig durch Vorgabe von Anfangsbedingungen beziehungsweise Randbedingungen.
+
+> Gegeben sind eine
+>
+>* gewöhnliche Differentialgleichung $n$-ter Ordnung $$
+  G\left(x,y,y^\prime,...,y^{(n)}\right)=0
+$$ in einer gesuchten, $n$-mal stetig differenzierbaren Funktion $y=y(x)$ mit $x\in D\subseteq\mathbb{R}$.
+>* Menge von $n$ Anfangsbedingungen $$
+  y(\textcolor{red}{x_0})=y_0\,,\quad y'(\textcolor{red}{x_0})=y_1\,,\quad...\quad\,,\quad y^{(n-1)}(\textcolor{red}{x_0})=y_{n-1}
+$$ für einen Anfangswert $\textcolor{red}{x_0}\in D$ und vorgeschriebenen Werten $y_0$, $y_1$, ... , $y_{n-1}$ für diese Ableitungen.
+>
+> Gesucht ist eine spezielle Lösung der Differentialgleichung, welche alle Anfangsbedingungen erfüllt. Diese wird Lösung des **Anfangswertproblems** genannt.
+
+> Wird alternativ eine Menge von $n$ Randbedingungen betrachtet, die durch Vorgabe der Funktionswerte $$
+  y(\textcolor{red}{x_1})\,,\quad y(\textcolor{blue}{x_2})\,,\quad...\,,\quad y(\textcolor{purple}{x_n})
+$$ an $n$ verschiedenen Stellen $\textcolor{red}{x_1}\in D$, $\textcolor{blue}{x_2}\in D$, ... , $\textcolor{purple}{x_n}\in D$  entstehen, entsteht ein **Randwertproblem**.
+>
+> Eine spezielle Lösung der Differentialgleichung, welche alle Randbedingungen erfüllt, wird Lösung des Randwertproblems genannt.
+
+
+**Beispiel 5.**
+
+1. Bezogen auf die in Beispiel 4 (2) betrachtete Differentialgleichung $\ddot{s}=g$ werden die beiden *Anfangsbedingungen* $$
+  s(0)=0\,,\quad \dot{s}(0)=10
+$$ vorgegeben; erstere gibt den zur Zeit $t_0=0$ zurückgelegten Weg vor, letztere die zu dieser Zeit angenommenen / geforderte Anfangsgeschwindigkeit. Die Funktion $$
+  t\mapsto s(t)=\frac{1}{2}\cdot g\cdot t^2+10\cdot t\,, \quad t\geq 0
+$$ erfüllt die Differentialgleichung und zusätzlich beide Anfangsbedingungen: Sie wird Lösung des Anfangsproblems genannt. Physikalisch beschreibt diese das Weg-Zeit-Gesetz eines senkrechten Wurfes (nach unten).
+2. Alternativ lassen sich in dem Beispiel auch zwei *Randbedingungen* an die gesuchte Funktion $s=s(t)$ stellen. $$
+  s(0)=10\,,\quad s(1)=20
+$$ Mit Hilfe dieser Bedingungen lassen sich die in der allgemeinen Lösung auftretenden Lösungsparameter berechnen und eine spezielle Lösung bestimmen. Neben $s(0)=10\;\leadsto\; c_2=10 $ berechnet sich so $$
+  s(1)=\frac{1}{2}\cdot g\cdot 1^2+c_1\cdot 1 +10=20\quad\leftrightarrow\quad c_1=10-\frac{1}{2}\cdot g
+$$
+
+
+Sicher gewusst?
+===
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** Gegeben ist eine dreiparametrige Schar von Kurven zu den Funktionen $$
+  x\mapsto y(x)=c_1\cdot\exp{x}+c_2\cdot\exp{(2\cdot x)}+c_3\cdot\exp{(3\cdot x)}\,,\quad c_1\in\mathbb{R}\,,\;c_2\in\mathbb{R}\,,\;c_3\in\mathbb{R}
+$$ Geben Sie die Ordnung einer gewöhnlichen Differentialgleichung an, deren allgemeine Lösung obige Funktionenschar ist.
+
+[( )] $1$
+[( )] $2$
+[(X)] $3$
+[[?]] Nach Definition 1 ist die Ordnung einer gewöhnlichen Differentialgleichung die höchste, auftretende Ableitungsordnung der gesuchten Funktion. Überlegen Sie, welche Beziehung zwischen der Ordnung und den auftretenden Parametern in der allgemeinen Lösung besteht.
+
+**Frage 2.** Die gegebene, dreiparametrige Schar von Funktionen $$
+  x\mapsto y(x)=c_1\cdot\exp{x}+c_2\cdot\exp{(2\cdot x)}+c_3\cdot\exp{(3\cdot x)}\,,\quad c_1\in\mathbb{R}\,,\;c_2\in\mathbb{R}\,,\;c_3\in\mathbb{R}
+$$ sei allgemeine Lösung einer gewöhnlichen Differentialgleichung.
+
+Berechnen Sie hieraus die spezielle Lösung der Differentialgleichung zum Anfangsproblem $$
+  y(0)=0\,,\quad y'(0)=0\quad\text{und}\quad y''(0)=1
+$$
+
+[( )] $$ x\mapsto y(x)=\frac{1}{2}\cdot\exp{x}+\exp{(2\cdot x)}-\frac{1}{2}\cdot\exp{(3\cdot x)} $$
+[(X)] $$ x\mapsto y(x)=\frac{1}{2}\cdot\exp{x}-\exp{(2\cdot x)}+\frac{1}{2}\cdot\exp{(3\cdot x)} $$
+[( )] $$ x\mapsto y(x)=\frac{1}{2}\cdot\exp{(2\cdot x)}-\exp{(3\cdot x)}+\frac{1}{2}\cdot\exp{(4\cdot x)} $$
+[[?]] Prüfen Sie, ob die einzelnen Funktionen $x\mapsto y(x)$ der Antwortoptionen die Anfangsbedingungen erfüllen, ~~und~~, ob Sie durch Spezifikation (Wahl) der Scharparameter $c_1$, $c_2$ und $c_3$ aus der allgemeinen Lösung erhalten werden.
+****************************************
+
+* Für die erste Antwortoption können die Parameter $c_1=\frac{1}{2}$, $c_2=1$ und $c_3=\frac-{1}{2}$ in der angegebenen, allgemeinen Lösung gewählt werden, erstere ist also eine spezielle Lösung der gewöhnlichen Differentialgleichung. Hingegen gelten für die Funktion $$
+  y(0)=\frac{1}{2}+1-\frac{1}{2}=0\,,\quad
+  y'(0)=\frac{1}{2}+2-3\cdot\frac{1}{2}=1\quad\text{und}\quad
+  y''(0)=\frac{1}{2}+2^2-3^2\cdot\frac{1}{2}=0
+$$ Diese Funktion löst die gegebenen Anfangsbedingungen nicht.
+* Für die zweite Antwortoption können die Parameter $c_1=\frac{1}{2}$, $c_2=-1$ und $c_3=\frac{1}{2}$ in der angegebenen, allgemeinen Lösung gewählt werden, auch diese Funktion ist somit eine spezielle Lösung der gewöhnlichen Differentialgleichung. Darüberhinaus gelten für die Funktion $$
+  y(0)=\frac{1}{2}-1+\frac{1}{2}=0\,,\quad
+  y'(0)=\frac{1}{2}-2+3\cdot\frac{1}{2}=0\quad\text{und}\quad
+  y''(0)=\frac{1}{2}-2^2+3^2\cdot\frac{1}{2}=1
+$$ Diese Funktion löst zusätzlich die gegebenen Anfangsbedingungen, ist demnach die gesuchte spezielle Lösung der Differentialgleichung.
+* Für die dritte Antwortoption gelten zwar die Bedingungen $$
+  y(0)=\frac{1}{2}-1+\frac{1}{2}=0\,,\quad
+  y'(0)=2\cdot\frac{1}{2}-3+4\cdot\frac{1}{2}=0\quad\text{und}\quad
+  y''(0)=2^2\cdot\frac{1}{2}-3^2+4^2\cdot\frac{1}{2}=1
+$$ d. h. diese Funktion löst ebenfalls die gegebenen Anfangsbedingungen. Jedoch lassen sich keine Parameter $c_1$, $c_2$ und $c_3$ in der gegebenen, allgemeinen Differentialgleichung finden, diese als spezielle Lösung anzugeben. Die dritte Antwortoption löst nicht die gewöhnliche Differentialgleichung.
+****************************************
+
+
+[^1]: Für $F(t)\equiv 0$ wird die Schwingung *frei* genannt, die obige Differentialgleichung *homogen*. Ist hingegen $F(t)\not\equiv0$, so wird die Schwingung *erzwungen* genannt, die obige Differentialgleichung * inhomogen*. Siehe Abschnitt [Linearer Typ n. Ordnung](Linearer-Typ-n.-Ordnung).
 
 
 ### Trennung der Variablen
@@ -1354,9 +1606,47 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
-**Frage 1.** ...
+**Frage 1.** Gegeben ist die gewöhnliche Differentialgleichung $$
+  y-2\cdot x\cdot y'=0
+$$ in der gesuchten Funktion $x\mapsto y(x)$ mit $x\in D\subseteq\mathbb{R}$.
 
-**Frage 2.** ...
+Bilden Sie für $x\not=0$ eine explizite Darstellung der Differentialgleichung, siehe Abschnitt [Definition und Lösung](#Definition-und-Lösung). Entscheiden Sie, ob die Differentialgleichung separabel ist.
+
+[(X)] Die gegebene Differentialgleichung ist separabel.
+[( )] Die gegebene Differentialgleichung ist nicht separabel.
+[[?]] Formen Sie die Differentialgleichung in die Form $y'=g(x,y)$ um, d. h. lösen Sie nach $y'$ auf. Für separable Differentialgleichungen lässt sich der Term $g(x,y)$ als ein spezielles Produkt darstellen, siehe Definition 1.
+****************************************
+
+Unter der Voraussetzung $x\not=0$ lässt sich obige Differentialgleichung in explizite Darstellung umformen $$
+  y-2\cdot x\cdot y'=0\quad\leftrightarrow\quad
+  y=2\cdot x\cdot y'\quad\leftrightarrow\quad
+  y'=\frac{y}{2\cdot x}\quad\leftrightarrow\quad
+  y'=\frac{1}{2\cdot x}\cdot y
+$$ Die erste Ableitung der gesuchten Funktion ist Produkt der Funktionen $$
+  f(x)=\frac{1}{2\cdot x}\quad\text{und}\quad h(y)=y
+$$ Nach Definition 1 ist die Differentialgleichung separabel und kann durch Trennung der Variablen gelöst werden.
+
+****************************************
+
+**Frage 2.** Gegeben ist die Anfangswertaufgabe $$
+  y'(x)=\sinh(x)\,,\quad y(0)=1
+$$ Berechnen Sie die Lösung der Anfangswertaufgabe.
+
+[( )] $y(x)=\sinh{(x)}+1$
+[( )] $y(x)=\cosh{(x)}+c\,,\quad c\in\mathbb{R}$
+[(X)] $y(x)=\cosh{(x)}$
+[[?]] Eine reelle Funktion $x\mapsto y(x)$, $x\in D\subseteq\mathbb{R}$ heißt Lösung einer Anfangswertaufgabe, wenn diese spezielle Lösung der Differentialgleichung ist und die Anfangsbedingungen löst.
+****************************************
+
+Die allgemeine Lösung der obigen Differentialgleichung ist durch einmalige gewöhnliche Integration von linker und rechter Seite berechenbar, da die rechte Seite nur von $x$, nicht jedoch von $y$ abhängt. Die allgemeine Lösung berechnet sich $$
+  y(x)=\cosh{(x)}+c\,,\quad c\in\mathbb{R}
+$$ Für die Anfangsbedingung folgt $$
+  y(0)=\cosh{(0)}+c=1+c=1\quad\leftrightarrow\quad c=0
+$$ Somit löst die in der dritten Antwortoption aufgeführte Funktion die Differentialgleichung und die Anfangsbedingung.
+
+Die Funktion in der ersten Antwortoption erfüllt hingegen nur die Anfangsbedingung, löst jedoch nicht die Differentialgleichung.
+
+****************************************
 
 
 ### Lösung mittels Substitution
@@ -1472,10 +1762,76 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
-**Frage 1.** ...
+**Frage 1.** Die nachstehenden gewöhnlichen Differentialgleichungen erster Ordnung $$
+  y^\prime(x)=h\left(\frac{y(x)}{x}\right)\quad\text{bzw.}\quad y^\prime(x)=g(a\cdot x+b\cdot y(x)+d)
+$$ mit $a\in\mathbb{R}$, $b\in\mathbb{R}$ und $d\in\mathbb{R}$ sollen mittels Substitution $$
+  u(x)=\frac{y(x)}{x}\quad\text{bzw.}\quad u(x)=a\cdot x+b\cdot y(x)+d
+$$ gelöst werden. Ordnen Sie die Differentialgleichungen vor und nach der durchgeführten Substitution einander zu.
 
-**Frage 2.** ...
+[[$$ 2\cdot x\cdot y\cdot y'-x^2=y^2 $$] [$$ y'=(x+y)^2+2\cdot(x+y)+1 $$] [$$ x^2\cdot y'=y\cdot(x-y) $$]]
+[(X) ( ) ( )]  $$ 2\cdot x\cdot u\cdot u'=1-u^2 $$
+[( ) ( ) (X)]  $$ x\cdot u'=-u^2 $$
+[( ) (X) ( )]  $$ u'=1+u^2 $$
+[[?]] Formen Sie dort, wo noch nicht gegeben, die gegebenen Differentialgleichungen in die explizite Form um. Prüfen Sie, ob eine Substitution durch die gegebenen Funktionen $x\mapsto u(x)$ möglich ist und führen Sie die Substitution durch.
+****************************************
 
+* Die Differentialgleichung $ 2\cdot x\cdot y\cdot y'-x^2=y^2 $ lässt sich unter der Bedingung $x\cdot y\not=0$ in die explizite Form $$
+  y'=\frac{1}{2}\cdot\frac{x^2+y^2}{x\cdot y}=\frac{1}{2}\cdot\left(\frac{x}{y}+\frac{y}{x}\right)
+$$ umformen. Mittels der Substitution $$
+  u=\frac{y}{x}\quad \rightarrow\quad y=u\cdot x\,,\quad y'=u'\cdot x+u
+$$ ergibt sich nach Einsetzen in die Substitutionsfunktion $$
+  \frac{1}{2}\cdot\left(\frac{1}{u}+u\right)=u'\cdot x+u\quad\rightarrow\quad 2\cdot x\cdot u\cdot u'=1-u^2
+$$
+* Die Differentialgleichung $$
+  y'=(x+y)^2+2\cdot(x+y)+1=(1+x+y)^2
+$$ ist bereits in expliziter Form gegeben. Mittels der Substitution $$
+  u=1+x+y(x)\quad \rightarrow\quad u'=1+y'(x)
+$$ ergibt sich nach Einsetzen in die Substitutionsfunktion $$
+  u'=1+u^2
+$$
+* Die Differentialgleichung $ x^2\cdot y'=y\cdot(x-y) $ lässt sich unter der Bedingung $x\not=0$ in die explizite Form $$
+  y'=\frac{y\cdot x-y^2}{x^2}=\frac{y}{x}-\left()\frac{y}{x}\right)^2
+$$ umformen. Mittels der Substitution $$
+  u=\frac{y}{x}\quad \rightarrow\quad y=u\cdot x\,,\quad y'=u'\cdot x+u
+$$ ergibt sich nach Einsetzen in die Substitutionsfunktion $$
+  u'\cdot x+u=u-u^2\quad\rightarrow\quad x\cdot u'=-u^2
+$$
+
+****************************************
+
+**Frage 2.** Berechnen Sie die Lösung des Anfangswertproblems $$
+  y'(x)=(1+x+y(x))^2\,,\quad y(0)=2
+$$ in der gesuchten Funktion $x\in D\subseteq\mathbb{R}$.
+
+[( )] $$ y(x)=\tan{(x+c)}-x-1\,,\quad c\in\mathbb{R}\,,\quad x\not=\frac{2\cdot k+1}{2}\cdot\pi-c\;\;(k\in\mathbb{Z}) $$
+[(X)] $$ y(x)=\tan{(x+\arctan{3})}-x-1 $$
+[( )] $$ y(x)=\tan{(x+3)}-x-1 $$
+[[?]] Finden Sie eine geeignete Substitution, um die gewöhnliche Differentialgleichung in eine separable Differentialgleichung umzuwandeln.
+****************************************
+
+Die Differentialgleichung $$
+  y'(x)=(1+x+y(x))^2
+$$ ist bereits in expliziter Form gegeben. Mittels der Substitution $$
+  u=1+x+y(x)\quad \rightarrow\quad u'=1+y'(x)
+$$ ergibt sich nach Einsetzen in die Substitutionsfunktion $$
+  u'=1+u^2
+$$ Dies ist eine gewöhnliche, separable Differentialgleichung erster Ordnung in der gesuchten Funktion $x\mapsto u(x)$, die mittels Trennung der Variablen gelöst werden kann. Es berechnet sich schrittweise $$
+  \frac{\mathrm{d}u}{1+u^2}=\mathrm{d}x\quad\leftrightarrow\quad
+  \int{\frac{\mathrm{d}u}{1+u^2}}=\int{\mathrm{d}x}\quad\leftrightarrow\quad
+  \arctan{u}+c_1=x+c_2
+$$ mit reellen Integrationskonstanten $c_1$ und $c_2$. Durch Zusammenfassung dieser und Umformung in die explizite Darstellung ergibt sich daraus $$
+  x\mapsto u(x)=\tan{(x+c)}\,,\quad c=c_2-c_1
+$$ Rückersetzung in die Substitutionsgleichung liefert schließlich $$
+  x\mapsto y(x)=\tan{(x+c)}-x-1\,,\quad c\in\mathbb{R}\,,\quad x\not=\frac{2\cdot k+1}{2}\cdot\pi-c\;\;(k\in\mathbb{Z})
+$$ als allgemeine Lösung der Differentialgleichung.
+
+Aus der Anfangsbedingung $y(0)=2$ lässt sich der Parameter $c$ bestimmen. $$
+  y(0)=2\quad\leadsto\quad \tan{c}-1=2\quad\leftrightarrow\quad \tan{c}=3\quad\leftrightarrow\quad c=\arctan{3}
+$$ Hieraus folgt die Lösung des Anfangswertproblems $$
+  y(x)=\tan{(x+\arctan{3})}-x-1
+$$
+
+****************************************
 
 [^1]: Benutzen Sie für die Darstellung des Richtungsfeldes einer gewöhnlichen Differentialgleichung erster Ordnung $$
   \frac{\mathrm{d}{y}}{\mathrm{d}{x}}=g(x,y(x))
@@ -1631,12 +1987,12 @@ $$ vergleiche Beispiel 1 in diesem Abschnitt.
 $$ mit zu bestimmender Funktion $K(x)$. Durch Einsetzen von $y_p(x)$ und $y^\prime_p(x)$ in die inhomogene Differentialgleichung ergibt sich $$
   K^\prime(x)=\sin{x}\cdot\cos{x}\cdot\exp{(-\cos{x})}
 $$ Unter Benutzung der Substitution $u=-\cos{x}$ und partieller Integration berechnet sich $$
-  K(x)=\int{K^\prime(x)}\mathrm{d}x=\int{\left(\sin{x}\cdot\cos{x}\cdot\exp{(-\cos{x})}\right)}\mathrm{d}x=(1-\cos{x})\cdot\exp{(-\cos{x})}+c\,,\quad c\in\mathbb{R}
+  K(x)=\int{K^\prime(x)}\mathrm{d}x=\int{\left(\sin{x}\cdot\cos{x}\cdot\exp{(-\cos{x})}\right)}\mathrm{d}x=(1+\cos{x})\cdot\exp{(-\cos{x})}+c\,,\quad c\in\mathbb{R}
 $$ Die Integrationskonstante kann Null gesetzt werden, $c=0$. Die inhomogene Differentialgleichung besitzt die partikuläre Lösung $$
-  x\mapsto y_p(x)=(1-\cos{x})\cdot\exp{(-\cos{x})}\cdot\exp{(\cos{x})}=1-\cos{x}
+  x\mapsto y_p(x)=(1+\cos{x})\cdot\exp{(-\cos{x})}\cdot\exp{(\cos{x})}=1+\cos{x}
 $$
 3. Die inhomogene Differentialgleichung besitzt damit die allgemeine Lösung (als Summe der Lösungsteile aus den Abschnitten 1. und 2.)$$
-  f:x\mapsto y(x)=\textcolor{purple}{y_h(x)}+\textcolor{pink}{y_p(x)}=\textcolor{purple}{k\cdot\exp{(\cos{x})}}+\textcolor{pink}{1-\cos{x}}
+  f:x\mapsto y(x)=\textcolor{purple}{y_h(x)}+\textcolor{pink}{y_p(x)}=\textcolor{purple}{k\cdot\exp{(\cos{x})}}+\textcolor{pink}{1+\cos{x}}
 $$
 
 
@@ -1686,11 +2042,11 @@ $$
 Wird zusätzlich die Anfangsbedingung $v(0)=0$ (Anfangsgeschwindigkeit ist Null) betrachtet, so ist $$
   \frac{K}{m}+c\cdot\exp{\left(-\frac{r}{m}\cdot 0\right)}=\frac{K}{m}+c\cdot 1=0\quad\leftrightarrow\quad
   c=-\frac{K}{m}
-$$ woraus sich die Lösung des Anfangswertproblems ergibt $$
+$$ woraus sich die Lösung des Anfangsproblems ergibt $$
   t\mapsto v(t)=\frac{K}{r}\cdot\left(1-\exp{\left(-\frac{r}{m}\cdot t\right)}\right)
 $$ siehe nachstehende Abbildung.
 
-![Beschleunigte Bewegung](img/mat-bild-11.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $\dot{v}(t)=\frac{K}{m}-\frac{r}{m}\cdot v(t)$ im $t-v$-Koordinatensystem, zusammen mit der Lösung des Anfangswertproblems $v(0)=0$. Der Funktionsgraph ist nach oben beschränkt durch die Schranke $\frac{K}{r}$.")
+![Beschleunigte Bewegung](img/mat-bild-11.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $\dot{v}(t)=\frac{K}{m}-\frac{r}{m}\cdot v(t)$ im $t-v$-Koordinatensystem, zusammen mit der Lösung des Anfangsproblems $v(0)=0$. Der Funktionsgraph ist nach oben beschränkt durch die Schranke $\frac{K}{r}$.")
 
 
 Sicher gewußt
