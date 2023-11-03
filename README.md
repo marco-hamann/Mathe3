@@ -489,7 +489,7 @@ $$ die rechte Seite entsprechend $$
 $$ worin $$
   \frac{x+1}{2}\in(-1,1)\quad\leftrightarrow\quad x\in(-3,1)
 $$ den Konvergenzbereich angibt. Die Gleichheit von linker und rechter Seite ergibt sich also für alle $x$ in $$
-  (-1,1)=(-1,1)\cap(-1,3)
+  (-1,1)=(-1,1)\cap(-3,1)
 $$
 
 ****************************************
@@ -559,7 +559,7 @@ Der ~~Konvergenzbereich~~ $D_1$ einer Potenzreihe ergibt sich zu $$
 $$ d. h. als zur Entwicklungsstelle $x_0$ symmetrisches Intervall, worin $r$ den **Konvergenzradius** bezeichnet, beziehungsweise ist $D_1=\mathbb{R}$. (In diesem Fall ist $r$ als 'unbegrenzt' groß zu interpretieren.)
 
 Der Konvergenzradius lässt sich mithilfe der Formel $$
-    r=\frac{1}{\limsup_{n\to\infty}{\sqrt[n]{|a_{n+1}|}}}
+    r=\frac{1}{\limsup_{n\to\infty}{\sqrt[n]{|a_{n}|}}}
 $$ d. h. unter Benutzung des Limes superior und der expliziten Darstellung der Koeffizienten $n\mapsto a_n$ der Potenzreihe berechnen. Siehe auch [Konvergenzradius](https://de.wikipedia.org/wiki/Konvergenzradius).
 
 Gilt ab einem $n\in\mathbb{N}$ für alle folgenden Argumente $N>n$ für die Koeffizienten der Potenzreihe $a_N\not=0$, so lässt sich der Konvergenzradius einfacher berechnen mittels $$
@@ -961,7 +961,7 @@ Fourierkoeffizienten
 Für die Berechnung der Fourierkoeffizienten wird $D\supseteq(-\pi,\pi)$ vorausgesetzt.
 
 1. Zur Berechnung des Fourierkoeffizienten $a_0$ werden beide Seiten der Ansatzgleichung über dem Intervall $(-\pi,\pi)$ integriert. Es ergibt sich (ohne Nachweis) $$
-  \int_{-\pi}^\pi{f(x)}\,\mathrm{d}x=\int_{-\pi}^\pi{a_0}\,\mathrm{d}x+
+  \int_{-\pi}^\pi{f(x)}\,\mathrm{d}x=\int_{-\pi}^\pi{\frac{a_0}{2}}\,\mathrm{d}x+
   \sum_{i=1}^\infty{a_k\cdot\int_{-\pi}^\pi{\cos{(k\cdot x)}}\,\mathrm{d}x}+
   \sum_{i=1}^\infty{b_k\cdot\int_{-\pi}^\pi{\sin{(k\cdot x)}}\,\mathrm{d}x}=0
 $$ woraus sich unter Beachtung von $$
@@ -1487,6 +1487,37 @@ $$ Geben Sie die Ordnung einer gewöhnlichen Differentialgleichung an, deren all
 [( )] $2$
 [(X)] $3$
 [[?]] Nach Definition 1 ist die Ordnung einer gewöhnlichen Differentialgleichung die höchste, auftretende Ableitungsordnung der gesuchten Funktion. Überlegen Sie, welche Beziehung zwischen der Ordnung und den auftretenden Parametern in der allgemeinen Lösung besteht.
+****************************************
+
+Die Funktion $x\mapsto y(x)$ ist eine Linearkombination der Funktionen $$
+  x\mapsto y=f_1(x)=\exp{x}\,,\quad x\mapsto y=f_2(x)=\exp{(2\cdot x)}\quad\text{und}\quad x\mapsto y=f_3(x)=\exp{(3\cdot x)}
+$$ mit gemeinsamen, maximalem reellem Definitionsbereich $D=\mathbb{R}$. Die Funktionen sind offensichtlich linear unabhängig. Noch ohne Wissen zu linearen Differentialgleichungen mit konstanten Koeffizienten wird hier eine Linearkombination der Funktion $x\mapsto y(x)$ und ihrer ersten drei gewöhnlichen Ableitungen gebildet, um eine Differentialgleichung zu bestimmen. $$
+  a\cdot y(x)+b\cdot y^{\prime}+c\cdot y^{\prime\prime}+d\cdot y^{\prime\prime\prime}=0\;\forall x\in D
+$$
+In der Differentialgleichung treten die ersten drei Ableitungen der Funktionen $x\mapsto y=f(x)$, $x\in D$ auf, die sich ergeben zu $$
+  \begin{split}
+   f^\prime(x) & =c_1\cdot \exp{x}+2\cdot c_2\cdot \exp{2x}+3\cdot c_3\cdot  \exp{3x} \\
+   f^{\prime\prime}(x) & =c_1\cdot \exp{x}+4\cdot c_2\cdot \exp{2x}+9\cdot c_3\cdot  \exp{3x} \\
+   f^{\prime\prime\prime}(x) & =c_1\cdot \exp{x}+8\cdot c_2\cdot \exp{2x}+27\cdot c_3\cdot  \exp{3x} \\
+  \end{split}
+$$ Eingesetzt in die Differentialgleichung für $y(x)$, $y^{\prime}(x)$, $y^{\prime\prime}(x)$ und $y^{\prime\prime\prime}(x)$ ergibt schrittweise $$
+  \begin{split}
+   & a\cdot \left( c_1\cdot \exp{x}+8\cdot c_2\cdot \exp{2x}+27\cdot c_3\cdot  \exp{3x} \right) \\
+   + & b\cdot \left( c_1\cdot \exp{x}+4\cdot c_2\cdot \exp{2x}+9\cdot c_3\cdot  \exp{3x} \right) \\
+   + & c\cdot \left( c_1\cdot \exp{x}+2\cdot c_2\cdot \exp{2x}+3\cdot c_3\cdot  \exp{3x} \right) \\
+   + & d\cdot \left( c_1\cdot \exp{x}+c_2\cdot \exp{2x}+c_3\cdot \exp{3x} \right) \\
+   = & \exp{x}\cdot c_1\cdot\left(a+b+c+d\right) + \exp{2x}\cdot c_2\cdot\left(8a+4b+2c+d\right) + \exp{3x}\cdot c_3\cdot\left(27a+9b+3c+d\right)\stackrel{!}{=}0
+  \end{split}
+$$ Wegen der linearen Unabhängigkeit der Funktionen $x\mapsto \exp{x}$, $x\mapsto \exp{2x}$ und $x\mapsto \exp{3x}$ auf $D=\mathbb{R}$ ist die Differentialgleichung für jedes Parametertripel $(c_1,c_2,c_3)$ erfüllt genau dann, wenn $$
+  a+b+c+d=0\quad\wedge\quad 8a+4b+2c+d=0\quad\wedge\quad 27a+9b+3c+d=0
+ $$ Dies ist ein System homogener linearer Gleichungen in den Koeffizienten $a$, $b$, $c$ und $d$ der Differentialgleichung mit der Lösung $$
+  a=-\lambda ,\quad
+  b=6\cdot\lambda ,\quad
+  c=-11\cdot\lambda ,\quad
+  d=6\cdot\lambda
+$$ wobei $\lambda\in\mathbb{R}$ beliebig gewählt werden darf.
+
+****************************************
 
 **Frage 2.** Die gegebene, dreiparametrige Schar von Funktionen $$
   x\mapsto y(x)=c_1\cdot\exp{x}+c_2\cdot\exp{(2\cdot x)}+c_3\cdot\exp{(3\cdot x)}\,,\quad c_1\in\mathbb{R}\,,\;c_2\in\mathbb{R}\,,\;c_3\in\mathbb{R}
@@ -1520,7 +1551,7 @@ $$ d. h. diese Funktion löst ebenfalls die gegebenen Anfangsbedingungen. Jedoch
 ****************************************
 
 
-[^1]: Für $F(t)\equiv 0$ wird die Schwingung *frei* genannt, die obige Differentialgleichung *homogen*. Ist hingegen $F(t)\not\equiv0$, so wird die Schwingung *erzwungen* genannt, die obige Differentialgleichung * inhomogen*. Siehe Abschnitt [Linearer Typ n. Ordnung](Linearer-Typ-n.-Ordnung).
+[^1]: Für $F(t)\equiv 0$ wird die Schwingung *frei* genannt, die obige Differentialgleichung *homogen*. Ist hingegen $F(t)\not\equiv0$, so wird die Schwingung *erzwungen* genannt, die obige Differentialgleichung * inhomogen*. Siehe Abschnitt [Linearer Typ der Ordnung n](#Linearer-Typ-der-Ordnung n).
 
 
 ### Trennung der Variablen
@@ -1649,7 +1680,7 @@ Die Funktion in der ersten Antwortoption erfüllt hingegen nur die Anfangsbeding
 ****************************************
 
 
-### Lösung mittels Substitution
+### Substitution
 
 
 In diesem Abschnitt werden Substitutionsmethoden zur Lösung spezieller gewöhnlicher Differentialgleichungen erster Ordnung vorgestellt. Betrachtet werden Differentialgleichungen in der gesuchten Funktion $$
@@ -1838,7 +1869,8 @@ $$
 $$ mit der Software GeoGebra den Befehl `Richtungsfeld(g(x,y(x)))`
 
 
-### Linearer Typ 1. Ordnung
+### Linearer Typ der Ordnung 1
+
 
 Definition
 ===
@@ -1872,7 +1904,7 @@ $$ ein Rechteckgebiet. Sind die Funktionen $p$ und $q$ in Definition 1 für alle
 $$
 
 
-Homogene Differentialgleichung
+Allgemeine Lösung der homogenen Differentialgleichung
 ===
 
 
@@ -1916,7 +1948,7 @@ $$ woraus sich die allgemeine Lösung der homogenen Differentialgleichung berech
 $$ mit Scharparameter $k\in\mathbb{R}\setminus\{0\}$ und $k=\pm\exp{c}$. Für $k=0$ lässt sich hier die singuläre Lösung $s:x\mapsto y=s(x)=0$, $x\in D$ in die allgemeine Lösung einbetten.
 
 
-Inhomogene Differentialgleichung
+Allgemeine Lösung der inhomogenen Differentialgleichung
 ===
 
 
@@ -2049,7 +2081,7 @@ $$ siehe nachstehende Abbildung.
 ![Beschleunigte Bewegung](img/mat-bild-11.png "_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $\dot{v}(t)=\frac{K}{m}-\frac{r}{m}\cdot v(t)$ im $t-v$-Koordinatensystem, zusammen mit der Lösung des Anfangsproblems $v(0)=0$. Der Funktionsgraph ist nach oben beschränkt durch die Schranke $\frac{K}{r}$.")
 
 
-Sicher gewußt
+Sicher gewusst
 ===
 
 
@@ -2102,7 +2134,7 @@ $$
 [^1]: Die Beschränkung der Bewegung auf eine konstante Richtung gestattet die Betrachtung der Beträge von Beschleunigung bzw. Geschwindigkeit.
 
 
-### Linearer Typ n. Ordnung
+### Linearer Typ der Ordnung n
 
 
 Normalform
@@ -2205,12 +2237,8 @@ subst(1,omega,subst(2,C,subst(pi/2,phi,subst(10,v0,subst(20,s0,s)))))
 
 
 
-Homogene Differentialgleichung
+Allgemeine Lösung einer homogenen Differentialgleichung
 ===
-
-
-Struktur der allgemeinen Lösung
----
 
 
 Eine homogene lineare Differentialgleichung der Ordnung $n$ mit konstanten Koeffizienten $$
@@ -2219,7 +2247,7 @@ $$ wie in Definition 1 besitzt eine Lösungsmenge $$
   \mathcal{L}=\left\{f: D\subseteq\mathbb{R}\to\mathbb{R}\;\left(L(f)=0\right)\right\}
 $$ reeller Funktionen.
 
-~~Ziel.~~ In diesem Abschnitt wird gezeigt, dass $\mathcal{L}$ die Struktur eines reellen Vektorraumes der Dimension $n$ besitzt. Ist eine Basis in diesem Vektorraum bestimmt[^2], lässt sich jede Lösung der homogenen Differentialgleichung eindeutig als Linearkombination der $n$ Basisfunktionen (-Vektoren) darstellen. Damit lässt sich die allgemeine Lösung $y_h(x)$ der homogenen Differentialgleichung darstellen als $$
+**Ziel.** In diesem Abschnitt wird gezeigt, dass $\mathcal{L}$ die Struktur eines reellen Vektorraumes der Dimension $n$ besitzt. Ist eine Basis in diesem Vektorraum bestimmt[^2], lässt sich jede Lösung der homogenen Differentialgleichung eindeutig als Linearkombination der $n$ Basisfunktionen (-Vektoren) darstellen. Damit lässt sich die allgemeine Lösung $y_h(x)$ der homogenen Differentialgleichung darstellen als $$
   y_h(x)=\sum_{j=1}^n{\left(c_j\cdot y_j(x)\right)}\,,\quad c_j\in\mathbb{R}\;\;\forall\; j\in\{1,2,...,n\}\,,\; n\in\mathbb{N}\,,\; n\geq1
 $$ worin $y_j(x)$ die Basisfunktionen bezeichnen.
 
@@ -2379,14 +2407,19 @@ $\square$
 
 
 Eulerscher Exponentialansatz
----
+=====
 
 
 Zu einer homogenen linearen Differentialgleichung mit konstanten Koeffizienten $g(x,y(x),y^\prime(x),...,y^n(x))=0$ mit $$
     g:=y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)=0
 $$ wie in Definition 1 lassen sich die Basislöungen mit Hilfe des *Eulerschen Exponentialansatzes* berechnen.
 
-1. Als Ansatzfunktion wird $x\mapsto y(x)=\exp{(\lambda\cdot x)}$, $x\in D\subseteq\mathbb{R}$, mit zu bestimmenden Parametern $\lambda\in\mathbb{C}$. Unter Nutzung der $k$-ten Ableitung $$
+
+Schritt 1 - Charakteristische Gleichung
+-----
+
+
+Als Ansatzfunktion wird $x\mapsto y(x)=\exp{(\lambda\cdot x)}$, $x\in D\subseteq\mathbb{R}$, mit zu bestimmenden Parametern $\lambda\in\mathbb{C}$. Unter Nutzung der $k$-ten Ableitung $$
   y^{(k)}(x)=\lambda^k\cdot\exp{(\lambda\cdot x)}\,,\quad k\in\{1,...,n\}
 $$ dieser Funktion kann die Differentialgleichung in eine algebraische Gleichung in $\lambda$ vom Grad $n$ entwickelt werden. $$
   \lambda^n\cdot\exp{(\lambda\cdot x)}+a_{n-1}\cdot \lambda^{n-1}\cdot\exp{(\lambda\cdot x)}+...+a_{1}\cdot \lambda^1\cdot\exp{(\lambda\cdot x)}+a_0\cdot\exp{(\lambda\cdot x)}=
@@ -2395,8 +2428,14 @@ $$ worin der linke Faktor $\exp{(\lambda\cdot x)}\not=0$ für jede Wahl des Expo
   P(\lambda)=0\quad
   \text{mit}\quad
   P(\lambda):=\lambda^n+a_{n-1}\cdot \lambda^{n-1}+...+a_{1}\cdot \lambda^1+a_0
-$$ die *charakteristische Gleichung* der Differentialgleichung genannt wird. Diese besitzt - unter Einbeziehung der Vielfachheiten - genau $n$ Lösungen $\lambda\in\mathbb{C}$.
-2. Zu jeder Lösung $\lambda$ von $P(\lambda)=0$ erhält man eine Lösung der Differentialgleichung. Im Fall einer reellen Lösung $\lambda$ ist dies eine reelle Exponentialfunktion. Da im Fall einer nichtreellen Lösung $\lambda\in\mathbb{C}\setminus\mathbb{R}$ auch die zu $\lambda$ komplex konjugierte Zahl $\bar{\lambda}$ Lösung der charakteristischen Gleichung ist, sind für $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}$ und $b\in\mathbb{R}$ sowie $i^2=-1$ $$
+$$ die **charakteristische Gleichung** der Differentialgleichung genannt wird. Diese besitzt - unter Einbeziehung der Vielfachheiten - genau $n$ Lösungen $\lambda\in\mathbb{C}$.
+
+
+Schritt 2 - Spezielle Lösungen
+-----
+
+
+Zu jeder Lösung $\lambda$ von $P(\lambda)=0$ erhält man eine Lösung der Differentialgleichung. Im Fall einer reellen Lösung $\lambda$ ist dies eine reelle Exponentialfunktion. Da im Fall einer nichtreellen Lösung $\lambda\in\mathbb{C}\setminus\mathbb{R}$ auch die zu $\lambda$ komplex konjugierte Zahl $\bar{\lambda}$ Lösung der charakteristischen Gleichung ist, sind für $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}$ und $b\in\mathbb{R}$ sowie $i^2=-1$ $$
   \exp{(\lambda\cdot x)}=\exp{((a+i\cdot b)\cdot x)}=\exp{(a\cdot x)}\cdot\exp{(i\cdot b\cdot x)}=\exp{(a\cdot x)}\cdot\left(\cos{(b\cdot x)}+i\cdot \sin{(b\cdot x)}\right)
 $$ sowie $$
   \exp{(\bar{\lambda}\cdot x)}=\exp{((a-i\cdot b)\cdot x)}=\exp{(a\cdot x)}\cdot\exp{(-i\cdot b\cdot x)}=\exp{(a\cdot x)}\cdot\left(\cos{(b\cdot x)}-i\cdot \sin{(b\cdot x)}\right)
@@ -2405,14 +2444,19 @@ $$ zwei komplexwertige Lösungen der Differentialgleichung. Mit Satz 1 ergeben s
   y_2(x)=\exp{(a\cdot x)}\cdot\sin{(b\cdot x)}
 $$ auf. Die reellen Lösungen einer homogenen linearen Differentialgleichung mit konstanten Koeffizienten sind unter entsprechender Vielfachheit der Lösungen $\lambda$ der charakteristischen Gleichung $P(\lambda)=0$ in nachstehender Tabelle unterschieden.
 
-| Lösung von $P(\lambda)=0$ | Vielfachheit von $\lambda$ | Lösung von $g=0$ |
-| :--- | :--- | :--- |
-| $\lambda=a$ mit $a\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}$ |
-| $\lambda=a$ mit $a\in\mathbb{R}$ | $1<k\leq n$ | $y_1(x)=\exp{(a\cdot x)}\,,\quad y_2(x)=x\cdot\exp{(a\cdot x)}\,,\quad ...\quad,\quad y_k(x)=x^{k-1}\cdot\exp{(a\cdot x)}$ |
-| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_2(x)=\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}$ |
-| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $1<k<\left\lfloor\frac{n}{2}\right\rfloor$ | $y_{2\cdot j-1}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_{2\cdot j}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}\,,\quad j\in\{1,...,k\}$ |
+>| Lösung von $P(\lambda)=0$ | Vielfachheit von $\lambda$ | Lösung von $g=0$ |
+>| :--- | :--- | :--- |
+>| $\lambda=a$ mit $a\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}$ |
+>| $\lambda=a$ mit $a\in\mathbb{R}$ | $1<k\leq n$ | $y_1(x)=\exp{(a\cdot x)}\,,\quad y_2(x)=x\cdot\exp{(a\cdot x)}\,,\quad ...\quad,\quad y_k(x)=x^{k-1}\cdot\exp{(a\cdot x)}$ |
+>| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_2(x)=\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}$ |
+>| $\lambda=a+i\cdot b$ mit $a\in\mathbb{R}\,,\; b\in\mathbb{R}$ | $1<k<\left\lfloor\frac{n}{2}\right\rfloor$ | $y_{2\cdot j-1}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \cos{(b\cdot x)}\,,\quad y_{2\cdot j}(x)=x^{j-1}\cdot\exp{(a\cdot x)}\cdot \sin{(b\cdot x)}\,,\quad j\in\{1,...,k\}$ |
 
-3. Werden Lösungen der algebraischen Gleichung $P(\lambda)=0$ entsprechend der Vielfachheit ihres Auftretens gezählt, so werden mit Hilfe des Eulerschen Exponentialansatzes insgesamt $n$ linear unabhängige Lösungen der homogenen linearen Differentialgleichung mit konstanten Koeffizienten gebildet, die zusammen eine Basis des Lösungsraumes $\mathcal{L}$ bilden.
+
+Schritt 3 - Basis der allgemeinen Lösung
+-----
+
+
+Werden Lösungen der algebraischen Gleichung $P(\lambda)=0$ entsprechend der Vielfachheit ihres Auftretens gezählt, so werden mit Hilfe des Eulerschen Exponentialansatzes insgesamt $n$ linear unabhängige Lösungen der homogenen linearen Differentialgleichung mit konstanten Koeffizienten gebildet, die zusammen eine Basis des Lösungsraumes $\mathcal{L}$ bilden.
 
 **Beispiel 5.** Die Lösungsmengen der nachstehenden homogenen linearen Differentialgleichungen sind zu berechnen. Die gesuchte Funktion ist jeweils $x\mapsto y(x)$.
 
@@ -2429,11 +2473,54 @@ In der folgenden Tabelle sind jeweils charakteristische Gleichung $P(\lambda)=0$
 | 3 | $\lambda^3-3\cdot\lambda^2+3\cdot\lambda-1=0$ | $(1,1,1)$ | $y(x)=(c_1+c_2\cdot x+c_3\cdot x^2)\cdot\exp{x}$ |
 
 
-Inhomogene Differentialgleichung
-===
+Allgemeine Lösung einer inhomogenen Differentialgleichung
+=====
 
 
-Eine inhomogene Differentialgleichung ...
+Wie in Proposition 2 im Abschnitt [Linearer Typ der Ordnung 1](#Linearer-Typ-der-Ordnung-1) lässt sich feststellen, dass sich die allgemeine Lösung einer inhomogenen Differentialgleichung als Summe zweier Lösungsanteile berechnen lässt.
+
+>**Satz 4.** Eine inhomogene lineare Differentialgleichung der Ordnung $n$ mit konstanten reellen Koeffizienten $$
+   \underbrace{y^{(n)}(x)+a_{n-1}\cdot y^{(n-1)}(x)+...+a_{1}\cdot y^{\prime}(x)+a_0\cdot y(x)}_{L(y)}=q(x)
+$$ mit $q(x)\not=0$ besitzt stets die allgemeine Lösung $f:x\mapsto y=f(x)$, kurz $y(x)$, mit $$
+  y(x)=y_{h}(x)+y_p(x)\,,\quad x\in D
+$$ worin der Summand
+>
+>1. $y_h(x)$ die allgemeine Lösung der zugehörenden homogenen Differentialgleichung $y^\prime(x)+p(x)\cdot y(x)=0$ darstellt und
+>2. $y_p(x)$ eine spezielle (partikuläre) Lösung der inhomogenen Differentialgleichung bezeichnet.
+
+**Beweis.** Der Beweis lässt sich analog zum Beweis von Proposition 2 im vorherigen Abschnitt führen und wird deshalb dem geneigeten Leser beziehungsweise der Leserin überlassen.
+
+Zur Bestimmung des Anteils $y_p(x)$ sind hier zwei Ansätze gegenübergestellt.
+
+1. Das im Abschnitt [Linearer Typ der Ordnung 1](#Linearer-Typ-der-Ordnung-1) für inhomogene lineare Differentialgleichungen entwickelte Verfahren der [Variation der Konstanten](https://de.wikipedia.org/wiki/Variation_der_Konstanten) wäre auf inhomogene lineare Differentialgleichungen höherer Ordnung zu adaptieren. Im Abschnitt über Systeme von Differentialgleichungen wird gezeigt, dass dieses Verfahren zur Berechnung einer Lösung allgemein anwendbar ist.
+2. Für bestimmte Störfunktionen wie Exponential-, Polynom- sowie Sinus- und Kosinusfunktionen sind **Störgliedansätze** zur Berechnung einer speziellen Lösung der inhomogenen linearen Differentialgleichung mit konstanten Koeffizienten möglich.
+
+
+Störgliedansatz
+=====
+
+
+Schritt 1 - Ansatz für spezielle Lösung
+-----
+
+Entsprechend der in nachstehender Tabelle aufgeführten Störfunktion $q(x)$ ist die spezielle Lösung $y_p(x)$ anzusetzen. Gegebene beziehungsweise geforderte Parameterwerte sind als lateinische<!-- style="color:blue" --> Kleinbuchstaben dargestellt, während zu bestimmende Parameterwerte mit griechischen<!-- style="color:red"-->  Kleinbuchstaben bezeichnet werden.
+
+| Störfunktion $q(x)$   | Ansatz für $y_p(s)$   |
+| :--------- | :--------- |
+| $\textcolor{blue}{a_n}\cdot x^n+\textcolor{blue}{a_{n-1}}\cdot x^{n-1}+\ldots+\textcolor{blue}{a_1}\cdot x^1+\textcolor{blue}{a_0}$ | $\textcolor{red}{\alpha_n}\cdot x^n+\textcolor{red}{\alpha_{n-1}}\cdot x^{n-1}+\ldots+\textcolor{red}{\alpha_1}\cdot x^1+\textcolor{red}{\alpha_0}$ |
+| $\textcolor{blue}{a}\cdot\exp{(\textcolor{blue}{b}\cdot x)}$ | $\textcolor{red}{\alpha}\cdot\exp{(\textcolor{blue}{b}\cdot x)}$  |
+| $\textcolor{blue}{a}\cdot\sin{(\textcolor{blue}{c}\cdot x)}+\textcolor{blue}{b}\cdot\cos{(\textcolor{blue}{c}\cdot x)}$ | $\textcolor{red}{\alpha}\cdot\sin{(\textcolor{blue}{c}\cdot x)}+\textcolor{red}{\beta}\cdot\cos{(\textcolor{blue}{c}\cdot x)}$ |
+
+
+
+
+Sicher gewußt
+=====
+
+
+Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
+
+**Frage 1.** ..
 
 
 
@@ -2442,3 +2529,236 @@ Eine inhomogene Differentialgleichung ...
 [^2]: Eine Basis im Vektorraum $\mathcal{L}$ besteht aus einer Menge von $n$ reellen Funktionen derselben reellen Variablen $x\in D\subseteq\mathbb{R}$, welche ein linear unabhängiges Erzeugendensystem von $\mathcal{L}$ bilden.
 
 [^3]: Gilt hingegen $W(x)=0$ für alle $x_0\in I$, so folgt hieraus ~~nicht~~ die lineare Abhängigkeit der Funktionen im Intervall $I$.
+
+
+## Wahrscheinlichkeitsrechnung
+
+
+### Zufällige Ereignisse
+
+
+In diesem Abschnitt wird untersucht, wie sich ein konkret gegebenes Zufallsgeschehen mathematisch beschreiben lässt.
+
+>**Definition 1.** Ein [Zufallsversuch](https://de.wikipedia.org/wiki/Zufallsexperiment) ist ein Vorgang,
+>
+>1. der unter Beibehaltung eines festen Komplex' von Bedeingungen beliebig oft wiederholbar ist
+>2. in dem verschiedene (bereits vorab bekannte) Ausgänge möglich sind
+>3. dessen konkreter Ausgang (unter allen möglichen) ungewiss ist
+>
+> Jeder Ausgang eines Zufallsversuchs wird **zufälliges Ereignis** genannt.
+
+**Beispiel 1.** Die in Definition 1 angegebenen Eigenschaften lassen sich kennzeichnen bei:
+
+1. standardisierten Herstellertests zur Ermittlung der 'Laufleistung' $s$ (in Kilomenter) eines bestimmten Modells eines PKW-Reifens
+2. der Erfassung der Anzahl der Ausschussteile, die auf einer bestimmten Maschine während einer Schicht produziert werden. Die Anzahl $$
+  k\in\{0,1,2,...,n\}
+$$ worin $n\in\mathbb{N}$ die maximale Zahl der produzierbaren Objekte bezeichnet. Daneben könnten bei diesem Zufallsversuch auch $$
+  \begin{array}{rcl}
+  A_k & ... & \text{In der Schicht traten mehr als $k$ Ausschussteile auf.} \\
+  B_s & ... & \text{In der Schicht traten nicht mehr als $s$ Ausschussteile auf.}
+  \end{array}
+$$ interessieren.
+
+**Bemerkung 1.** Für die Bezeichnung eines zufälligen Ereignisses werden hier lateinische Großbuchstaben verwendet, gegebenenfalls unter Verwendung von Indizes, also etwa $$
+  A,B,C,...,A_k,B_s,...
+$$ Alle Möglichkeiten des Ausgangs eines Zufallsversuchs werden in der Ergebnismenge $\Omega$ zusammengefasst. Das mit dieser identische [sichere Ereignis](https://de.wikipedia.org/wiki/Ereignis_&lpar;Wahrscheinlichkeitstheorie&rpar;) bezeichnet jenes zufällige Ereignis eines Zufallsversuchs, das bei jeder Wiederholung eintritt. Im Gegensatz dazu wird mit der leeren Menge $\emptyset$ das identische [unmögliche Ereignis](https://de.wikipedia.org/wiki/Ereignis_&lpar;Wahrscheinlichkeitstheorie&rpar;) bezeichnet.
+
+Nachfolgend wird genutzt, dass sich zufällige Ereignisse stets als Menge auffassen lassen. Unter Benutzung der für Mengen bekannten [Operationen](https://de.wikipedia.org/wiki/Mengenlehre#Definitionen) lassen sich neue Ereignisse konstruieren und Relationen zwischen zufälligen Ereignissen herstellen.
+
+<!-- style="background-color: lightgray;"-->
+>**Relationen.** Seien $A$ und $B$ zufällige Ereignisse. Dann bezeichnen:
+>
+>| Bezeichnung | Sprechweise | Definition |
+>| :--------- | :--------- | :--------- |
+>| $A\cup B$ | "Summe von $A$ und $B$" bzw.  "$A$ oder $B$" | zufälliges Ereignis, das eintritt, wenn wenigstens eines der zufälligen Ereignisse $A$ oder $B$ eintritt |
+>| $A\cap B$ | "Produkt von $A$ und $B$" bzw. "$A$ und $B$" |zufälliges Ereignis, das eintritt, wenn sowohl $A$ als auch $B$ eintreten |
+>| $A\setminus B$ | "Differenz von $A$ und $B$" bzw. "$A$ minus $B$" | zufälliges Ereignis, das eintritt, wenn $A$ eintritt jedoch $B$ nicht eintritt |
+>| $\bar{A}$ | "Komplement zu $A$ bezüglich $\Omega$" | zufälliges Ereignis, das eintritt, wenn $A$ nicht eintritt |
+>| $A\subseteq B$ | "$A$ zieht $B$ nach sich" | wenn $A$ eintritt, so tritt auch $B$ ein |
+>| $A=B$ | "$A$ gleich $B$" | $A$ tritt genau dann ein, wenn $B$ eintritt |
+
+Die Operationen sind im nachstehenden Video mit Blick auf die Mengenlehre kurz erläutert.
+
+!?[Ereignisse und Operationen](https://www.youtube.com/watch?v=lmJFEh72TT0&list=PLLTAHuUj-zHhB8UnwPOJzUVHV6_AJ9tz3&index=27 "Daniel Jung, Übersicht Mengen, Schnitt, Differenz, Vereinigung, Komplementär, Disjunkt, Teilmenge.")
+
+**Bemerkung 2.** Summe und Produkte können ebenfalls für endlich viele beziehungsweise abzählbar unendlich viele zufällige Ereignisse erklärt werden, zum Beispiel $$
+  C=\bigcup_{j=1}^n{A_j}\;(n\in\mathbb{N}^\times)\quad\text{sowie}\quad D=\bigcup_{k=1}^\infty{A_j}
+$$
+
+>**Proposition 1.**  Für beliebige zufällige Ereignisse $A$, $B$ und $C$ eines Zufallsversuches gelten für die *Summe* von zufälligen Ereignissen folgende Gleichheiten
+>
+>* $A\cup A=A$
+>* $A\cup\Omega=\Omega$
+>* $A\cup\emptyset=A$
+>* $(A\cup B)=(B\cup A)$ --- die Summenbildung ist kommutativ
+>* $A\cup(B\cup C)=(A\cup B)\cup C$ --- die Bildung der Summe ist assoziativ
+>
+> beziehungsweise für das *Produkt* von zufälligen Ereignissen
+>
+>* $A\cap A=A$
+>* $A\cap\Omega=A$
+>* $A\cap\emptyset=\emptyset$
+>* $(A\cap B)=(B\cap A)$ --- die Produktbildung ist kommutativ
+>* $A\cap(B\cap C)=(A\cap B)\cap C$ --- die Bildung des Produktes ist assoziativ
+>
+> Daneben gelten für unter Nutzung beider Operationen $$
+  A\cup(B\cap C)=(A\cup B)\cap(A\cup C)\quad\text{sowie}\quad A\cap(B\cup C)=(A\cap B)\cup(A\cap C)
+$$
+
+**Beweis.** Der Nachweis lässt sich unter Interpretation der zufälligen Ereignisse als Mengen mengentheoretisch ziehen.
+
+>**Definition 2.** Gilt für zwei zufällige Ereignisse $A$ und $B$ eines Zufallsversuchs $A\cap B=\emptyset$, so heißen $A$ und $B$ **unvereinbar**.
+>
+>Das gleichzeitige Eintreten der zufälligen Ereignisse $A$ und $B$ ist unmöglich.
+
+**Beispiel 2.** Speziell sind die nachstehenden Paare unvereinbar:
+
+1. $A$ und $\bar{A}$, da $A\cap\bar{A}=\emptyset$ für ein beliebiges zufälliges Ereignis $A$ gilt.
+2. $\emptyset$ und $\Omega$, da $\emptyset\cap\Omega=\emptyset$ nach der vorstehenden Proposition gilt.
+
+>**Proposition 2.** Für beliebige zufällige Ereignisse $A$, $B$ und $C$ eines Zufallsversuchs gelten die nachstehenden Relationen:
+>
+>1. $\overline{A\cup B}=\overline{A}\cap\overline{B}$
+>2. $\overline{A\cap B}=\overline{A}\cup\overline{B}$
+
+**Beweis.** Für den Beweis wird hier die aussagenlogische Äquivalenz $$
+  X=Y\quad\leftrightarrow\quad(X\subseteq Y)\wedge(Y\subseteq X)
+$$ für zufällige Ereignisse $X$ und $Y$ benutzt. Des Weiteren wird das Komplement $A\cup B$ zu $\overline{A\cup B}$ betrachtet. Es ergeben sich unter wiederholter Benutzung der Rechenregeln aus Proposition 1
+
+1. für den Nachweis $(\overline{A}\cap\overline{B})\subseteq(\overline{A\cup B})$: $$
+  \begin{split}
+    (A\cup B)\cap \left(\overline{A}\cap\overline{B}\right)
+    & = \left(A\cap\left(\overline{A}\cap\overline{B}\right)\right)\cup\left(B\cap\left(\overline{A}\cap\overline{B}\right)\right) \\
+    & = \left(\left(A\cap\overline{A}\right)\cap B\right)\cup\left(\left(B\cap\overline{B}\right)\cap\overline{A}\right) \\
+    & = \emptyset\cup\emptyset \\
+    & = \emptyset
+  \end{split}
+$$ Die zufälligen Ereignisse $A\cup B$ und $\overline{A}\cap\overline{B}$ sind demnach unvereinbar, woraus schließlich $$
+  (\overline{A}\cap\overline{B})\subseteq(\overline{A\cup B})
+$$ folgt.
+2. für den Nachweis $(\overline{A\cup B})\subseteq(\overline{A}\cap\overline{B})$: $$
+  \begin{split}
+    (A\cup B)\cup \left(\overline{A}\cap\overline{B}\right)
+    & = \left(A\cup\left(\overline{A}\cap\overline{B}\right)\right)\cup\left(B\cup\left(\overline{A}\cap\overline{B}\right)\right) \\
+    & = \left(\left(A\cup\overline{A}\right)\cap\left(A\cup\overline{B}\right)\right)\cup\left(\left(B\cup\overline{A}\right)\cap\left(B\cup\overline{B}\right)\right) \\
+    & = \left(\Omega\cap\left(A\cup\overline{B}\right)\right)\cup\left(\left(B\cup\overline{A}\right)\cap\Omega\right) \\
+    & = \left(A\cup\overline{B}\right)\cup\left(B\cup\overline{A}\right) \\
+    & = \left(A\cup\overline{A}\right)\cup\left(B\cup\overline{B}\right) \\
+    & = \Omega
+  \end{split}
+$$ Die Summe der zufälligen Ereignisse $A\cup B$ und $\overline{A}\cap\overline{B}$ ist demnach das sichere Ereignis, woraus schließlich $$
+  (\overline{A\cup B})\subseteq(\overline{A}\cap\overline{B})
+$$ folgt.
+
+$\square$
+
+**Beispiel 3.** Für eine stochastische Betrachtung der störungsfreien Arbeit eines Systems von $n\in\mathbb{N}^\times$ unabhängig arbeitenden Komponenten werden folgende zufällige Ereignisse betrachtet: $$
+  \begin{array}{rcl}
+  A & ... & \text{Das System arbeitet zur Zeit $t$.} \\
+  A_j & ... & \text{Die $j$-te Komponente des Systems arbeitet zur Zeit $t$, worin $j\in\{1,2,...,n\}$ ist.}
+  \end{array}
+$$ Betrachtet werden die nachstehenden zwei Konfigurationen der $n$ Komponenten.
+
+1. *Reihenschaltung* von $n$ Komponenten: Unter Beachtung von Proposition 2 ergeben sich: $$
+  A=A_1\cap A_2\cap ...\cap A_n=\bigcap_{j=1}^n{A_j}\quad\text{sowie}\quad
+  \bar{A}=\overline{\left(\bigcap_{j=1}^n{A_j}\right)}=\bar{A}_1\cup\bar{A}_2\cup ...\cup\bar{A}_n=\bigcup_{j=1}^n{\bar{A}_j}
+$$ D. h. das System arbeitet zur Zeit $t$ nicht, wenn ~~wenigstens eine~~ der Komponenten nicht arbeitet.
+2. *Parallelschaltung*von $n$ Komponenten: Unter Beachtung von Proposition 2 ergeben sich: $$
+  A=A_1\cup A_2\cup ...\cup A_n=\bigcup_{j=1}^n{A_j}\quad\text{sowie}\quad
+  \bar{A}=\overline{\left(\bigcup_{j=1}^n{A_j}\right)}=\bar{A}_1\cap\bar{A}_2\cap ...\cap\bar{A}_n=\bigcap_{j=1}^n{\bar{A}_j}
+$$ D. h. das System arbeitet zur Zeit $t$ nicht, wenn ~~keine~~ der Komponenten arbeitet.
+3. *'gemischte' Schaltung* von $n=8$ Komponenten, siehe nachstehende Abbildung. Unter Beachtung von Proposition 2 ergeben sich: $$
+    A=A_1\cap\left(A_2\cup A_3\cup A_4\right)\cap\left(A_5\cup\left(A_6\cap A_7\right)\right)\cap A_8 \quad\text{sowie}\quad
+    \bar{A}=\bar{A}_1\cup\left(\bar{A}_2\cap \bar{A}_3\cap \bar{A}_4\right)\cup\left(\bar{A}_5\cap\left(\bar{A}_6\cup \bar{A}_7\right)\right)\cup \bar{A}_8
+$$
+
+![Ereignisse](img/mat-bild-12.png "_Fig._ Beispiel einer zusammengesetzten Schaltung aus den Komponenten $1,2,...,n$ mit $n=8$.")
+
+>**Definition 3.** Die zufälligen Ereignisse $A_j$ mit $j\in\{1,2,...,n\}$ und $n\in\mathbb{N}^\times$ eines Zufallsversuchs bilden ein [vollständiges System](https://www.lntwww.de/Stochastische_Signaltheorie/Mengentheoretische_Grundlagen%23Vollst.C3.A4ndiges_System) von zufälligen Ereignissen, wenn die beiden Bedingungen
+>
+>1. $A_i\cap A_j=\emptyset$ für jede Wahl der Indizies in $(i,j)$ mit $i\in\{1,2,...,n\}$ und $i\not=j$
+>2. $\bigcup_{j=1}^n{A_j}=\Omega$
+>
+>gelten. (Bedingung 1 stellt die Unvereinbarkeit der zufälligen Ereignisse dar, Bedingung 2 die Relation, dass das Summenereignis aller $A_j$ gleich dem sicherem Ereignis ist.)
+
+**Beispiel 4.** Gegeben sind zwei beliebige, zufällige Ereignisse $A$ und $B$ eines Zufallsversuchs. Zu zeigen ist, dass die zufälligen Ereignisse $$
+  (A\cap B)\,,\quad \left(\bar{A}\cap B\right)\,,\quad \left(A\cap\bar{B}\right)\quad\text{und}\quad \left(\overline{A\cup B}\right)
+$$ ein vollständiges System von Ereignissen bilden.
+
+1. Nach Definition 3 ist zu prüfen, dass die Summe der vier zufälligen Ereignisse gleich dem sicherem Ereignis ist. Es ergibt sich schrittweise $$
+  \begin{split}
+    & (A\cap B)\cup\left(\bar{A}\cap B\right)\cup\left(A\cap\bar{B}\right)\cup\left(\overline{A\cup B}\right) \\
+    = & \left[\left(A\cup\bar{A}\right)\cap B\right]\cup\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap\bar{B}\right) \\
+    = & \left[\left(A\cup\bar{A}\right)\cap B\right]\cup \left[\left(A\cup\bar{A}\right)\cap \bar{B}\right] \\
+    = & \left(A\cup\bar{A}\right)\cap\left(B\cup\bar{B}\right) \\
+    = & \Omega
+  \end{split}
+$$ unter Nutzung der Rechenregeln aus Proposition 1 und 2.
+2. Des Weiteren ist nach Definition 3 die paarweise Unvereinbarkeit der vier zufälligen Ereignisse zu prüfen. So ergeben sich: $$
+  \begin{split}
+    (A\cap B)\cap\left(\bar{A}\cap B\right) & = (A\cap\bar{A})\cap\left(B\cap B\right)=\emptyset\cap B=\emptyset \\
+    (A\cap B)\cap\left(A\cap\bar{B}\right) & = (A\cap A)\cap\left(B\cap\bar{B}\right)=A\cap\emptyset=\emptyset \\
+    (A\cap B)\cap\left(\bar{A}\cap\bar{B}\right) & = (A\cap\bar{A})\cap\left(B\cap\bar{B}\right)=\emptyset\cap\emptyset=\emptyset \\
+    (\bar{A}\cap B)\cap\left(A\cap\bar{B}\right) & = (\bar{A}\cap A)\cap\left(B\cap\bar{B}\right)=\emptyset\cap\emptyset=\emptyset \\
+    (\bar{A}\cap B)\cap\left(\bar{A}\cap\bar{B}\right) & = (\bar{A}\cap \bar{A})\cap\left(B\cap\bar{B}\right)=\bar{A}\cap\emptyset=\emptyset \\
+    (A\cap \bar{B})\cap\left(\bar{A}\cap\bar{B}\right) & = (A\cap\bar{A})\cap\left(\bar{B}\cap\bar{B}\right)=\emptyset\cap\bar{B}=\emptyset
+  \end{split}
+$$
+
+$\square$
+
+Die beiden Aussagen des vorstehenden Beispiels lassen sich in einem Mengendiagramm grafisch darstellen.
+
+![vollständiges System](img/mat-bild-13.png "_Fig._ Mengendiagramm zur Visualisierung der aus den zufälligen Ereignissen $A$ und $B$ gebildeten zufälligen Ereignisse: $A\sim$ Rechteck mit $45^\circ$-Schraffur, $B\sim$ Rechteck mit $135^\circ$-Schraffur, $A\cap B\sim$ Bereich mit $\left(45^\circ,135^\circ\right)$-Schraffur, $A\cap\bar{B}\sim$ Bereich mit ausschließlich $45^\circ$-Schraffur, $\bar{A}\cap B\sim$ Bereich mit ausschließlich $135^\circ$-Schraffur, $\bar{A}\cap\bar{B}\sim$ Bereich mit $0^\circ$-Schraffur.")
+
+>**Definition 4.** Ein zufälliges Ereignis $A$ eines Zufallsversuchs wird [atomares Ereignis](https://de.wikipedia.org/wiki/Ereignis_%28Wahrscheinlichkeitstheorie%29%23Spezielle_Ereignisse) genannt, wenn kein zufälliges Ereignis $B$ des Zufallsversuchs mit $B\not=\emptyset$ und $B\not=A$ existiert, für das $B\subseteq A$ gilt.
+
+
+Sicher gewusst
+===
+
+
+Testen Sie Ihr Wissen bei der Beantwortung der nachstehenden Fragen.
+
+**Frage 1.** Eine bei einem physikalischen Experiment gemessene Größe $\theta$ unterliegt zufälligen Einflüssen, d. h. zeigt bei Wiederholung des Experimentes unterschiedliche Werte. Betrachtet werden die nachstehenden Ereignisse. $$
+  A=\left\{\theta\in\Omega|30<\theta\leq45\right\}\,,\quad
+  B=\left\{\theta\in\Omega|45<\theta\leq60\right\}\quad\text{und}\quad
+  C=\left\{\theta\in\Omega|50<\theta\right\}
+$$
+
+Berechnen Sie die nachstehenden Ereignisse.
+
+[[$\bar{A}$] [$\bar{B}$] [$A\cap B$] [$B\cap C$] [$A\cup B$] [$B\cup C$]]
+[( ) ( ) ( ) ( ) ( ) (X)]  $\left\{\theta\in\Omega|45<\theta\right\}$
+[( ) (X) ( ) ( ) ( ) ( )]  $\left\{\theta\in\Omega|\theta\leq45\right\}\cup\left\{\theta\in\Omega|60<\theta\right\}$
+[( ) ( ) (X) ( ) ( ) ( )]  $\emptyset$
+[(X) ( ) ( ) ( ) ( ) ( )]  $\left\{\theta\in\Omega|\theta\leq30\right\}\cup\left\{\theta\in\Omega|45<\theta\right\}$
+[( ) ( ) ( ) (X) ( ) ( )]  $\left\{\theta\in\Omega|50<\theta\leq60\right\}$
+[( ) ( ) ( ) ( ) (X) ( )]  $\left\{\theta\in\Omega|30<\theta\leq60\right\}$
+[[?]] Durch $A$, $B$ und $C$ sind Mengen beschrieben. Bilden Sie die angegebenen Vereinigungsmengen, Durchschnitte und Komplemente (bezüglich $\Omega$) dieser Mengen.
+****************************************
+
+Es gelten:
+
+* $(45<\theta)\quad\leftrightarrow\quad(45<\theta\leq60)\vee(50<\theta)$
+* $(\theta\leq45)\vee(60<\theta)\quad\sim\quad\Omega\setminus B$
+* $\emptyset\quad\sim\quad(30<\theta)\wedge(\theta\leq45)\wedge(45<\theta)\wedge(\theta\leq60)$
+* $(\theta\leq30)\vee(45<\theta)\quad\sim\quad\Omega\setminus A$
+* $(50<\theta\leq60)\quad\leftrightarrow\quad(45<\theta)\wedge(\theta\leq60)\wedge(50<\theta)$
+* $(30<\theta\leq60)\quad\leftrightarrow\quad(30<\theta\leq45)\vee(45<\theta\leq60)$
+
+****************************************
+
+**Frage 2.** Zu zwei Zahlenmengen $A=\left\{1,2,3\right\}$ und $B=\left\{3,6,7,8,9\right\}$ der Grundmenge $\Omega=\left\{1,2,3,4,5,6,7,8,9\right\}$ werden die folgenden Teilmengen gebildet $$
+  C:=\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\,,\quad
+  D:=A\cap B\quad\text{und}\quad
+  C:=\bar{A}\cap \bar{B}
+$$ Geben Sie die Teilmengen unter Angabe ihrer Elemente an.
+
+[[$C$] [$D$] [$E$]]
+[( ) ( ) ( )]  ...
+
+Entscheiden Sie, ob die Teilmengen $C$, $D$ und $E$ ein vollständiges System bilden.
+
+[( )] Nein
+[(X)] Ja
