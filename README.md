@@ -13,11 +13,6 @@ import: https://raw.githubusercontent.com/LiaTemplates/tiny-turtle/master/README
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
-import: https://github.com/LiaTemplates/Pyodide
-
-@onload:
-
-  window.py_packages = ["matplotlib", "numpy"]
 
 -->
 
@@ -1314,7 +1309,11 @@ Thema dieses Kapitels sind die Differentialgleichungen für reelle Funktionen (e
 3. ...
 
 
-### Definition und Lösung
+### Grundbegriffe
+
+
+Definition und Lösung
+===
 
 
 Zur Begriffsbildung wird einführend das folgende physikalische Beispiel betrachtet.
@@ -1473,6 +1472,56 @@ $$ Mit Hilfe dieser Bedingungen lassen sich die in der allgemeinen Lösung auftr
 $$
 
 
+Richtungsvektorfeld
+===
+
+
+Für gewöhnliche Differentialgleichungen erster Ordnung in den Formen $$
+  y'(x)=g(x,y(x))\quad\text{bzw.}\quad G(x,y(x),y'(x))=0
+$$ in der gesuchten Funktion $f:x\mapsto y=f(x)$ mit $x\in D\subseteq\mathbb{R}$ wird hier ein weiterer Begriff betrachtet. das [Richtungsvektorfeld](https://de.wikipedia.org/wiki/Richtungsfeld).
+
+Das Richtungsvektorfeld einer Differentialgleichung wird gebildet, in dem man jedem Punkt $P(x_0,y_0)$ der Ebene, durch welchen (genau) eine Lösungskurve verläuft, einen Vektor mit der Steigung $y'|_{(x_0,y_0)}$ in diesem Punkt zuordnet. Für Differentialgleichungen der obigen Form sind $$
+  y_0=f(x_0)\quad\text{und}\quad y'|_{(x_0,y_0)}=y'(x_0)=g\left(x_0,y(x_0),y'(x_0)\right)
+$$ D. h., durch Einsetzen der kartesischen Koordinaten in die rechte Seite der Differentialgleichung in expliziter Form berechnet sich der Anstieg derjenigen Funktion $f$ mit Graph $G_f\ni P$.[^2]
+
+**Bemerkung 2.** Das aus einem Kurvenpunkt $P(x_0,y_0)$ der zugeordneten Tangentenrichtung $$
+  v(x_0,y_0)=\begin{pmatrix} 1 \\ y'(x_0) \end{pmatrix}=\begin{pmatrix} 1 \\ g(x_0,y_0) \end{pmatrix}
+$$ bestehende Paar $(P,v)$ in einem Richtungsvektorfeld einer gewöhnlichen Differentialgleichung bildet ein sogenanntes **Richtungselement**. Die Vereinigung über alle Richtungselemente $$
+  \bigcup_{D\times f(D)}{(P,v)}
+$$ zu beliebigen Lösungen $f$ der Differentialgleichung heißt **Richtungsvektorfeld** der Differentialgleichung.
+
+**Beispiel 6.** Gegeben ist die Anfangswertaufgabe $$
+  y'(x)=2\cdot x\,,\quad y(0)=1
+$$ in der gesuchten Funktion $x\mapsto y(x)$ mit $x\in\mathbb{R}$. Die Differentialgleichung ist von der Ordnung $1$ und in expliziter Form gegeben. Für das Richtungsvektorfeld erhält man unmittelbar $$
+  m=y'(x)=2\cdot x\quad\leadsto\quad (x,y)\mapsto \begin{pmatrix} 1 \\ 2\cdot x \end{pmatrix}
+$$ Die Anstiege $m$ sind für beliebige Punkte $P(x_0,y_0)$ und $Q(x_0,y_1)$ gleich. Dies sind die Punkte der zur $y$-Achse parallelen Geraden. Die allgemeine Lösung der Differentialgleichung ergibt sich durch einmaliges unbestimmtes Integrieren zu $$
+  f:x\mapsto y=f(x)=x^2+k\,,\quad\c\in\mathbb{R}
+$$ das ist eine Schar kongruenter Parabeln, die aus der Normalform $x\mapsto x^2$ um $k$ Einheiten entlang der $y$-Achse geschoben sind. Für die Anfangswertbedinung ergibt sich die spezielle Lösung $y(x)=x^2+1$.
+
+![Anfangswertaufgabe](img/mat-bild-14.png"_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=2\cdot x$, Funktionsgraphen der speziellen Lösungen sind Parabeln und zu $k=\pm 1$ und $k=\pm 2$ dargestellt.")<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 615px;" -->
+
+Der Begriff 'Richtungsvektorfeld' beziehungsweise 'Richtungsfeld' einer gewöhnlichen Differentialgleichung erster Ordnung in expliziter Form wird im nachstehenden Video an der gewählten Differentialgleichung aus Beispiel 6 erläutert.
+
+!?[Richtungsfeld](https://www.youtube.com/watch?v=4_R1vMB91Fs "Daniel Jung, Richtungsfeld einer Differentialgleichung, 'zeichnerisches Lösen'.")
+
+>**Definition 2.** Die Menge aller Punkte $P(x,y)$, deren Koordinaten die Differentialgleichung $$
+  g(x,y(x))=y'(x)=m \quad\text{für}\quad x\mapsto y(x)
+$$ mit einem konstanten $m\in\mathbb{R}$ erfüllen, heißen [Isokline](https://de.wikipedia.org/wiki/Isokline). Dies sind Punkte auf den Lösungskurven der Differentialgleichung, in denen die Lösungskurven festen Anstieg $m$ besitzen. Die vorstehende Gleichung wird Isoklinengleichung genannt.
+
+**Beispiel 7.**
+
+1. Die Isoklinen zur Differentialgleichung aus Beispiel 6 sind zur $y$-Achse parallele Geraden. Dies ergibt sich unmittelbar aus $$
+  y'(x)=m=2\cdot x\quad\leftrightarrow\quad x=\frac{m}{2}
+$$ für ein beliebiges aber festes $m\in\mathbb{R}$.
+2. Gegeben ist die gewöhnliche Differentialgleichung $$
+  y'(x)=x^2+\left(y(x)\right)^2
+$$ in der gesuchten Funktion $x\mapsto y=f(x)$ mit $x\in\mathbb{R}$. Hieraus lässt sich die Isoklinengleichung unmittelbar ablesen $$
+  m=\left(\sqrt{m}\right)^2x^2+\left(y(x)\right)^2
+$$ worin $m\geq0$ vorausgesetzt wird. Dies ist die Gleichung einer Schar von Kreisen um den Koordinatenursprung mit Radien $r=\sqrt{m}$. Siehe nachfolgende Abbildung.
+
+![Isoklinen](img/mat-bild-15.png"_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=x^2+(y(x))^2$, Funktionsgraph einer speziellen Lösung (blau) und Isoklinen (rot) für die Isoklinenwerte $m=1$, $m=2$ und $m=4$ sind dargestellt.")<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 615px;" -->
+
+
 Sicher gewusst?
 ===
 
@@ -1552,6 +1601,8 @@ $$ d. h. diese Funktion löst ebenfalls die gegebenen Anfangsbedingungen. Jedoch
 
 
 [^1]: Für $F(t)\equiv 0$ wird die Schwingung *frei* genannt, die obige Differentialgleichung *homogen*. Ist hingegen $F(t)\not\equiv0$, so wird die Schwingung *erzwungen* genannt, die obige Differentialgleichung * inhomogen*. Siehe Abschnitt [Linearer Typ der Ordnung n](#Linearer-Typ-der-Ordnung n).
+
+[^2]: Sind Differentialgleichungen der obigen Form implizit gegeben, so ist nach Möglichkeit zunächt in die explizite Form umzustellen. Alternativ ist die Differentialgleichung nach Einsetzen der Punktkoordinaten $(x_0,y_0)$ nach $y'(x_0)$ zu lösen, um den zugeordneten Anstieg bestimmen zu können.
 
 
 ### Trennung der Variablen
@@ -2752,13 +2803,52 @@ Es gelten:
 **Frage 2.** Zu zwei Zahlenmengen $A=\left\{1,2,3\right\}$ und $B=\left\{3,6,7,8,9\right\}$ der Grundmenge $\Omega=\left\{1,2,3,4,5,6,7,8,9\right\}$ werden die folgenden Teilmengen gebildet $$
   C:=\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\,,\quad
   D:=A\cap B\quad\text{und}\quad
-  C:=\bar{A}\cap \bar{B}
-$$ Geben Sie die Teilmengen unter Angabe ihrer Elemente an.
+  E:=\bar{A}\cap \bar{B}
+$$ worin $\bar{A}$ das Komplement von $A$ bezüglich $\Omega$ bezeichnet (entsprechend für $\bar{B}$ und $\bar{C}$).
+
+Geben Sie die Teilmengen unter Angabe ihrer Elemente an.
 
 [[$C$] [$D$] [$E$]]
-[( ) ( ) ( )]  ...
+[( ) (X) ( )]  $\{3\}$
+[( ) ( ) (X)]  $\{4,5\}$
+[(X) ( ) ( )]  $\{1,2,6,7,8,9\}$
+[[?]] Die Aufgabe lässt sich durch Bilden der Teilmengen $C$, $D$ und $E$ lösen. Durch Interpretation der Mengen als zufällige Ereignisse eines Zufallsversuchs besitzt die Aufgabe auch eine Bedeutung innerhalb der Wahrscheinlichkeitstheorie.
+****************************************
+
+1. $C=\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)=\{1,2\}\cup\{6,7,8,9\}=\{1,2,6,7,8,9\}$
+2. $D=A\cap B=\{1,2,3\}\cap\{3,6,7,8,9\}=\{3\}$
+3. $E=\bar{A}\cap \bar{B}=\{4,5,6,7,8,9\}\cap\{1,2,4,5\}=\{4,5\}$
+
+****************************************
 
 Entscheiden Sie, ob die Teilmengen $C$, $D$ und $E$ ein vollständiges System bilden.
 
 [( )] Nein
 [(X)] Ja
+[[?]] Prüfen Sie die Bedingungen in Definition 3 für die Mengen $C$, $D$ und $E$, um zu prüfen, ob diese ein vollständiges System bilden.
+****************************************
+
+Es gelten offenbar im Beispiel der konkreten Aufgabe $C\cup D\cup E=\omega$ sowie $C\cap D=\emptyset$, $C\cap E=\emptyset$ und $D\cap E=\emptyset$. Die Teilmengen beziehungsweise die zufälligen Ereignisse $C$, $D$ und $E$ bilden somit ein vollständiges System.
+
+Allgemein gilt für beliebige zufällige Ereignisse $A$ und $B$ eines Zufallsversuchs:
+
+1. Die aus $A$ und $B$ gebildeten zufälligen Ereignisse $$
+  C:=\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\,,\quad
+  D:=A\cap B\quad\text{und}\quad
+  E:=\bar{A}\cap \bar{B}
+$$ sind paarweise unvereinbar, denn es berechnen sich unter Verwendung der Rechengesetze aus Proposition 1 $$
+  \begin{split}
+  D\cap E & =(A\cap B)\cap(\bar{A}\cap \bar{B})=A\cap B\cap\bar{A}\cap \bar{B}=(A\cap \bar{A})\cap(B\cap \bar{B})=\emptyset\cap\emptyset=\emptyset \\
+  C\cap D & = \left(\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\right)\cap (A\cap B)=
+  \left((A\cap\bar{B})\cap (A\cap B)\right)\cup\left((\bar{A}\cap B)\cap (A\cap B)\right)=\left(A\cap(B\cap\bar{B})\right)\cup\left(B\cap(A\cap\bar{A})\right)=\emptyset\cup\emptyset=\emptyset \\
+  C\cap E & = \left(\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\right)\cap (\bar{A}\cap \bar{B})=
+  \left((A\cap\bar{B})\cap (\bar{A}\cap \bar{B})\right)\cup\left((\bar{A}\cap B)\cap (\bar{A}\cap \bar{B})\right)=\left((A\cap\bar{A})\cap\bar{B}\right)\cup\left(\bar{A}\cap(B\cap\bar{B})\right)=\emptyset\cup\emptyset=\emptyset
+  \end{split}
+$$
+2. Die Summe der zufälligen Ereignisse ist gleich dem sicheren Ereignis, denn es berechnen sich unter Verwendung der Rechengesetze aus Proposition 1 $$
+  C\cup D\cup E=\left(\left(A\cap\bar{B}\right)\cup\left(\bar{A}\cap B\right)\right)\cup(A\cap B)\cup\left(\bar{A}\cap \bar{B}\right)=
+  \left(\left(A\cap\bar{B}\right)\cup(A\cap B)\right)\cup\left(\left(\bar{A}\cap B\right)\cup\left(\bar{A}\cap \bar{B}\right)\right)=
+  \left(A\cap(B\cup\bar{B}\right)\cup\left(\bar{A}\cap(B\cup\bar{B})\right)=\left(A\cup\bar{A}\right)\cap\left(B\cup\bar{B}\right)=\Omega\cap\Omega=\Omega
+$$
+
+****************************************
