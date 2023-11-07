@@ -13,6 +13,7 @@ import: https://raw.githubusercontent.com/LiaTemplates/tiny-turtle/master/README
 
 import: https://raw.githubusercontent.com/liaTemplates/algebrite/master/README.md
 
+import: https://raw.githubusercontent.com/LiaTemplates/Pyodide/master/README.md
 
 -->
 
@@ -25,6 +26,23 @@ Dieser Kurs richtet sich an Studierende der Hochschule für Technik und Wirtscha
 Sie können diesen Kurs auf [LiaScript](https://liascript.github.io/course/?https://github.com/marco-hamann/Mathe3/blob/main/README.md) oder [Opal](https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/16648798212) aufrufen. Das Repository zu diesem Kurs finden Sie unter
 
 https://github.com/marco-hamann/Mathe3
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.arange(0.0, 2.0, 0.01)
+s = np.sin(2 * np.pi * t)
+
+fig, ax = plt.subplots()
+ax.plot(t, s)
+
+ax.grid(True, linestyle='-.')
+ax.tick_params(labelcolor='r', labelsize='medium', width=3)
+
+plt.show()
+```
+@Pyodide.eval
 
 
 ## Funktionsreihen
