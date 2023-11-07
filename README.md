@@ -27,25 +27,9 @@ Sie können diesen Kurs auf [LiaScript](https://liascript.github.io/course/?http
 
 https://github.com/marco-hamann/Mathe3
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-t = np.arange(0.0, 2.0, 0.01)
-s = np.sin(2 * np.pi * t)
-
-fig, ax = plt.subplots()
-ax.plot(t, s)
-
-ax.grid(True, linestyle='-.')
-ax.tick_params(labelcolor='r', labelsize='medium', width=3)
-
-plt.show()
-```
-@Pyodide.eval
-
 
 ## Funktionsreihen
+
 
 Thema dieses Kapitels sind die Funktionsreihen für reelle Funktionen einer reellen Variablen. Speziell werden Potenzreihen und Fourierreihen eingeführt und untersucht.
 
