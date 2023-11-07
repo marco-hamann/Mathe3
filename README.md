@@ -1521,6 +1521,10 @@ $$ worin $m\geq0$ vorausgesetzt wird. Dies ist die Gleichung einer Schar von Kre
 
 ![Isoklinen](img/mat-bild-15.png"_Fig._ Richtungsfeld der gewöhnlichen Differentialgleichung $y^\prime(x)=x^2+(y(x))^2$, Funktionsgraph einer speziellen Lösung (blau) und Isoklinen (rot) für die Isoklinenwerte $m=1$, $m=2$ und $m=4$ sind dargestellt.")<!-- style="display: block; margin-left: auto; margin-right: auto; max-width: 615px;" -->
 
+Im nachstehenden Video wird an einem weiteren Beispiel erläutert, wie sich die Isoklinen aus einer gewöhnlichen Differentialgleichung in expliziter Form bestimmen und zeichnen lassen.
+
+!?[Isoklinen zeichnen](https://www.youtube.com/watch?v=r72_qQpYAQM "MrYouMath, Differentialgleichungen  - Isoklinen bestimmen und zeichnen")
+
 
 Sicher gewusst?
 ===
@@ -1692,7 +1696,7 @@ Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
   y-2\cdot x\cdot y'=0
 $$ in der gesuchten Funktion $x\mapsto y(x)$ mit $x\in D\subseteq\mathbb{R}$.
 
-Bilden Sie für $x\not=0$ eine explizite Darstellung der Differentialgleichung, siehe Abschnitt [Definition und Lösung](#Definition-und-Lösung). Entscheiden Sie, ob die Differentialgleichung separabel ist.
+Bilden Sie für $x\not=0$ eine explizite Darstellung der Differentialgleichung, siehe Abschnitt [Grundbegriffe](#Grundbegriffe). Entscheiden Sie, ob die Differentialgleichung separabel ist.
 
 [(X)] Die gegebene Differentialgleichung ist separabel.
 [( )] Die gegebene Differentialgleichung ist nicht separabel.
