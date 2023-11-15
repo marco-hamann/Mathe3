@@ -2125,12 +2125,12 @@ $$ Hieraus ergibt sich eine spazielle Lösung der inhomogenen Differentialgleich
   \frac{K}{r}\cdot\exp{\left(\frac{r}{m}\cdot t\right)}\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}=\frac{K}{r}
 $$
 3. Die allgemeine Lösung der inhomogenen Differentialgleichung ergibt sich somit $$
-  t\mapsto v(t)=v_h(t)+v_p(t)=\frac{K}{m}+c\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}\,,\quad t\geq0
+  t\mapsto v(t)=v_h(t)+v_p(t)=\frac{K}{r}+c\cdot\exp{\left(-\frac{r}{m}\cdot t\right)}\,,\quad t\geq0
 $$
 
 Wird zusätzlich die Anfangsbedingung $v(0)=0$ (Anfangsgeschwindigkeit ist Null) betrachtet, so ist $$
-  \frac{K}{m}+c\cdot\exp{\left(-\frac{r}{m}\cdot 0\right)}=\frac{K}{m}+c\cdot 1=0\quad\leftrightarrow\quad
-  c=-\frac{K}{m}
+  \frac{K}{r}+c\cdot\exp{\left(-\frac{r}{m}\cdot 0\right)}=\frac{K}{r}+c\cdot 1=0\quad\leftrightarrow\quad
+  c=-\frac{K}{r}
 $$ woraus sich die Lösung des Anfangsproblems ergibt $$
   t\mapsto v(t)=\frac{K}{r}\cdot\left(1-\exp{\left(-\frac{r}{m}\cdot t\right)}\right)
 $$ siehe nachstehende Abbildung.
@@ -2858,3 +2858,227 @@ $$
 $$
 
 ****************************************
+
+
+### Wahrscheinlichkeit
+
+
+In diesem Abschnitt wird untersucht, wie sich zufälligen Ereignissen $A$ eines Zufallsversuchs Wahrscheinlichkeiten $P(A)$ zuordnen lassen, d. h. ein Maß zu finden, welches das Zufallsgeschehen beim Zufallsversuch abbildet.
+
+
+Definitionen und Begriffe
+===
+
+
+Hierfür ist es wichtig, ein System $\mathcal{F}$ von zufälligen Ereignissen festzulegen, so dass für jedes $A\in\mathcal{F}$ eine Wahrscheinlichkeit $P(A)$ in konsistenter Weise zugeordnet werden kann.
+
+>**Definition 1.** Es sei $\Omega$ die Ergebnismenge eines Zufallsversuchs mit $\Omega\not=\emptyset$. Ein System $\mathcal{F}\subset\mathfrak{P}(\Omega)$ von Teilmengen mit den Eigenschaften
+>
+>1. $\Omega\in\mathcal{F}$
+>2. $A\in\mathcal{F}\;\rightarrow\;\bar{A}\in\mathcal{F}\;$ (Komplement zu $A$ bezüglich $\Omega$)
+>3. $A_1\,,\;A_2\,,\; ... \in\mathcal{F}\;\rightarrow\;\bigcup_{i\geq 1}{A_i}\in\mathcal{F}\;$ (Summen abzählbar unendlich vieler $A_i$)
+>
+> heißt [$\sigma$-Algebra](https://de.wikipedia.org/wiki/%CE%A3-Algebra) in $\Omega$. Das Paar $(\Omega,\mathcal{F})$ wird [Ereignisraum](https://de.wikipedia.org/wiki/Ereignissystem) genannt.
+
+**Bemerkung 1.**
+
+4. Mit den ersten beiden Eigenschaften in vorstehender Definition ist auch $\emptyset\in\mathcal{F}$.
+5. Wegen der dritten Eigenschaft mit $$
+  A\cup B\cup\emptyset\cup\emptyset\cup...
+$$ auch $A\cup B\in\mathcal{F}$
+6. Mit den vorgenannten Eigenschaften folgen schließlich $A\cap B=\overline{\bar{A}\cup\bar{B}}\in\mathcal{F}$ sowie $A\setminus B=A\cap\bar{B}\in\mathcal{F}$.
+7. Ebenso gilt auch für abzählbar viele zufällige Ereignisse $$
+  \bigcap_{i\geq1}{A_i}=A_1\cap A_2\cap ...\;\in\mathcal{F}
+$$
+
+>**Definition 2.** Sei $(\omega,\mathcal{F})$ ein Ereignisraum. Eine Funktion $$
+  P:\mathcal{F}\to[0,1]
+$$ mit den Eigenschaften
+>
+>1. $P(\Omega)=1\;$ (Normierung)
+>2. Für zufällige Ereignisse $A_1$, $A_2$, ... aus $\mathcal{F}$ mit $A_i\cap A_j=\emptyset$[^1] für alle $i\not=j$ ist $$
+  P\left(\bigcup_{i\geq1}{A_i}\right)=\sum_{i\geq1}{P(A_i)}\quad\text{($\sigma$-Additivität)}
+$$
+>
+>heißt [Wahrscheinlichkeitsverteilung](https://de.wikipedia.org/wiki/Wahrscheinlichkeitsma%C3%9F#Wahrscheinlichkeitsverteilungen_und_Wahrscheinlichkeitsverteilungen_einer_Zufallsvariable) beziehungsweise Wahrscheinlichkeitsmaß auf dem Ereignisraum $(\Omega,\mathcal{F})$.
+>
+>Das Tripel $(\Omega,\mathcal{F},P)$ wird **Wahrscheinlichkeitsraum** genannt.
+
+**Beispiel 1.** Für $\Omega=\{1,2,3\}$ ist mit der *Gleichverteilung* $P(\{i\})=\frac{1}{3}$ ein einfaches Beispiel für einen Wahrscheinlichkeitsraum gegeben. Die Wahrscheinlichkeitsverteilung ergibt sich hierbei
+
+1. Potenzmenge $\mathfrak{P}(\Omega)$, bestehend aus allen Teilmengen von $\Omega$ $$
+  \mathfrak{P}(\Omega)=\left\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\right\}=\mathcal{F}
+$$
+2. Es sind die Wahrscheinlichkeiten $$
+  P(\{1\})=P(\{2\})=P(\{3\})=\frac{1}{3}
+$$ gewählt. Mit Hilfe der $\sigma$-Additivität lassen sich daraus ableiten $$
+  P(\left\{1,2\right\})=P(\{1\})+P(\{2\})=\frac{2}{3}\,,\quad\text{ebenso}\quad P(\left\{1,3\right\})=P(\left\{2,3\right\})=\frac{2}{3}
+$$ die Normierungsbedingung ist bei den gegebenen Wahrscheinlichkeiten ebenso erfüllt $$
+  P(\left\{1,2,3\right\})=P(\{1\})+P(\{2\})+P(\{3\})=1
+$$ Mit $\Omega\cup\emptyset=\Omega$ und $\Omega\cap\emptyset=\emptyset$ folgt schließlich $P(\emptyset)=0$.
+Anstelle der Gleichverteilung wäre auch eine andere Verteilung vermöge $$
+  P(\{1\})=p_1\in[0,1]\,,\quad P(\{2\})=p_2\in[0,1]\quad\text{und}\quad P(\{3\})=p_3\in[0,1]
+$$ mit der Normierungsbedingung $p_1+p_2+p_3=1$ möglich.
+
+**Beispiel 2.** Für eine abzählbar unendliche Menge $\Omega=\{0,1,2,3,...\}$ ist durch $$
+  P(\{i\})=\frac{1}{2^{1+i}}
+$$ ein Wahrscheinlichkeitsmaß gegeben, denn $$
+  P(\Omega)=P(\{1,2,3,...\})=\sum_{i=0}^\infty{\left(\frac{1}{2^{1+i}}\right)}=\lim_{n\to\infty}{\left(\frac{1}{2}\cdot\frac{1-\left(\frac{1}{2}\right)^n}{1-\frac{1}{2}}\right)}=1
+$$
+
+**Bemerkung 2.** Das zuvor eingeführte Wahrscheinlichkeitsmaß wird oft assoziiert mit dem Grad der Sicherheit des Eintretens eines zufälligen Ereignisses $A$ beziehungsweise der *relativen Häufigkeit*, mit der $A$ unter gleichen Bedingungen eintritt. Tritt $A$ bei $n$ Wiederholungen eines Zufallsversuchs genau $h_n(A)$-mal auf, so berechnet sich die relative Häufigkeit gemäß $$
+  r_n=\frac{h_n(A)}{n}
+$$ Der Zähler in der vorstehenden Formel wird *absolute Häufigkeit* des Eintretens von $A$ genannt. Es gelten hierbei offensichtlich $$
+  0\leq r_n(A)\leq 1\,,\quad r_n(\emptyset)=0\,,\quad r_n(\Omega)=1\quad\text{sowie}\quad (A\subseteq B)\;\rightarrow\; (r_n(A)\leq r_n(B))
+$$ Zu beachten ist, dass aus $r_n(A)=1$ beziehungsweise $r_n(A)=0$ nicht $A=\Omega$ beziehungsweise $A=\emptyset$ geschlossen werden darf, da $h_n(A)=n$ beziehungsweise $h_n(A)=1$ möglich sind. Für die Summe zweier zufälliger Ereignisse $A$ und $B$ eines Zufallsversuchs gelten $$
+  r_n(A\cup B)=r_n(A)+r_n(B)-r_n(A\cap B)
+$$ Gilt speziell $B=\bar{A}$, so folgt aus dieser Gleichung mit $A\cap\bar{A}=\emptyset$ die Gleichung $1=r_n(A)+r_n(\bar{A})$.
+
+Die Begriffe 'absolute' und 'relative Häufigkeit' werden im nachstehenden Video noch einmal kurz angesprochen.
+
+!?[Häufigkeit](https://www.youtube.com/watch?v=kIZ9-mGbuN8&list=RDCMUCPtUzxTfdaxAmr4ie9bXZVA&index=2 "Daniel Jung, absolute und relative Häufigkeit, Statistik")
+
+Die Eigenschaften für relative Häufigkeiten motivieren entsprechende Eigenschaften für Wahrscheinlichkeiten.
+
+> **Satz 1.** (Rechenregeln) Jedes  Wahrscheinlichkeitsmaß auf einem Ereignisraum $(\Omega,\mathcal{F})$ besitzt die Eigenschaften
+>
+>1. $P(\emptyset)=0$
+>2. $P(A\cup B)+P(A\cap B)=P(A)+P(B)$ für beliebige zufällige Ereignisse $A\in\mathcal{F}$ und $B\in\mathcal{F}\;$ (endliche Additivität)
+>3. $(A\subseteq B)\;\rightarrow\; (P(A)\leq P(B))\;$ (Monotonie)
+>4. Für zufällige Ereignisse $A_1$, $A_2$, ... aus $\mathcal{F}$ ist $$
+  P\left(\bigcup_{i\geq1}{A_i}\right)\leq\sum_{i\geq1}{P(A_i)}\quad\text{($\sigma$-Subadditivität)}
+$$
+
+**Beweis.** Der Beweis kann hierzu beispielsweise im Buch 'Stochastik' von Hans-Otto Georgii, Seite 15 nachgelesen werden.
+
+
+Laplacesche Ereignisräume
+===
+
+
+Die $\sigma$-Algebra ist hier endlich vorausgesetzt und jedes atomare zufällige Ereignis ist gleich wahrscheinlich. Vergleich Beispiel 1.
+
+Bezeichnen $A_i$ mit $i\in\{1,2,...,n\}$ die atomaren Ereignisse, so berechnen sich deren Wahrscheinlichkeiten gemäß Definition 2 $$
+  P\left(\bigcup_{i=1}^n{A_i}\right)=\sum_{i=1}^n{P(A_i)}=n\cdot P(A_i)=1\quad\leftrightarrow\quad P(A_i)=\frac{1}{n}\;\forall i
+$$ Für ein beliebiges zufälliges Ereignis $A=\bigcup_{i=1}^k$ - ggf. durch geeignetes Umsortieren der $A_i$ erreichbar - ist $$
+  P(A)=P\left(\bigcup_{i=1}^k{A_i}\right)=\sum_{i=1}^k{P(A_i)}=k\cdot\frac{1}{n}=\frac{\textcolor{blue}{k}}{\textcolor{purple}{n}}
+$$ d. h. die Wahrscheinlichkeit von $A$ wird gebildet als Quotient "*Anzahl aller $A_i$ mit $A_i\subseteq A$* <!--style="color:blue"--> durch *Anzahl aller $A_i$* <!--style="color:purple"-->".
+
+Im nachstehenden Video wird ein einfaches Beispiel einer Laplaceschen Wahrscheinlichkeit erläutert.
+
+!?[Laplace](https://www.youtube.com/watch?v=-mh5nBMyZPk&list=RDCMUCPtUzxTfdaxAmr4ie9bXZVA&index=3 "Daniel Jung, Stochastik Grundlagen, Wahrscheinlichkeit.")
+
+Für große Zahlen $k$ beziehungsweise $n$ erweist es sich oft günstig, Hilfsmittel aus der Kombinatorik zu nutzen. Im folgenden wird die Anzahl aller Möglichkeiten zu folgender Aufgabe berechnet:
+
+<!-- style="background-color: lightgray;"-->"Wähle aus $n$ unterscheidbaren Elementen $k$ Elemente aus."
+
+<!-- data-type="none" -->
+|     | ~~mit~~ Wiederholung | ~~ohne~~ Wiederholung |
+| :--- | :--- | :--- |
+| ~~mit~~ Berücksichtigung der Reihenfolge  | $$ n^k=\underbrace{n\cdot n\cdot ...\cdot n}_{k\, \text{Faktoren}} $$ | $$ \underbrace{n\cdot (n-1)\cdot ...\cdot (n-(k-1))}_{k\, \text{Faktoren}}=\frac{n!}{(n-k)!} $$ |
+| ~~ohne~~ Berücksichtigung der Reihenfolge | $$ \binom{n+k-1}{k} $$ | $$ \frac{n!}{(n-k)!}\textcolor{red}{\cdot\frac{1}{k!}}=:\binom{n}{k} $$ |
+
+**Erläuterung.** Die vorstehende Aufgabe wird unter den aufgeführten Bedingungen gelöst. Für die Erläuterung der Plausibilität werden die einzelnen Fälle wie nachfolgend angeordnet betrachtet.
+
+1. "*~~Mit~~ Berücksichtigung der Reihenfolge & ~~mit~~ Wiederholung*." Für die Wahl eines jeden Elementes aus der Grundgesamtheit stehen - durch 'Zurücklegen' - erneut $n$ Elemente zur Verfügung. Die $k$ nacheinander gewählten Elemente bilden ein geordnetes $k$-Tupel, von denen es $n^k$ verschiedene Tupel gibt.
+2. "*~~Mit~~ Berücksichtigung der Reihenfolge & ~~ohne~~ Wiederholung*." Für die Wahl des ersten Elementes aus der Grundgesamtheit stehen $n$ Elemente zur Verfügung, durch 'Nicht-Zurücklegen' für das zweite $n-1$ - , für das dritte $n-2$ - usw. bis zur Wahl des $k$-ten Elementes noch $n-(k-1)=n-k+1$ Elemente zur Auswahl. Die $k$ nacheinander gewählten Elemente bilden ein geordnetes $k$-Tupel, von denen es $$
+  n\cdot(n-1)\cdot(n-2)\cdot ... \cdot(n-k+1)=\frac{n\cdot (n-1)\cdot(n-2)\cdot (n-(k-1))\textcolor{red}{\cdot (n-k)\cdot (n-(k+1))\cdot ...\cdot 2\cdot 1}}{\textcolor{red}{(n-k)\cdot (n-(k+1))\cdot ...\cdot 2\cdot 1}}=\frac{n!}{(n-k)!}
+$$ verschiedene Tupel gibt. Ist speziell $k=n$, so ergibt sich insbesondere $$
+  n\cdot(n-1)\cdot(n-2)\cdot...\cdot 2\cdot 1=n!
+$$ für die Anzahl aller möglichen Anordnungen von $n$ Elementen. Diese werden [Permutationen](https://de.wikipedia.org/wiki/Permutation) genannt.
+3. "*~~Ohne~~ Berücksichtigung der Reihenfolge & ~~ohne~~ Wiederholung*." Bleibt im Unterschied zum zuvor betrachteten Fall 2. die Reihenfolge bei der Auswahl unberücksichtigt, so sind die $k!$ verschiedenen Anordnungen der $k$ gewählten Elemente zu identifizieren. Hiermit lässt sich die zu 2. gehörende Formel für die Anzahl in diesem Fall entwickeln $$
+  \frac{n!}{(n-k)!}\textcolor{red}{\cdot\frac{1}{k!}}=:\binom{n}{k}
+$$ Der Ausdruck auf der rechten Seite wird [Binomialkoeffizient](https://de.wikipedia.org/wiki/Binomialkoeffizient) genannt.
+4. "*~~Ohne~~ Berücksichtigung der Reihenfolge & ~~mit~~ Wiederholung*." Da die Reihenfolge bei der Auswahl unberücksichtigt bleiben soll, interessiert nur, wie oft jedes Element gewählt wird: Wird die zum Element $i$ gehörende Anzahl mit $a_i$ bezeichnet, so gilt $\sum_{i=1}^k{a_i}=k$. Hiermit lässt sich nun ein geordnetes $(n-1+k)$-Tupel konstruieren $$
+  (\underbrace{0,...,0}_{a_1},1,\underbrace{0,...,0}_{a_2},1,\quad...\quad ,1,\underbrace{0,...,0}_{a_n})
+$$ mit $n-1$ Einsen als Trenner und $k$ Nullen für das Tupel $(a_1,a_2,...,a_n)$ der jeweiligen Anzahl. Für die Wahl von $n-1$ Positionen aus $n-1+k$ möglichen Positionen ~~ohne~~ Wiederholung und ~~ohne~~ Berücksichtigung der Reihenfolge ergeben sich $$
+  \binom{n-1+k}{n-1}=\frac{(n-1+k)!}{(n-1+k-(n-1))!\cdot(n-1)!}=\frac{(n-1+k)!}{k!\cdot(n-1)!}=\binom{n-1+k}{k}
+$$ viele Möglichkeiten. $\square}$
+
+**Bemerkung 3.** Aus der Definition des Binomialkoeffizienten ergeben sich für beliebige Zahlen $n\in\mathbb{N}$ und $k\in\mathbb{N}$ mit $k\leq n$ unter anderem:
+
+1. $$ \binom{0}{0}=1\,,\quad\binom{n}{0}=1 $$
+2. $$ \binom{n}{k}=\frac{n-k-1}{k}\cdot\binom{n}{k-1} $$
+3. $$ \binom{n}{k}=\frac{n}{k}\cdot\binom{n-1}{k-1} $$
+4. $$ \binom{n+1}{k+1}=\binom{n}{k}+\binom{n}{k+1} $$
+
+Mit Hilfe der ersten und vierten Eigenschaft lassen sich die Binomialkoeffizienten rekursiv berechnen.
+
+
+Geometrische Wahrscheinlichkeit
+===
+
+
+Die Wahrscheinlichkeit $P(A)$ für das Ereignis, dass ein zufällig aus einem Gebiet $S$ mit Flächeninhalt $F_S$ gewählter Punkt in einem Gebiet $s\subseteq S$ mit Flächeninhalt $F_s$ liegt, ist gegeben durch $$
+  P(A)=\frac{F(s)}{F(S)}\in[0,1]
+$$ Es gilt: Gebiete mit gleichem Flächeninhalt gehören zu gleich wahrscheinlichen zufälligen Ereignissen.
+
+Anstelle des Flächeninhaltes lässt sich ebenso ein anderes geometrisches Maß wie 'Länge', 'Volumen' etc. zur Definition einer Wahrscheinlichkeitsverteilung verwenden.
+
+**Beispiel 3.** Zu zwei beliebigen Zeitpunkten innerhalb einer Zeitdifferenz $\Delta t$ sollen in einem Empfänger gleich wahrscheinlich Signale ertönen. Das Gerät trennt nicht mehr, wenn die Zeitdifferenz zwischen Signalen kleiner als $\tau$ ist. Gesucht ist die Wahrscheinlichkeit für das zufällige Ereignis $A$, dass das Gerät für Empfang unbrauchbar ist.
+
+1. Bezeichnen $x$ beziehungsweise $y$ jeweils die Zeit für den Empfang des $1$-ten beziehungsweise $2$-ten Signals, so gilt für deren Differenz $$
+  \begin{split}
+    \vert x-y\vert <\tau \quad & \leftrightarrow \quad \left\{\begin{array}{rcl} x-y<\tau & \text{falls} & x-y\geq 0 \\ y-x<\tau  & \text{falls} & x-y < 0 \end{array}\right. \\
+    & \leftrightarrow \quad \left\{\begin{array}{rcl} y> x-\tau & \text{falls} & x\geq y \\ y< x+\tau  & \text{falls} & x<y \end{array}\right.
+  \end{split}
+$$
+2. Unter Benutzung der Standardisierung $\Delta t=T-0$ mit $T>0$ lässt sich die Wahrscheinlichkeit $P(A)$ geometrisch visualisieren: Jedes Paar $(x,y)$ von Zeitpunkten entspricht den kartesischen Koordinaten eines Punktes der Ebene. In der vorgegebenen Standardisierung ist $$
+  (x,y)\in[0,T]^2
+$$ Innerhalb des Quadrates gelten die im Teilschritt 1 erhaltenen Ungleichungen $$
+  y>x-\tau\; \wedge\; y<x+\tau
+$$ Hierdurch wird eine Sechseckfläche beschrieben. Siehe nachstehende Abbildung. Für die Flächeninhalte der Gebiete folgen dann $$
+  S=[0,T]^2\;\to\; F_S=T^2\quad\text{sowie}\quad s=\left\{(x,y)\in S||x-y|<\tau\right\}\;\to\; F_s=F_S-2\cdot\left(\frac{1}{2}\cdot(T-\tau)^2\right)=T^2-(T-\tau)^2
+$$ und somit für die Wahrscheinlichkeit von $A$ $$
+  P(A)=\frac{T^2-(T-\tau)^2}{T^2}=1-\left(1-\frac{\tau}{T}\right)^2
+$$
+
+![geometrische Wahrscheinlichkeit](img/mat-bild-16.png "_Fig._ Diagramm zur Darstellung der Zeiten beim Empfang zweier Signale: Jedes Paar $(x,y)$ von Zeitpunkten und damit der Betrag der Zeitdifferenz $|x-y|$ entspricht einem Punkt der Ebene. Dargestellt sind die geometrischen Bereiche für Signale innerhalb $\Delta t=T-0$, sowie für den Fall, dass der Empfänger die Signale nicht mehr trennen kann (schraffiert).")
+
+
+Sicher gewusst
+===
+
+
+**Frage 1.** Die atomaren zufälligen Ereignisse eines Ereignisraums seien $A$, $B$ und $C$.
+
+Aus wie vielen zufälligen Ereignissen besteht der daraus zu bildende 'kleinste' Ereignisraum?
+
+[( )] $6$
+[(X)] $8$
+[( )] $3$
+[[?]] Versuchen Sie mit Hilfe von Definition 1 und Bemerkung 1 den Ereignisraum zur Ergebnismenge $\Omega=\{A,B,C\}$ zu konstruieren.
+****************************************
+
+Der zu $\Omega=\{A,B,C\}$ konstruierte, 'kleinste' Ereignisraum $$ \mathfrak{P}(\Omega)=\left\{\emptyset,\Omega,A,B,C,A\cup B, A\cup C, B\cup C\right\}=\mathcal{F} $$ besitzt acht Elemente.
+
+****************************************
+
+**Frage 2.** Lassen sich die Wahrscheinlichkeiten für die unter Frage 1 konstruierten Ereignisse in $\mathcal{F}$ bestimmen, falls gegeben sind:
+
+[[Ja] [Nein]]
+[(X) ( )]  $\left\{P(A),P(B)\right\}$
+[( ) (X)]  $\left\{P(A),P(\bar{A})\right\}$
+[(X) ( )]  $\left\{P(A\cup B),P(A)\right\}$
+[[?]] Verwenden Sie zur Berechnung die Rechenregeln aus Satz 1.
+****************************************
+
+Verschiedene atomare Ereignisse sind Definition paarweise unvereinbar, d. h. zum Beispiel $A\cap B=\emptyset$. Damit ist $$
+  P(A)+P(B)+P(C)=P(\Omega)=1
+$$
+
+1. Aus den gegebenen Wahrscheinlichkeiten $\left\{P(A),P(B)\right\}$ berechnet sich zunächst $$
+  P(C)=P(\Omega)-P(A)-P(B)
+$$ und hiermit schrittweise $$
+  P(A\cup B)=P(A)+P(B)\,,\quad P(A\cup C)=P(A)+P(C)\,,\quad P(B\cup C)=P(B)+P(C)
+$$ Daneben ist nach Definition $P(\Omega)=1$ (Normierung) und $P(\emptyset)=0$ nach Satz 1.
+2. Sind $\left\{P(A),P(\bar{A})\right\}$ gegeben, so gilt offensichtlich $P(A)+P(\bar{A})=P(\Omega)=1$. Hieraus lässt sich $$
+  P(B)+P(C)=P(\bar{A})
+$$ für die gesuchten Wahrscheinlichkeiten $P(B)$ und $P(C)$ ableiten, jedoch sind diese einzelnen nicht bestimmt.
+3. Aus den gegebenen Wahrscheinlichkeiten $\left\{P(A\cup B),P(A)\right\}$ folgt unmittelbar $$
+  P(B)=P(A\cup B)-P(A)
+$$ Damit wie in Teilaufgabe 1 weiter.
+
+****************************************
+
+[^1]: Die zufälligen Ereignisse $A_1$, $A_2$, ... sind paarweise unvereinbar, siehe Definition 2 im Abschnitt [Zufällige Ereignisse](#Zufällige-Ereignisse).
