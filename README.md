@@ -2245,7 +2245,7 @@ $$ mit den Anfangsbedingungen $$
   y(x_0)=y_0\,,\quad y^\prime(x_0)=y_1\,,\quad ...\,,\quad y^{(n-1)}(x_0)=y_{n-1}
 $$ mit $x_0\in I$ und $y_j\in\mathbb{R}$, $j\in\{0,1,..,n-1\}$ genau eine Lösung $y(x)$ auf $I$.
 
-**Beispiel 2.** Gegebenen ist das Beschleunigung-Zeit-Gesetz $$
+**Beispiel 2.** Gegeben ist das Beschleunigung-Zeit-Gesetz $$
   t\mapsto a=\ddot{x}(t)=C\cdot\sin{(\omega\cdot t+\varphi)}
 $$ der beschleunigten Bewegung eines Massepunktes entlang der $x$-Achse (zeitlich veränderliche, periodische Beschleunigung $a$), mit den Parametern $$
   C\in\mathbb{R}\setminus\{0\}\,,\quad\omega>0\quad\text{und}\quad \varphi\in\left[0,\frac{2\cdot\pi}{\omega}\right]
@@ -2501,6 +2501,7 @@ $$ zwei komplexwertige Lösungen der Differentialgleichung. Mit Satz 1 ergeben s
   y_2(x)=\exp{(a\cdot x)}\cdot\sin{(b\cdot x)}
 $$ auf. Die reellen Lösungen einer homogenen linearen Differentialgleichung mit konstanten Koeffizienten sind unter entsprechender Vielfachheit der Lösungen $\lambda$ der charakteristischen Gleichung $P(\lambda)=0$ in nachstehender Tabelle unterschieden.
 
+<!-- style="background-color: lightgray;"-->
 >| Lösung von $P(\lambda)=0$ | Vielfachheit von $\lambda$ | Lösung von $g=0$ |
 >| :--- | :--- | :--- |
 >| $\lambda=a$ mit $a\in\mathbb{R}$ | $k=1$ | $y_1(x)=\exp{(a\cdot x)}$ |
@@ -2519,7 +2520,7 @@ Werden Lösungen der algebraischen Gleichung $P(\lambda)=0$ entsprechend der Vie
 
 1. $$ y^{\prime\prime\prime}(x)-2\cdot y^{\prime\prime}(x)-3\cdot y^\prime(x)=0 $$
 2. $$ y^{\prime\prime}(x)+2\cdot y^\prime(x)+5\cdot y(x)=0 $$
-3. $$ y^{\prime\prime\prime}(x)-3\cdot y^{\prime\prime}(x)+3\cdot y^\prime(x)-1=0 $$
+3. $$ y^{\prime\prime\prime}(x)-3\cdot y^{\prime\prime}(x)+3\cdot y^\prime(x)-y(x)=0 $$
 
 In der folgenden Tabelle sind jeweils charakteristische Gleichung $P(\lambda)=0$, alle Lösungen dieser inklusive Vielfachheiten sowie die allgemeine Lösung $y(x)$ der Differentialgleichung angegeben. Die auftretenden Koeffizienten $c_j$ bezeichnen reelle Parameter. Im Fall 2 bezeichnet $i$ die imaginäre Einheit, d. h. $i^2=-1$.
 
@@ -2545,7 +2546,7 @@ $$ worin der Summand
 >1. $y_h(x)$ die allgemeine Lösung der zugehörenden homogenen Differentialgleichung $y^\prime(x)+p(x)\cdot y(x)=0$ darstellt und
 >2. $y_p(x)$ eine spezielle (partikuläre) Lösung der inhomogenen Differentialgleichung bezeichnet.
 
-**Beweis.** Der Beweis lässt sich analog zum Beweis von Proposition 2 im vorherigen Abschnitt führen und wird deshalb dem geneigeten Leser beziehungsweise der Leserin überlassen.
+**Beweis.** Der Beweis lässt sich analog zum Beweis von Proposition 2 im vorherigen Abschnitt führen und wird deshalb dem geneigten Leser beziehungsweise der Leserin überlassen.
 
 Zur Bestimmung des Anteils $y_p(x)$ sind hier zwei Ansätze gegenübergestellt.
 
@@ -2556,9 +2557,9 @@ Zur Bestimmung des Anteils $y_p(x)$ sind hier zwei Ansätze gegenübergestellt.
 Störgliedansatz
 =====
 
-
 Schritt 1 - Ansatz für spezielle Lösung
 -----
+
 
 Entsprechend der in nachstehender Tabelle aufgeführten Störfunktion $q(x)$ ist die spezielle Lösung $y_p(x)$ anzusetzen. Gegebene beziehungsweise geforderte Parameterwerte sind als lateinische<!-- style="color:blue" --> Kleinbuchstaben dargestellt, während zu bestimmende Parameterwerte mit griechischen<!-- style="color:red"-->  Kleinbuchstaben bezeichnet werden.
 
@@ -2569,6 +2570,85 @@ Entsprechend der in nachstehender Tabelle aufgeführten Störfunktion $q(x)$ ist
 | $\textcolor{blue}{a}\cdot\sin{(\textcolor{blue}{c}\cdot x)}+\textcolor{blue}{b}\cdot\cos{(\textcolor{blue}{c}\cdot x)}$ | $\textcolor{red}{\alpha}\cdot\sin{(\textcolor{blue}{c}\cdot x)}+\textcolor{red}{\beta}\cdot\cos{(\textcolor{blue}{c}\cdot x)}$ |
 
 
+**Bemerkung 3.** Ist das Störglied ein Polynom und gilt darin $a_k=0$ für einzelne Koeffizienten mit $k<n$, so ist trotzdem der in der Tabelle angegebene Ansatz zu verwenden und alle Stellparameter $\alpha_m$ mit $m\leq n$ zuzulassen. Ebenso ist für ein Störglied $$
+  q(x)=a\cdot \sin{(c\cdot x)}\quad\sim\quad y_p(x)= \alpha\cdot\sin{(c\cdot x)}+\beta\cdot\cos{(c\cdot x)}
+$$ als Ansatzfunktion zu wählen (analog für $q(x)=a\cdot \cos{(c\cdot x)}$).
+
+Ist das Störglied $q(x)$ eine Summe $$
+  q(x)=q_1(x)+q_2(x)+...+q_r(x)
+$$ so ist $y_p(x)$ als *Summe* der Ansatzfunktionen zu den einzelnen Summanden zu wählen.
+
+
+Schritt 2 - Berechnen der speziellen Lösung
+-----
+
+
+Zu den Ansatzfunktionen zur Bestimmung von $y_p(x)$ sind die in der Differentialgleichung auftretenden Ableitungen (bis zur Ordnung $n$) zu berechnen. Anschließend werden diese in die inhomogene Differentialgleichung eingesetzt. Es entsteht eine Linearkombination $$
+  L(y_p(x))-q(x)=0\;\forall\, x\in D\subseteq\mathbb{R}
+$$ deren Koeffizienten von den Ansatzparametern abhängen. Werden die auftretenden Funktionen linear unabhängig vorausgesetzt, so müssen die Koeffizienten alle verschwinden. Hieraus ergibt sich ein System von (linearen) Gleichungen zur Bestimmung der Ansatzparameter (Koeffizientenvergleich).
+
+**Bemerkung 4.** Ist das Störglied $q(x)$ oder einzelne Summanden $q_k(x)$ in $$
+  q(x)=q_1(x)+q_2(x)+\ldots+q_k(x)+\ldots+q_r(x)
+$$ eine Lösung der zugehörigen homogenen Differentialgleichung, so auch die $q_k(x)$ gehörende Ansatzfunktion (bei jeder Wahl der Ansatzparameter). Dieser Fall wird **Resonanz** genannt. Vor Einsetzen der Ansatzfunktion zu $y_p(x)$ und ihrer Ableitungen in die inhomogene Differentialgleichung muss der Ansatz noch modifiziert werden.
+
+Ist in diesem Fall $\lambda_k$ die zu $q_k(x)$ zugehörige Lösung der charakteristischen Gleichung zur homogenen Differentialgleichung, so ist die Ansatzfunktion zu $q_k(x)$ - entsprechend der Vielfachheit von $\lambda_k$ - mit $x$ zu multiplizieren.
+
+**Beispiel 6.** Gegeben ist die gewöhnliche lineare Differentialgleichung zweiter Ordnung mit konstanten Koeffizienten $$
+  y''(x)+3\cdot y'(x)+2\cdot y(x)-x-\exp{x}=0
+$$ in der gesuchten Funktion $x\mapsto y=f(x)$, $x\in D\subseteq\mathbb{R}$. Die Differentialgleichung ist inhomogen mit dem Störglied $q(x)=x+\exp{x}$.
+
+1. Die zugehörige homogene Differentialgleichung ist $y''(x)+3\cdot y'(x)+2\cdot y(x)=0$. Mit Hilfe des Eulerschen Exponentialansatzes ergibt sich die charakteristische Gleichung $\lambda^2+3\cdot\lambda+2=0$ der Differentialgleichung mit den beiden Lösungen $\lambda_1=-1$ und $\lambda_2=-2$ somit die allgemeine Lösung $$
+  x\mapsto y_h(x)=c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)}\,,\quad (c_1,c_2)\in\mathbb{R}^2
+$$
+2. *Störgliedansatz*. Das Störglied $q(x)$ ist Summe einer lineare Funktion $x\mapsto q_1(x)=x$ und einer Exponentialfunktion $x\mapsto q_2(x)=\exp{x}$, so dass sich die nachstehende Ansatzfunktion ergibt $$
+  y_p(x)=\alpha\cdot x+\beta+\gamma\cdot\exp{x}
+$$ Die auftretenden reellen Parameter $\alpha$, $\beta$ und $\gamma$ sind zu bestimmen. Weder $q_1(x)$ noch $q_2(x)$ sind spezielle Lösungen der homogenen Differentialgleichung, denn sowohl $[x,\exp{(-x)},\exp{(-2\cdot x)}]$ als auch $[\exp{x},\exp{(-x)},\exp{(-2\cdot x)}]$ sind linear abhängig. Es tritt somit keine Resonanz auf, die Ansatzfunktionen sind nicht zu korrigieren.
+3. Die erste und zweite Ableitung zu $y_p(x)$ berechnen sich zu $$
+  y_p'(x)=\alpha+\gamma\cdot\exp{x}\,,\quad y_p''(x)=\gamma\cdot\exp{x}
+$$ woraus sich nach Einsetzen die Linearkombination $$
+  \begin{split}
+    & \gamma\cdot\exp{x}+3\cdot\left(\alpha+\gamma\cdot\exp{x}\right)+2\cdot\left(\alpha\cdot x+\beta+\gamma\cdot\exp{x}\right)=x+\exp{x} \\
+    \leftrightarrow \quad & \exp{x}\cdot\left(6\cdot\gamma-1\right)+x\cdot\left(2\cdot\alpha-1\right)+\left(3\cdot\alpha+2\cdot\beta\right)=0
+  \end{split}
+$$ Diese Gleichung muss für alle $x\in D$ gelten, wonach mit der linearen Unabhängigkeit von $[\exp{x},x,1]$ die Koeffizienten verschwinden müssen $$
+  (6\cdot\gamma-1=0\;\land\; 2\cdot\alpha-1=0\;\land\;3\cdot\alpha+2\cdot\beta=0)\quad\leftrightarrow\quad
+  \gamma=\frac{1}{6}\,,\;\alpha=\frac{1}{2}\,,\;\beta=-\frac{3}{4}
+$$ Hiermit lässt sich die spezielle Lösung der inhomogenen Differentialgleichung angeben $$
+  x\mapsto y_p(x)=\frac{1}{2}\cdot x-\frac{3}{4}+\frac{1}{6}\cdot\exp{x}
+$$ und mithin die allgemeine Lösung der inhomogenen Differentialgleichung $$
+  x\mapsto y(x)=y_p(x)+y_h(x)=\frac{1}{2}\cdot x-\frac{3}{4}+\frac{1}{6}\cdot\exp{x}+c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)}\,,\quad (c_1,c_2)\in\mathbb{R}^2
+$$
+
+**Beispiel 7.** Gegeben ist die gewöhnliche lineare Differentialgleichung zweiter Ordnung mit konstanten Koeffizienten $$
+  y''(x)+3\cdot y'(x)+2\cdot y(x)-x-\exp{(-x)}=0
+$$ in der gesuchten Funktion $x\mapsto y=f(x)$, $x\in D\subseteq\mathbb{R}$. Die Differentialgleichung ist inhomogen mit dem Störglied $q(x)=x+\exp{x}$.
+
+1. Die zugehörige homogene Differentialgleichung ist wie in Beispiel 6 erneut $y''(x)+3\cdot y'(x)+2\cdot y(x)=0$ mit der allgemeinen Lösung $$
+  x\mapsto y_h(x)=c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)}\,,\quad (c_1,c_2)\in\mathbb{R}^2
+$$
+2. *Störgliedansatz*. Das Störglied $q(x)$ ist Summe einer lineare Funktion $x\mapsto q_1(x)=x$ und einer Exponentialfunktion $x\mapsto q_2(x)=\exp{(-x)}$, so dass sich die nachstehende Ansatzfunktion ergibt $$
+  \alpha\cdot x+\beta+\gamma\cdot\exp{(-x)}\,,\quad \alpha\in\mathbb{R}\,,\;\beta\in\mathbb{R}\,,\;\gamma\in\mathbb{R}
+$$ Zwar ist $q_1(x)$ keine spezielle Lösung der homogenen Differentialgleichung, jedoch der Summand $q_2(x)$, denn $$
+  \exp{(-x)}=1\cdot\exp{(-x)}+0\cdot\exp{(-2\cdot x)}
+$$ Es tritt somit Resonanz auf. Nach Bemerkung 4 ist die Ansatzfunktion zu $q_2(x)$ mit dem Faktor $x$ zu korrigieren ($\lambda=-1$ ist eine einfache Lösung der charakteristischen Gleichung).[^4] Es ergibt sich damit $$
+  y_p(x)=\alpha\cdot x+\beta+\gamma\cdot x\cdot\exp{(-x)}
+$$
+3. Die erste und zweite Ableitung zu $y_p(x)$ berechnen sich zu $$
+  y_p'(x)=\alpha+\gamma\cdot\exp{(-x)}\cdot(1-x)\,,\quad y_p''(x)=\gamma\cdot\exp{(-x)}\cdot(x-2)
+$$ woraus sich nach Einsetzen die Linearkombination $$
+  \begin{split}
+    & \gamma\cdot\exp{(-x)}\cdot(x-2)+3\cdot\left(\alpha+\gamma\cdot\exp{(-x)}\cdot(1-x)\right)+2\cdot\left(\alpha\cdot x+\beta+\gamma\cdot x\cdot\exp{(-x)}\right)=x+\exp{(-x)} \\
+    \leftrightarrow \quad & x\cdot\exp{(-x)}\cdot 0+\exp{(-x)}\cdot\left(\gamma-1\right)+x\cdot\left(2\cdot\alpha-1\right)+\left(3\cdot\alpha+2\cdot\beta\right)=0
+  \end{split}
+$$ Diese Gleichung muss für alle $x\in D$ gelten, wonach mit der linearen Unabhängigkeit von $[x\cdot\exp{(-x)},\exp{(-x)},x,1]$ die Koeffizienten verschwinden müssen $$
+  (\gamma-1=0\;\land\; 2\cdot\alpha-1=0\;\land\;3\cdot\alpha+2\cdot\beta=0)\quad\leftrightarrow\quad
+  \gamma=1\,,\;\alpha=\frac{1}{2}\,,\;\beta=-\frac{3}{4}
+$$ Hiermit lässt sich die spezielle Lösung der inhomogenen Differentialgleichung angeben $$
+  x\mapsto y_p(x)=\frac{1}{2}\cdot x-\frac{3}{4}+x\cdot\exp{(-x)}
+$$ und mithin die allgemeine Lösung der inhomogenen Differentialgleichung $$
+  x\mapsto y(x)=y_p(x)+y_h(x)=\frac{1}{2}\cdot x-\frac{3}{4}+x\cdot\exp{(-x)}+c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)}\,,\quad (c_1,c_2)\in\mathbb{R}^2
+$$
+
 
 
 Sicher gewußt
@@ -2577,8 +2657,42 @@ Sicher gewußt
 
 Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 
-**Frage 1.** ..
+**Frage 1.** Gegeben sind drei homogene, lineare, gewöhnliche Differentialgleichungen zweiter Ordnung mit konstanten Koeffizienten in den gesuchten reellen Funktionen $x\mapsto y=f(x)$, $x\in D\subseteq\mathbb{R}$.
 
+Bestimmen Sie die allgemeinen Lösungen der Differentialgleichungen. Die reellen Scharparameter sind mit $c_1$ und $c_2$ bezeichnet.
+
+[[$y''+3\cdot y'+2\cdot y=0$] [$y''+4\cdot y'+20\cdot y=0$] [$y''+4\cdot y'+4\cdot y=0$]]
+[( ) ( ) (X)]  $$ f(x)=(c_1+c_2\cdot x)\cdot\exp{(-2\cdot x)} $$
+[( ) (X) ( )]  $$ f(x)=\left(c_1\cdot\cos{(4\cdot x)}+c_2\cdot\sin{(4\cdot x)}\right)\cdot\exp{(-2\cdot x)} $$
+[(X) ( ) ( )]  $$ f(x)=c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)} $$
+[[?]] Bestimmen Sie mit Hilfe des Eulerschen Exponentialansatzes die charakteristischen Gleichungen zu den Differentialgleichungen: Diese sind hier quadratische Gleichungen. Berechnen Sie deren Lösungen.
+****************************************
+
+* Die zu $y''+3\cdot y'+2\cdot y=0$ gehörende charakteristische Gleichung wird mit Hilfe des Eulerschen Exponentialansatzes $y(x)=\exp{(\lambda\cdot x)}$ erhalten $$
+  \exp{(\lambda\cdot x)}\cdot(\lambda^2+3\cdot\lambda+2)=0\quad\rightarrow\quad \lambda^2+3\cdot\lambda+2=0
+$$ Sie besitzt die beiden reellen Lösungen $\lambda_1=-1$ und $\lambda_2=-2$. Die zugehörigen beiden Lösungen $y_1(x)=\exp{(-x)}$ und $y_2(x)=\exp{(-2\cdot x)}$ sind linear unabhängig, wonach sich die allgemeine Lösung als Menge aller Linearkombinationen dieser ergibt $$
+  c_1\cdot\exp{(-x)}+c_2\cdot\exp{(-2\cdot x)}\,,\quad(c_1,c_2)\in\mathbb{R}^2
+$$
+* Die zu $y''+4\cdot y'+20\cdot y=0$ gehörende charakteristische Gleichung wird mit Hilfe des Eulerschen Exponentialansatzes $y(x)=\exp{(\lambda\cdot x)}$ erhalten $$
+  \exp{(\lambda\cdot x)}\cdot(\lambda^2+4\cdot\lambda+20)=0\quad\rightarrow\quad \lambda^2+4\cdot\lambda+20=0
+$$ Sie besitzt die beiden komplexen (nichtreellen) Lösungen $\lambda_1=-2+4\cdot i$ und $\lambda_2=-2-4\cdot i$, worin $i^2=-1$. Die zugehörigen beiden Lösungen $$
+  y_1(x)=\exp{((-2+4\cdot i)\cdot x)}=\exp{(-2\cdot x)}\cdot\left(\cos{(4\cdot x)+i\cdot\sin{(4\cdot x)}}\right)
+$$ und $$
+  y_2(x)=\exp{((-2-4\cdot i)\cdot x)}=\exp{(-2\cdot x)}\cdot\left(\cos{(4\cdot x)-i\cdot\sin{(4\cdot x)}}\right)
+$$ sind komplexe Funktionen, deren Realteil und Imaginärteil reelle Lösungen der Differentialgleichung sind. Wegen der linearen Unabhängigkeit von 'Sinus' und 'Kosiuns' ergibt sich die allgemeine Lösung als Menge aller Linearkombinationen $$
+  c_1\cdot\exp{(-2\cdot x)}\cdot\cos{(4\cdot x)}+c_2\cdot\exp{(-2\cdot x)}\cdot\sin{(4\cdot x)}\,,\quad(c_1,c_2)\in\mathbb{R}^2
+$$
+* Die zu $y''+4\cdot y'+4\cdot y=0$ gehörende charakteristische Gleichung wird mit Hilfe des Eulerschen Exponentialansatzes $y(x)=\exp{(\lambda\cdot x)}$ erhalten $$
+  \exp{(\lambda\cdot x)}\cdot(\lambda^2+4\cdot\lambda+4)=0\quad\rightarrow\quad \lambda^2+4\cdot\lambda+4=0
+$$ Sie besitzt die beiden reellen, zusammenfallenden Lösungen $\lambda_1=\lambda_2=-2$. Die zugehörigen beiden Lösungen $y_1(x)=y_2(x)=\exp{(-2\cdot x)}$ sind linear abhängig. Durch Multiplikation etwa von $y_2(x)$ mit $x$ erhält man eine weitere, zu $y_1(x)$ linear unabhängige Lösung. Die allgemeine Lösung ergibt sich als Menge aller Linearkombinationen dieser $$
+  (c_1+c_2\cdot x)\cdot\exp{(-2\cdot x)}\,,\quad(c_1,c_2)\in\mathbb{R}^2
+$$
+
+****************************************
+
+**Frage 2.** Gegeben ist die inhomogene, lineare, gewöhnliche Differentialgleichung dritter Ordnung mit konstanten Koeffizienten in der gesuchten reellen Funktion $x\mapsto y=f(x)$, $x\in D\subseteq\mathbb{R}$. Die allgemeine Lösung der zugehörigen homogenen Differentialgleichung ist $$
+  x\mapsto y_h(x)=c_1+c_2\cdot\exp{(-x)}+c_3\cdot\exp{(3\cdot x)}\,,\quad c_1\in\mathbb{R}\,,\; c_2\in\mathbb{R}\,,\; c_3\in\mathbb{R}
+$$
 
 
 [^1]: Das hier vorgestellte Lösungsverfahren ist nur für lineare Differentialgleichungen $n$-ter Ordnung mit konstanten Koeffizienten anwendbar.
@@ -2586,6 +2700,10 @@ Testen Sie Ihr Wissen zu den Themen dieses Abschnitts.
 [^2]: Eine Basis im Vektorraum $\mathcal{L}$ besteht aus einer Menge von $n$ reellen Funktionen derselben reellen Variablen $x\in D\subseteq\mathbb{R}$, welche ein linear unabhängiges Erzeugendensystem von $\mathcal{L}$ bilden.
 
 [^3]: Gilt hingegen $W(x)=0$ für alle $x_0\in I$, so folgt hieraus ~~nicht~~ die lineare Abhängigkeit der Funktionen im Intervall $I$.
+
+[^4]: Wird mit der nichtkorrigierten Ansatzfunktion gerechnet, so ergibt sich das nichtlösbare Gleichungssystem $$
+  0\cdot\gamma-1=0\,,\; 2\cdot\alpha-1=0\,,\;3\cdot\alpha+2\cdot\beta=0
+$$ zur Bestimmung der Ansatzparameter.
 
 
 ## Wahrscheinlichkeitsrechnung
@@ -3082,3 +3200,9 @@ $$ Damit wie in Teilaufgabe 1 weiter.
 ****************************************
 
 [^1]: Die zufälligen Ereignisse $A_1$, $A_2$, ... sind paarweise unvereinbar, siehe Definition 2 im Abschnitt [Zufällige Ereignisse](#Zufällige-Ereignisse).
+
+
+### Bedingte Wahrscheinlichkeit
+
+
+..
